@@ -18,6 +18,6 @@ function generateCommand() {
       "tomato",
       "bredTop"
     ],
-    10
+    50
   );
 }

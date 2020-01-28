@@ -19,6 +19,7 @@ var Burger = class Burger {
     };
     this.sizeBurger = 30;
     this.inPreparation = false;
+    this.speedIngredient = 50;
   }
 
   sleep(ms) {
@@ -26,9 +27,10 @@ var Burger = class Burger {
   }
 
   async addIngredient(document, interval, margin) {
-    for (var m = 500; m > margin; m -= 10) {
+    for (var m = 500; m > margin; m -= this.speedIngredient) {
       await this.moveIngredient(m, document, interval);
     }
+    await this.moveIngredient(margin, document, interval);
   }
 
   async moveIngredient(margin, document, timing) {
@@ -57,7 +59,7 @@ var Burger = class Burger {
         this.burgerElement.push(imageIngredient);
         tmp++;
       }
-      burger.pushPlate(speed);
+      await burger.pushPlate(speed);
       this.inPreparation = false;
     }
   }
@@ -74,11 +76,11 @@ var Burger = class Burger {
         (marginPixel * this.servingDiv.clientWidth).toString(10) + "px";
     }
 
-    for (var i = 0; i < 60; i++) {
+    for (var i = 0; i < (500/this.speedIngredient); i++) {
       var tmp = 0;
-      await this.sleep(1);
+      await this.sleep(speed);
       for (var element of this.burgerElement) {
-        pixelArray[tmp] = pixelArray[tmp] + speed;
+        pixelArray[tmp] = pixelArray[tmp] + this.speedIngredient;
         element.style.left = pixelArray[tmp].toString(10) + "px";
         tmp++;
       }
