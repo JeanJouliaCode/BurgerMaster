@@ -18,6 +18,7 @@ var Burger = class Burger {
       plate: { width: "50%", left: "23%", offset: 30 }
     };
     this.sizeBurger = 30;
+    this.inPreparation = false;
   }
 
   sleep(ms) {
@@ -36,42 +37,65 @@ var Burger = class Burger {
   }
 
   async prepare(listElement, speed) {
-    console.log(listElement);
+    if (!this.inPreparation) {
+      this.inPreparation = true;
+      var tmp = 0;
 
-    var tmp = 0;
+      for (var ingredient of listElement) {
+        var imageIngredient = document.createElement("img");
+        this.servingDiv.appendChild(imageIngredient);
+        imageIngredient.style.position = "absolute";
+        imageIngredient.style.width = this.positionInfo[ingredient].width;
+        imageIngredient.style.left = this.positionInfo[ingredient].left;
+        imageIngredient.style.bottom = "0px";
+        imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
+        await this.addIngredient(
+          imageIngredient,
+          speed,
+          this.positionInfo[ingredient].offset + tmp * this.sizeBurger
+        );
+        this.burgerElement.push(imageIngredient);
+        tmp++;
+      }
+      burger.pushPlate(speed);
+      this.inPreparation = false;
+    }
+  }
+
+  async pushPlate(speed) {
+    var pixelArray = [];
+    for (var element of this.burgerElement) {
+      var marginPixel =
+        parseInt(
+          element.style.left.substring(0, element.style.left.length - 1)
+        ) / 100;
+      pixelArray.push(marginPixel * this.servingDiv.clientWidth);
+      element.style.left =
+        (marginPixel * this.servingDiv.clientWidth).toString(10) + "px";
+    }
+
+    for (var i = 0; i < 60; i++) {
+      var tmp = 0;
+      await this.sleep(1);
+      for (var element of this.burgerElement) {
+        pixelArray[tmp] = pixelArray[tmp] + speed;
+        element.style.left = pixelArray[tmp].toString(10) + "px";
+        tmp++;
+      }
+    }
+
+    for (var element of this.burgerElement) {
+      element.parentNode.removeChild(element);
+    }
+    this.burgerElement = [];
+  }
+
+  init() {
+    var order = document.getElementById("order");
+    order.addEventListener("click", generateCommand);
 
     var emptyDiv = document.createElement("div");
     this.servingDiv.appendChild(emptyDiv);
     emptyDiv.position = "relative";
-    this.burgerElement.push(emptyDiv);
-
-    var imageIngredient = document.createElement("img");
-    this.servingDiv.appendChild(imageIngredient);
-    imageIngredient.style.position = "absolute";
-    imageIngredient.style.width = this.positionInfo["plate"].width;
-    imageIngredient.style.left = this.positionInfo["plate"].left;
-    imageIngredient.style.bottom = "0px";
-    imageIngredient.style.paddingBottom =
-      (this.positionInfo["plate"].offset + tmp * this.sizeBurger).toString(10) +
-      "px";
-    imageIngredient.src = "./ressources/ingredients/plate.gif";
-    this.burgerElement.push(imageIngredient);
-
-    for (var ingredient of listElement) {
-      var imageIngredient = document.createElement("img");
-      this.servingDiv.appendChild(imageIngredient);
-      imageIngredient.style.position = "absolute";
-      imageIngredient.style.width = this.positionInfo[ingredient].width;
-      imageIngredient.style.left = this.positionInfo[ingredient].left;
-      imageIngredient.style.bottom = "0px";
-      imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
-      await this.addIngredient(
-        imageIngredient,
-        speed,
-        this.positionInfo[ingredient].offset + tmp * this.sizeBurger
-      );
-      this.burgerElement.push(imageIngredient);
-      tmp++;
-    }
   }
 };

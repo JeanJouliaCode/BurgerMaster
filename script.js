@@ -1,11 +1,23 @@
+var burger;
+
 function startGame() {
-  var burger = new Burger();
-  var order = document.getElementById("order");
-  order.addEventListener(
-    "click",
-    burger.prepare(
-      ["bredBottom", "ketchup", "cheese", "meat", "egg", "tomato", "bredTop"],
-      10
-    )
+  burger = new Burger();
+  burger.init();
+}
+
+function generateCommand() {
+  console.log("click");
+  burger.prepare(
+    [
+      "plate",
+      "bredBottom",
+      "ketchup",
+      "cheese",
+      "meat",
+      "egg",
+      "tomato",
+      "bredTop"
+    ],
+    10
   );
 }
