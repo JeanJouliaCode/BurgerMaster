@@ -48,6 +48,7 @@ var Burger = class Burger {
         imageIngredient.style.width = this.positionInfo[ingredient].width;
         imageIngredient.style.left = this.positionInfo[ingredient].left;
         imageIngredient.style.bottom = "0px";
+        imageIngredient.marginBottom = "500px";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
         await this.addIngredient(
           imageIngredient,
