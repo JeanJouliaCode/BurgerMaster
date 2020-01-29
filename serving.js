@@ -12,14 +12,14 @@ var Burger = class Burger {
       egg: { width: "50%", left: "23%", offset: 0 },
       ketchup: { width: "48%", left: "24%", offset: -30 },
       meat: { width: "55%", left: "23%", offset: -40 },
-      pickle: { width: "50%", left: "25%", offset: 0 },
+      pickle: { width: "45%", left: "25%", offset: 0 },
       tomato: { width: "45%", left: "25%", offset: 0 },
       salad: { width: "50%", left: "25%", offset: 0 },
       plate: { width: "50%", left: "23%", offset: 30 }
     };
     this.sizeBurger = 30;
     this.inPreparation = false;
-    this.speedIngredient = 50;
+    this.speedIngredient = 40;
   }
 
   sleep(ms) {
@@ -44,12 +44,15 @@ var Burger = class Burger {
       var tmp = 0;
 
       for (var ingredient of listElement) {
+        await this.sleep(speed * 30);
         var imageIngredient = document.createElement("img");
         this.servingDiv.appendChild(imageIngredient);
         imageIngredient.style.position = "absolute";
         imageIngredient.style.width = this.positionInfo[ingredient].width;
         imageIngredient.style.left = this.positionInfo[ingredient].left;
         imageIngredient.style.bottom = "0px";
+        imageIngredient.style.visibility = "visible";
+        imageIngredient.style.paddingBottom = "600px";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
         await this.addIngredient(
           imageIngredient,
@@ -76,7 +79,7 @@ var Burger = class Burger {
         (marginPixel * this.servingDiv.clientWidth).toString(10) + "px";
     }
 
-    for (var i = 0; i < (500/this.speedIngredient); i++) {
+    for (var i = 0; i < 500 / this.speedIngredient; i++) {
       var tmp = 0;
       await this.sleep(speed);
       for (var element of this.burgerElement) {

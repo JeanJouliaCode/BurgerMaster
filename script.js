@@ -14,7 +14,7 @@ function generateCommand() {
       "ketchup",
       "cheese",
       "meat",
-      "egg",
+      "pickle",
       "tomato",
       "bredTop"
     ],
