@@ -5,89 +5,72 @@
 
   <body onload="startGame()">
     <div class="fillSpace" id="screen">
-        <div class="leftSide">
-            <div class="score"></div>
-            <div class="serving" id="serving">
-              <img src="./ressources/background/servingBorder.png" class="fillSpaceBackground">
-              <div class="empty"></div>
-             </div>
-            <div class="order" id='order'></div>
+      <div class="leftSide">
+        <div class="score"></div>
+        <div class="serving" id="serving">
+          <img
+            src="./ressources/background/servingBorder.png"
+            class="fillSpaceBackground"
+          />
+          <div class="empty"></div>
         </div>
-        <div class="rightSide">
-            <div class="ingredient">
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-              <div class="food">
-
-              </div>
-            </div>
-            <div class="characters">
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-              <div class="character">
-                <div class="upgrade1 button"></div>
-                <div class="upgrade2 button"></div>
-                <div class="upgrade3 button"></div>
-                <div class="upgrade4 button"></div>
-              </div>
-            </div>
+        <div class="order" id="order"></div>
+      </div>
+      <div class="rightSide">
+        <div class="ingredient">
+          <div class="food" id="bredTop"></div>
+          <div class="food" id="meat"></div>
+          <div class="food" id="cheese"></div>
+          <div class="food" id="salad"></div>
+          <div class="food" id="ketchup"></div>
+          <div class="food" id="pickle"></div>
+          <div class="food" id="tomato"></div>
+          <div class="food" id="beacon"></div>
+          <div class="food" id="bredTopBlack"></div>
+          <div class="food" id="egg"></div>
         </div>
-
+        <div class="characters">
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+          <div class="character">
+            <div class="upgrade1 button"></div>
+            <div class="upgrade2 button"></div>
+            <div class="upgrade3 button"></div>
+            <div class="upgrade4 button"></div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./script.js"></script>
     <script src="./serving.js"></script>
+    <script src="./reserve.js"></script>
   </body>
 </html>
