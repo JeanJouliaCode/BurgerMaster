@@ -1,23 +1,12 @@
 var Reserve = class Reserve {
-  constructor(ingredient, unlock, speed, document) {
+  constructor(ingredient, unlock, speed, document, nbmax) {
     this.speedOfDelivery = speed;
     this.unlock = unlock;
     this.ingredient = ingredient;
     this.document = document;
     this.listElement = [];
-
-    this.elementInfo = {
-      bredTop: { nb: 10 },
-      meat: { nb: 10 },
-      ketchup: { nb: 10 },
-      salad: { nb: 10 },
-      cheese: { nb: 10 },
-      pickle: { nb: 10 },
-      tomato: { nb: 10 },
-      beacon: { nb: 10 },
-      bredTopBlack: { nb: 10 },
-      egg: { nb: 10 }
-    };
+    this.nbElement = 0;
+    this.nbMax = nbmax;
   }
 
   sleep(ms) {
@@ -26,16 +15,30 @@ var Reserve = class Reserve {
 
   init() {
     if (this.unlock) {
-      for (var i = 0; i < this.elementInfo[this.ingredient].nb; i++) {
-        var imageIngredient = document.createElement("img");
-        imageIngredient.src =
-          "ressources/ingredients/" + this.ingredient + ".gif";
-        imageIngredient.classList.add("foodElement");
-        this.document.appendChild(imageIngredient);
-        this.listElement.push(imageIngredient);
+      for (var i = 0; i < this.nbMax; i++) {
+        this.add();
       }
     } else {
       this.document.style.backgroundColor = "grey";
+    }
+  }
+
+  remove() {
+    if (this.listElement.length > 0) {
+      var ingredient = this.listElement.pop();
+      ingredient.parentNode.removeChild(ingredient);
+    }
+  }
+
+  add() {
+    if (this.nbElement < this.nbMax) {
+      var imageIngredient = document.createElement("img");
+      imageIngredient.src =
+        "ressources/ingredients/" + this.ingredient + ".gif";
+      imageIngredient.classList.add("foodElement");
+      this.document.appendChild(imageIngredient);
+      this.listElement.push(imageIngredient);
+      this.nbElement++;
     }
   }
 };

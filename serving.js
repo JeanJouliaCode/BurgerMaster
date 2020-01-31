@@ -45,6 +45,7 @@ var Burger = class Burger {
 
       for (var ingredient of listElement) {
         await this.sleep(speed * 30);
+        removeReserve(ingredient);
         var imageIngredient = document.createElement("img");
         this.servingDiv.appendChild(imageIngredient);
         imageIngredient.style.position = "absolute";
