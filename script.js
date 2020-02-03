@@ -115,7 +115,7 @@ function generateCommand() {
     command.push("bredBottom")
   }
 
-  if(Math.floor(Math.random() * 10)>=7){
+  if(Math.floor(Math.random() * 10)>=5){
     command.push("ketchup")
   }
 
