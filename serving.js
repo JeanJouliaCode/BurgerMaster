@@ -20,6 +20,7 @@ var Burger = class Burger {
     this.sizeBurger = 30;
     this.inPreparation = false;
     this.speedIngredient = 40;
+    this.pending = false;
   }
 
   sleep(ms) {
@@ -39,6 +40,11 @@ var Burger = class Burger {
   }
 
   async prepare(listElement, speed) {
+    if(!checkReserve(listElement)){
+      this.pending = true;
+      return;
+    }
+    this.pending = false;
     if (!this.inPreparation) {
       this.inPreparation = true;
       var tmp = 0;
@@ -97,11 +103,9 @@ var Burger = class Burger {
   }
 
   init() {
-    var order = document.getElementById("order");
-    order.addEventListener("click", generateCommand);
-
     var emptyDiv = document.createElement("div");
     this.servingDiv.appendChild(emptyDiv);
     emptyDiv.position = "relative";
   }
+
 };

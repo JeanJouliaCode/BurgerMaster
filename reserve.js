@@ -27,6 +27,7 @@ var Reserve = class Reserve {
     if (this.listElement.length > 0) {
       var ingredient = this.listElement.pop();
       ingredient.parentNode.removeChild(ingredient);
+      this.nbElement--;
     }
   }
 
@@ -35,6 +36,8 @@ var Reserve = class Reserve {
       var imageIngredient = document.createElement("img");
       imageIngredient.src =
         "ressources/ingredients/" + this.ingredient + ".gif";
+        console.log(this.nbMax)
+      imageIngredient.style.height = (100/this.nbMax).toString(10)+"%"
       imageIngredient.classList.add("foodElement");
       this.document.appendChild(imageIngredient);
       this.listElement.push(imageIngredient);
