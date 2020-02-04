@@ -40,7 +40,7 @@ var Burger = class Burger {
   }
 
   async prepare(listElement, speed) {
-    if(!checkReserve(listElement)){
+    if (!checkReserve(listElement)) {
       this.pending = true;
       return;
     }
@@ -69,8 +69,23 @@ var Burger = class Burger {
         this.burgerElement.push(imageIngredient);
         tmp++;
       }
+
       await burger.pushPlate(speed);
       this.inPreparation = false;
+
+      var priceBurger = 0.0;
+
+      for (var element of listElement) {
+        if (ingredientChart[element]) {
+          console.log(ingredientChart[element].price);
+          priceBurger += ingredientChart[element].price;
+        }
+      }
+
+      money += priceBurger;
+
+      var score = document.getElementById("scoreDigit");
+      score.textContent = (Math.round(money * 10) / 10).toString(10) + "-E";
     }
   }
 
@@ -107,5 +122,4 @@ var Burger = class Burger {
     this.servingDiv.appendChild(emptyDiv);
     emptyDiv.position = "relative";
   }
-
 };

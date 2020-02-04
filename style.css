@@ -127,3 +127,15 @@
   height: 100%;
   z-index: 100;
 }
+
+.money {
+  float: right;
+  font-family: Segment7Standard;
+  font-size: 15vh;
+  height: 100%;
+}
+
+@font-face {
+  font-family: Segment7Standard;
+  src: url("./ressources/Segment7Standard.otf") format("opentype");
+}
