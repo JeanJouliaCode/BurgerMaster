@@ -33,6 +33,8 @@ var Burger = class Burger {
     this.speedIngredient = 40;
 
     this.pending = false;
+
+    this.chefImage;
   }
 
   //sleep fonction
@@ -84,6 +86,7 @@ var Burger = class Burger {
         imageIngredient.style.bottom = "0px";
         imageIngredient.style.visibility = "visible";
         imageIngredient.style.paddingBottom = "600px";
+        imageIngredient.style.zIndex = "10";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
 
         await this.addIngredient(
@@ -153,5 +156,10 @@ var Burger = class Burger {
     var emptyDiv = document.createElement("div");
     this.servingDiv.appendChild(emptyDiv);
     emptyDiv.position = "relative";
+
+    this.chefImage = document.createElement("img");
+    this.servingDiv.appendChild(this.chefImage);
+    this.chefImage.classList.add("servingChef");
+    this.chefImage.src = "./ressources/chefs/chef0.png";
   }
 };
