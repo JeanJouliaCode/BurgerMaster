@@ -6,23 +6,8 @@ function startGame() {
   burger = new Burger();
   burger.init();
 
-  //get the foodContainer div and initialize them
-  var foodDiv = document.getElementsByClassName("food");
-  for (var food of foodDiv) {
-    var foodElement = new Reserve(
-      food.id, // ingredient name
-      ingredientChart[food.id].unlock, // is it locked
-      8000, // speed of delivery
-      food, // HTML Document
-      ingredientChart[food.id].nb // maximum number of food in reserve
-    );
-
-    // init element with ingredient
-    foodElement.init();
-
-    //add element to the list
-    foodList.push(foodElement);
-  }
+  //fill up the food reserve
+  initFoodReserve();
 
   //get div order to maker burger when clicked for test purpose
   var order = document.getElementById("order");
@@ -34,4 +19,24 @@ function startGame() {
 function makeBurger() {
   //burger.prepare(generateCommand(),chefs["chef"+ currentChef.toString(10)].speed )
   burger.prepare(generateCommand(), 1);
+}
+
+function initFoodReserve() {
+  //get the foodContainer div and initialize them
+  var foodDiv = document.getElementsByClassName("food");
+  for (var food of foodDiv) {
+    var foodElement = new Reserve(
+      food.id, // ingredient name
+      ingredientChart[food.id].unlock, // is it locked
+      5000, // speed of delivery
+      food, // HTML Document
+      ingredientChart[food.id].nb // maximum number of food in reserve
+    );
+
+    // init element with ingredient
+    foodElement.init();
+
+    //add element to the list
+    foodList.push(foodElement);
+  }
 }

@@ -10,7 +10,7 @@ function generateCommand() {
     command.push("ketchup");
   }
 
-  if (Math.floor(Math.random() * 10) >= 25) {
+  if (Math.floor(Math.random() * 10) >= 3) {
     command.push("meat");
   }
 

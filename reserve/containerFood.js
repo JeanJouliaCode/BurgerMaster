@@ -1,4 +1,5 @@
 var foodList = [];
+var isReserveFilling = true;
 var ingredientChart = {
   bredTop: { unlock: true, nb: 17, price: 1 },
   meat: { unlock: true, nb: 17, price: 1 },
@@ -42,6 +43,7 @@ var Reserve = class Reserve {
       for (var i = 0; i < this.nbMax; i++) {
         this.add();
       }
+      this.startLoop();
     } else {
       this.document.style.backgroundColor = "grey";
     }
@@ -65,6 +67,13 @@ var Reserve = class Reserve {
       this.document.appendChild(imageIngredient);
       this.listElement.push(imageIngredient);
       this.nbElement++;
+    }
+  }
+
+  async startLoop() {
+    while (isReserveFilling) {
+      await this.sleep(this.speedOfDelivery);
+      this.add();
     }
   }
 };
