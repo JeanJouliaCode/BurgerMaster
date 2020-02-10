@@ -160,6 +160,6 @@ var Burger = class Burger {
     this.chefImage = document.createElement("img");
     this.servingDiv.appendChild(this.chefImage);
     this.chefImage.classList.add("servingChef");
-    this.chefImage.src = "./ressources/chefs/chef0.png";
+    this.chefImage.src = "./ressources/chef/chef0.png";
   }
 };

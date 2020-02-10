@@ -60,10 +60,17 @@ body {
   display: flex;
   flex-direction: column-reverse;
   height: 92%;
-  width: 13.8%;
+  width: 100%;
   border-radius: 10px;
-  background-color: rgba(173, 173, 173, 0.5);
+  background-color: rgb(173, 173, 173);
   padding: 0 2px;
+  visibility: visible;
+}
+
+.locked {
+  width: 13.8%;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .food {

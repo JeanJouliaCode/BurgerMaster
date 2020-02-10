@@ -28,9 +28,10 @@ function initFoodReserve() {
     var foodElement = new Reserve(
       food.id, // ingredient name
       ingredientChart[food.id].unlock, // is it locked
-      5000, // speed of delivery
+      ingredientChart[food.id].initSpeed, // speed of delivery
       food, // HTML Document
-      ingredientChart[food.id].nb // maximum number of food in reserve
+      ingredientChart[food.id].nb, // maximum number of food in reserve
+      ingredientChart[food.id].initPrice
     );
 
     // init element with ingredient
