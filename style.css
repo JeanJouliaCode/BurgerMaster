@@ -1,74 +1,110 @@
 .fillSpace {
   width: 100%;
   height: 100%;
-  background-color: brown;
+  background-size: 100%;
+  background-repeat: no-repeat;
   display: flex;
 }
 
 .leftSide {
-  width: 36%;
-  background-color: cadetblue;
+  width: 35.5%;
+  background-color: rgba(173, 173, 173, 0.5);
 }
 
 .rightSide {
-  width: 64%;
-  background-color: red;
+  width: calc(64.5% - 10px);
 }
 
 .score {
-  height: 15%;
-  background-color: grey;
+  height: 60px;
+  width: 90%;
+  border-radius: 30px;
+  margin: 5% auto 0;
+  background-color: rgba(94, 97, 86, 0.5);
 }
 
 .order {
   height: 15%;
-  background-color: white;
+  text-align: right;
+}
+
+body {
+  margin: 0;
 }
 
 .ingredient {
-  height: 50%;
+  margin: 0 2%;
+  height: 54%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
-  background-color: whitesmoke;
+}
+
+.spaceIngredient {
+  width: 100%;
+  margin: 0px 0px 0 10px;
+  background-color: rgba(173, 173, 173, 0.5);
 }
 
 .characters {
-  height: 50%;
-  background-color: purple;
+  height: calc(46% - 10px);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-image: url("ressources/background/characterBackground.png");
+  margin: 10px 0px 0px 10px;
+  width: 100%;
+  background-color: rgba(173, 173, 173, 0.5);
 }
 
 .character {
   display: flex;
   flex-direction: column-reverse;
-  height: 80%;
-  width: 13%;
-  background-color: burlywood;
-  border-radius: 5px;
+  height: 92%;
+  width: 13.8%;
+  border-radius: 10px;
+  background-color: rgba(173, 173, 173, 0.5);
+  padding: 0 2px;
 }
 
 .food {
   height: 80%;
-  width: 20px;
-  padding: 0 10px;
+  width: 65%;
+
+  margin: 15% auto 0 auto;
   background-color: rgb(238, 237, 237);
   display: flex;
   flex-direction: column-reverse;
   justify-content: flex-start;
   border-radius: 5px;
-  border-style: groove;
 }
 
 .foodElement {
-  width: 130%;
+  width: 100%;
+}
+
+.reservePanel {
+  width: 9.95%;
+  height: 100%;
+  text-align: center;
+}
+
+.speedDelivery {
+  position: relative;
+  top: 8px;
+  font-size: 10px;
+}
+
+.buttonReserve {
+  width: 84%;
+  height: 7%;
+  border-radius: 8px;
+  margin-top: 14.5%;
 }
 
 .upgrade1 {
   background-color: crimson;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .upgrade2 {
@@ -79,14 +115,9 @@
   background-color: darkkhaki;
 }
 
-.upgrade4 {
-  background-color: darkorange;
-}
-
 .button {
   width: 100%;
-  height: 10%;
-  border-radius: 5px;
+  height: 20%;
 }
 
 .bredTop {
@@ -117,7 +148,6 @@
 
 .serving {
   height: 70%;
-  background-color: white;
   position: relative;
   overflow: hidden;
 }
@@ -137,10 +167,12 @@
 }
 
 .money {
-  float: right;
+  position: relative;
   font-family: Segment7Standard;
-  font-size: 15vh;
+  font-size: 7vh;
   height: 100%;
+  top: 40%;
+  margin-right: 17%;
 }
 
 @font-face {

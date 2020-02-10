@@ -6,77 +6,117 @@
   <body onload="startGame()">
     <div class="fillSpace" id="screen">
       <div class="leftSide">
-        <div class="score">
-          <span id="scoreDigit" class="money"></span>
-        </div>
+        <div class="score"></div>
 
         <div class="serving" id="serving">
-          <img
-            src="./ressources/background/servingBorder.png"
-            class="fillSpaceBackground"
-          />
-          <img
-            src="ressources/background/servingBackground.png"
-            class="tableServing"
-          />
+          <img class="fillSpaceBackground" />
+          <img class="tableServing" />
           <div class="empty"></div>
         </div>
-        <div class="order" id="order"></div>
+        <div class="order" id="order">
+          <span id="scoreDigit" class="money"></span>
+        </div>
       </div>
       <div class="rightSide">
-        <div class="ingredient">
-          <div class="food" id="bredTop"></div>
-          <div class="food" id="meat"></div>
-          <div class="food" id="cheese"></div>
-          <div class="food" id="salad"></div>
-          <div class="food" id="ketchup"></div>
-          <div class="food" id="pickle"></div>
-          <div class="food" id="tomato"></div>
-          <div class="food" id="beacon"></div>
-          <div class="food" id="bredTopBlack"></div>
-          <div class="food" id="egg"></div>
+        <div class="spaceIngredient">
+          <div class="ingredient">
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="bredTop"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="meat"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="cheese"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="salad"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="ketchup"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="pickle"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="tomato"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="beacon"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+              <div class="food" id="bredTopBlack"></div>
+              <button class="buttonReserve"></button>
+            </div>
+
+            <div class="reservePanel">
+              <span class="speedDelivery">0.3%</span>
+
+              <div class="food" id="egg"></div>
+              <button class="buttonReserve"></button>
+            </div>
+          </div>
         </div>
         <div class="characters">
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef0.png" class="chef" />
           </div>
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef1.png" class="chef" />
           </div>
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef2.png" class="chef" />
           </div>
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef3.png" class="chef" />
           </div>
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef4.png" class="chef" />
           </div>
           <div class="character">
             <div class="upgrade1 button"></div>
             <div class="upgrade2 button"></div>
             <div class="upgrade3 button"></div>
-            <div class="upgrade4 button"></div>
             <img src="./ressources/chefs/chef5.png" class="chef" />
           </div>
         </div>
