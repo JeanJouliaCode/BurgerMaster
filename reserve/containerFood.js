@@ -1,6 +1,6 @@
 var foodList = [];
 var ingredientChart = {
-  bredTop: { unlock: true, nb: 17, price: 1, initPrice: 100, initSpeed: 5500 },
+  bredTop: { unlock: true, nb: 17, price: 1, initPrice: 20, initSpeed: 5500 },
   meat: { unlock: true, nb: 17, price: 1, initPrice: 110, initSpeed: 6200 },
   ketchup: {
     unlock: true,
@@ -65,11 +65,27 @@ var Reserve = class Reserve {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  upgrade() {
+    if (money > this.priceUpgrade && this.unlock) {
+      money -= this.priceUpgrade;
+      updateScore();
+      this.speedOfDelivery *= 0.5;
+      this.priceUpgrade += 10;
+      this.speedDocument.textContent =
+        (this.speedOfDelivery / 1000).toString(10) + "/s";
+      this.button.textContent = this.priceUpgrade.toString(10) + "$";
+    }
+  }
+
   init() {
     this.speedDocument = document.getElementById(this.ingredient + "Speed");
     this.button = document.getElementById(this.ingredient + "Button");
+    this.button.addEventListener("click", () => {
+      this.upgrade();
+    });
     if (this.unlock) {
-      this.speedDocument.textContent = this.speedOfDelivery.toString(10) + "%";
+      this.speedDocument.textContent =
+        (this.speedOfDelivery / 1000).toString(10) + "/s";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
       for (var i = 0; i < this.nbMax; i++) {
         this.add();
