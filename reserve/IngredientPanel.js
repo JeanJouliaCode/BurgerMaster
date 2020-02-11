@@ -1,41 +1,51 @@
+//list containing the reserves
 var foodList = [];
+
+//every information about the food
 var ingredientChart = {
-  bredTop: { unlock: true, nb: 17, price: 1, initPrice: 20, initSpeed: 5500 },
-  meat: { unlock: true, nb: 17, price: 1, initPrice: 110, initSpeed: 6200 },
+  bredTop: { unlock: true, nb: 17, price: 1, initPrice: 20, initSpeed: 16000 },
+  meat: { unlock: true, nb: 17, price: 1, initPrice: 110, initSpeed: 15000 },
   ketchup: {
     unlock: true,
     nb: 17,
     price: 0.6,
     initPrice: 120,
-    initSpeed: 10100
+    initSpeed: 30000
   },
-  salad: { unlock: true, nb: 15, price: 0.4, initPrice: 130, initSpeed: 4300 },
-  cheese: { unlock: true, nb: 17, price: 1, initPrice: 140, initSpeed: 6300 },
+  salad: { unlock: true, nb: 17, price: 0.4, initPrice: 130, initSpeed: 20000 },
+  cheese: { unlock: true, nb: 17, price: 1, initPrice: 140, initSpeed: 21000 },
   pickle: {
     unlock: false,
     nb: 17,
     price: 2.3,
     initPrice: 150,
-    initSpeed: 5000
+    initSpeed: 10000
   },
   tomato: {
     unlock: false,
     nb: 17,
     price: 1.2,
     initPrice: 160,
-    initSpeed: 5100
+    initSpeed: 10000
   },
-  beacon: { unlock: false, nb: 17, price: 3, initPrice: 170, initSpeed: 8000 },
+  beacon: {
+    unlock: false,
+    nb: 17,
+    price: 3,
+    initPrice: 170,
+    initSpeed: 10000
+  },
   bredTopBlack: {
     unlock: false,
     nb: 17,
     price: 4,
     initPrice: 180,
-    initSpeed: 7000
+    initSpeed: 10000
   },
-  egg: { unlock: false, nb: 17, price: 2, initPrice: 190, initSpeed: 2000 }
+  egg: { unlock: false, nb: 17, price: 2, initPrice: 190, initSpeed: 100000 }
 };
 
+//ingredient that can be picked at random with out neading to be in a specific position
 var regularIngredient = [
   "meat",
   "salad",
@@ -46,7 +56,8 @@ var regularIngredient = [
   "cheese"
 ];
 
-var Reserve = class Reserve {
+//class to manage food reserve
+var IngredientPanel = class IngredientPanel {
   constructor(ingredient, unlock, speed, document, nbmax, initPrice) {
     this.speedOfDelivery = speed;
     this.unlock = unlock;
@@ -59,12 +70,16 @@ var Reserve = class Reserve {
     this.isReserveFilling = true;
     this.speedDocument = null;
     this.button = null;
+
+    this.init();
   }
 
+  //sleep method even if it's bad
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  //upgrade the speed of delivery
   upgrade() {
     if (money > this.priceUpgrade && this.unlock) {
       money -= this.priceUpgrade;
@@ -77,27 +92,38 @@ var Reserve = class Reserve {
     }
   }
 
+  //initialize the reserve
   init() {
     this.speedDocument = document.getElementById(this.ingredient + "Speed");
     this.button = document.getElementById(this.ingredient + "Button");
+
+    //listen for click on the upgrade button
     this.button.addEventListener("click", () => {
       this.upgrade();
     });
+
+    //if the reserve start unlocked
     if (this.unlock) {
+      //display the speed of delivery
       this.speedDocument.textContent =
-        (this.speedOfDelivery / 1000).toString(10) + "/s";
+        (this.speedOfDelivery / 1000).toString(10) + "sec";
+      //display the price of the upgrade
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
+      //fill the associated reserve
       for (var i = 0; i < this.nbMax; i++) {
         this.add();
       }
+      //start the regular delivery
       this.startLoop();
     } else {
+      //grey everything out
       this.document.style.backgroundColor = "grey";
       this.button.style.pointerEvents = "none";
       this.button.style.backgroundColor = "rgb(88,88,88)";
     }
   }
 
+  //remove an ingredient
   remove() {
     if (this.listElement.length > 0) {
       var ingredient = this.listElement.pop();
@@ -106,6 +132,7 @@ var Reserve = class Reserve {
     }
   }
 
+  //add an ingredient
   add() {
     if (this.nbElement < this.nbMax) {
       var imageIngredient = document.createElement("img");
@@ -117,8 +144,12 @@ var Reserve = class Reserve {
       this.listElement.push(imageIngredient);
       this.nbElement++;
     }
+    if (burger.pending) {
+      burger.prepare(command);
+    }
   }
 
+  //loop in charge on delivery
   async startLoop() {
     while (this.isReserveFilling) {
       await this.sleep(this.speedOfDelivery);

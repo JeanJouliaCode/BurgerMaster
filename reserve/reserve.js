@@ -1,3 +1,4 @@
+var command = [];
 function generateCommand() {
   command = ["plate"];
   if (currentChef === 5) {

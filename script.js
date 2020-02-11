@@ -1,31 +1,33 @@
 //create the display for the burger
 var burger;
 
+var isGameGoing = true;
+
 function startGame() {
   //initialise the burger
   burger = new Burger();
-  burger.init();
 
   //fill up the food reserve
   initFoodReserve();
 
   //get div order to maker burger when clicked for test purpose
-  var order = document.getElementById("order");
-  order.addEventListener("click", this.makeBurger);
+  this.makeBurger();
 
   updateScore();
 }
 
 function makeBurger() {
+  if (!burger.pending) {
+    burger.prepare(generateCommand(), 40);
+  }
   //burger.prepare(generateCommand(),chefs["chef"+ currentChef.toString(10)].speed )
-  burger.prepare(generateCommand(), 1);
 }
 
 function initFoodReserve() {
   //get the foodContainer div and initialize them
-  var foodDiv = document.getElementsByClassName("food");
+  var foodDiv = document.getElementsByClassName("ingredientPile");
   for (var food of foodDiv) {
-    var foodElement = new Reserve(
+    var ingredientPanel = new IngredientPanel(
       food.id, // ingredient name
       ingredientChart[food.id].unlock, // is it locked
       ingredientChart[food.id].initSpeed, // speed of delivery
@@ -34,10 +36,7 @@ function initFoodReserve() {
       ingredientChart[food.id].initPrice
     );
 
-    // init element with ingredient
-    foodElement.init();
-
     //add element to the list
-    foodList.push(foodElement);
+    foodList.push(ingredientPanel);
   }
 }
