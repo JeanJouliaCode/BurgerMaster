@@ -1,6 +1,9 @@
 //create the display for the burger
 var burger;
 
+//chef List
+var chefList = [];
+
 var isGameGoing = true;
 
 function startGame() {
@@ -10,15 +13,17 @@ function startGame() {
   //fill up the food reserve
   initFoodReserve();
 
-  //get div order to maker burger when clicked for test purpose
-  this.makeBurger();
-
   updateScore();
+
+  initChef();
+
+  //get div order to maker burger when clicked for test purpose
+  makeBurger();
 }
 
 function makeBurger() {
   if (!burger.pending) {
-    burger.prepare(generateCommand(), 40);
+    burger.prepare(generateCommand(), 10);
   }
   //burger.prepare(generateCommand(),chefs["chef"+ currentChef.toString(10)].speed )
 }
@@ -38,5 +43,21 @@ function initFoodReserve() {
 
     //add element to the list
     foodList.push(ingredientPanel);
+  }
+}
+
+function initChef() {
+  for (chef of document.getElementsByClassName("locked")) {
+    var newChef = new Chef(
+      chef,
+      false,
+      false,
+      false,
+      "./ressources/chefs/" + chef.id + ".png",
+      100,
+      chefs[chef.id].speed,
+      chefs[chef.id].unlocked
+    );
+    chefList.push(newChef);
   }
 }

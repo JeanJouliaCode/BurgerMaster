@@ -8,3 +8,38 @@ var chefs = {
 };
 
 currentChef = 0;
+
+var Chef = class Chef {
+  constructor(
+    document,
+    upgrade1,
+    upgrade2,
+    upgrade3,
+    imageSrc,
+    price,
+    speed,
+    unlocked
+  ) {
+    this.upgrade1 = upgrade1;
+    this.upgrade2 = upgrade2;
+    this.upgrade3 = upgrade3;
+
+    this.imageSrc = imageSrc;
+    this.price = price;
+    this.speed = speed;
+    this.unlocked = unlocked;
+    this.document = document;
+
+    this.init();
+  }
+
+  init() {
+    this.document.children[0].children[3].src = this.imageSrc;
+
+    console.log(this.unlocked);
+    if (!this.unlocked) {
+      this.document.children[0].style.height = "0px";
+      this.document.children[0].style.visibility = "hidden";
+    }
+  }
+};

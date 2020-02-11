@@ -95,6 +95,7 @@ body {
   width: 13.8%;
   background-color: black;
   border-radius: 10px;
+  height: 92%;
 }
 
 .speedDelivery {
@@ -123,13 +124,13 @@ body {
 }
 
 .character {
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
   height: 92%;
   width: 100%;
   border-radius: 10px;
   background-color: rgb(173, 173, 173);
-  padding: 0 2px;
   visibility: visible;
 }
 
@@ -180,4 +181,21 @@ body {
   height: 100%;
   z-index: 0;
   top: 0px;
+}
+
+body {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.buyChef {
+  position: relative;
+  width: 60%;
+  height: 10%;
+  margin-top: 100%;
+  left: 20%;
 }
