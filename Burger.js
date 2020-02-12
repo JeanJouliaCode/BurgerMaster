@@ -8,23 +8,23 @@ var Burger = class Burger {
 
     //setting for the different burger image
     this.positionInfo = {
-      bredTop: { width: "53%", left: "22%", offset: 0 },
+      bredTop: { width: "47%", left: "22%", offset: 0 },
       bredBottom: { width: "47%", left: "23%", offset: 0 },
       bredTopBlack: { width: "50%", left: "25%", offset: 0 },
       bredBottomBlack: { width: "50%", left: "25%", offset: 0 },
       beacon: { width: "50%", left: "25%", offset: 0 },
-      cheese: { width: "50%", left: "23%", offset: -20 },
+      cheese: { width: "50%", left: "23%", offset: 0 },
       egg: { width: "50%", left: "23%", offset: 0 },
-      ketchup: { width: "48%", left: "24%", offset: -30 },
+      ketchup: { width: "48%", left: "24%", offset: 0 },
       meat: { width: "45%", left: "24%", offset: 0 },
       pickle: { width: "45%", left: "25%", offset: 0 },
       tomato: { width: "45%", left: "25%", offset: 0 },
       salad: { width: "50%", left: "25%", offset: 0 },
-      plate: { width: "50%", left: "23%", offset: 30 }
+      plate: { width: "55%", left: "21%", offset: 0 }
     };
 
     // timing between each turn
-    this.ySpeed = 30;
+    this.ySpeed = 6;
 
     //is a burger beeing prepared
     this.inPreparation = false;
@@ -32,6 +32,7 @@ var Burger = class Burger {
     //vertical pixel movement at each turn
     this.speedIngredient = 40;
 
+    this.speedIngredientPourcent = 5;
     this.pending = false;
 
     //image of the chef
@@ -54,7 +55,7 @@ var Burger = class Burger {
 
   //add ingredient and moving it down
   async addIngredient(document, margin) {
-    for (var m = 500; m > margin; m -= this.speedIngredient) {
+    for (var m = 150; m > margin; m -= this.speedIngredientPourcent) {
       await this.moveIngredient(m, document, this.speed);
     }
     await this.moveIngredient(margin, document, this.speed);
@@ -63,7 +64,7 @@ var Burger = class Burger {
   //moving the image of the ingredient
   async moveIngredient(margin, document, timing) {
     await this.sleep(timing);
-    document.style.paddingBottom = margin.toString(10) + "px";
+    document.style.paddingBottom = margin.toString(10) + "%";
   }
 
   //prepare the burger
@@ -94,7 +95,7 @@ var Burger = class Burger {
         imageIngredient.style.left = this.positionInfo[ingredient].left;
         imageIngredient.style.bottom = "0px";
         imageIngredient.style.visibility = "visible";
-        imageIngredient.style.paddingBottom = "600px";
+        imageIngredient.style.paddingBottom = "150%";
         imageIngredient.style.zIndex = "10";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
 
