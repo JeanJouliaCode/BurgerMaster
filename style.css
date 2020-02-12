@@ -16,17 +16,26 @@ body {
   background-color: rgba(173, 173, 173, 0.5);
 }
 
-.order {
+.score {
   height: 15%;
   text-align: right;
 }
 
-.score {
+.order {
   height: 60px;
   width: 90%;
   border-radius: 30px;
   margin: 5% auto 0;
   background-color: rgba(94, 97, 86, 0.5);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.orderElement {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 60%;
+  width: 10%;
 }
 
 .serving {

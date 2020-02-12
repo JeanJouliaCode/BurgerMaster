@@ -69,6 +69,8 @@ var Burger = class Burger {
 
   //prepare the burger
   async prepare(listElement) {
+    displayOrder(listElement);
+
     //check if the reserve can prepare this generated burger
     if (!checkReserve(listElement)) {
       this.pending = true;
