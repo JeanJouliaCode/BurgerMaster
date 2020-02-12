@@ -16,7 +16,7 @@ var Burger = class Burger {
       cheese: { width: "50%", left: "23%", offset: -20 },
       egg: { width: "50%", left: "23%", offset: 0 },
       ketchup: { width: "48%", left: "24%", offset: -30 },
-      meat: { width: "55%", left: "23%", offset: -40 },
+      meat: { width: "45%", left: "24%", offset: 0 },
       pickle: { width: "45%", left: "25%", offset: 0 },
       tomato: { width: "45%", left: "25%", offset: 0 },
       salad: { width: "50%", left: "25%", offset: 0 },
@@ -96,7 +96,7 @@ var Burger = class Burger {
         imageIngredient.style.visibility = "visible";
         imageIngredient.style.paddingBottom = "600px";
         imageIngredient.style.zIndex = "10";
-        imageIngredient.src = "./ressources/ingredients/" + ingredient + ".gif";
+        imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
 
         await this.addIngredient(
           imageIngredient,

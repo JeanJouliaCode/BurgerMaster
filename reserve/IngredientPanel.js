@@ -187,7 +187,7 @@ var IngredientPanel = class IngredientPanel {
     if (this.nbElement < this.nbMax) {
       var imageIngredient = document.createElement("img");
       imageIngredient.src =
-        "ressources/ingredients/" + this.ingredient + ".gif";
+        "ressources/ingredients/" + this.ingredient + ".png";
       imageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
       imageIngredient.classList.add("foodElement");
       this.document.appendChild(imageIngredient);
