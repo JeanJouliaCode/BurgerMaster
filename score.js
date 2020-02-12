@@ -1,4 +1,4 @@
-var money = 0;
+var money = 100000;
 
 function updateScore() {
   var score = document.getElementById("scoreDigit");

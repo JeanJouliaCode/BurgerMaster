@@ -75,8 +75,16 @@ var IngredientPanel = class IngredientPanel {
   }
 
   //sleep method even if it's bad
-  sleep(ms) {
+  sleepM(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  //sleep method even if it's bad
+  async sleep() {
+    for (var i = 0; i < this.speedOfDelivery; i += 10) {
+      await this.sleepM(10);
+    }
+    return;
   }
 
   //upgrade the speed of delivery
@@ -91,6 +99,33 @@ var IngredientPanel = class IngredientPanel {
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
     }
   }
+
+  //unlocked the reserve
+  unlockReserve() {
+    this.document.style.backgroundColor = "rgb(238, 237, 237)";
+    this.button.style.pointerEvents = "auto";
+    this.button.style.backgroundColor = "rgb(238, 237, 237)";
+
+    //display the speed of delivery
+    this.speedDocument.textContent =
+      (this.speedOfDelivery / 1000).toString(10) + "sec";
+    //display the price of the upgrade
+    this.button.textContent = this.priceUpgrade.toString(10) + "$";
+
+    this.checkMoneyButton();
+
+    //fill the associated reserve
+    for (var i = 0; i < this.nbMax; i++) {
+      this.add();
+    }
+    //start the regular delivery
+    this.startLoop();
+
+    this.unlock = true;
+
+    ingredientChart[this.ingredient].unlock = true;
+  }
+
   //color of button with out enough gold to buy
   checkMoneyButton() {
     if (this.unlock) {
@@ -160,14 +195,14 @@ var IngredientPanel = class IngredientPanel {
       this.nbElement++;
     }
     if (burger.pending) {
-      burger.prepare(command, 10);
+      burger.prepare(command);
     }
   }
 
   //loop in charge on delivery
   async startLoop() {
     while (this.isReserveFilling) {
-      await this.sleep(this.speedOfDelivery);
+      await this.sleep();
       this.add();
     }
   }

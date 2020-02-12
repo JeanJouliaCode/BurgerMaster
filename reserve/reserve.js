@@ -86,7 +86,11 @@ function removeReserve(ingredient) {
     ) {
       return;
     }
-    ingredient = "bredTop";
+    if (ingredient == "bredBottom") {
+      ingredient = "bredTop";
+    } else {
+      ingredient = "bredTopBlack";
+    }
   }
   for (var foodReserve of foodList) {
     if (foodReserve.ingredient === ingredient) {

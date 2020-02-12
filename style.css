@@ -127,7 +127,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
-  height: 92%;
+  justify-content: flex-end;
+  height: 100%;
   width: 100%;
   border-radius: 10px;
   background-color: rgb(173, 173, 173);
@@ -198,4 +199,5 @@ body {
   height: 10%;
   margin-top: 100%;
   left: 20%;
+  border-radius: 10px;
 }

@@ -39,6 +39,12 @@ var Burger = class Burger {
 
     //init the burger and chef image
     this.init();
+
+    this.speed = chefs["chef" + currentChef.toString(10)].speed;
+  }
+
+  changeSpeed() {
+    this.speed = chefs["chef" + currentChef.toString(10)].speed;
   }
 
   //sleep fonction
@@ -47,11 +53,11 @@ var Burger = class Burger {
   }
 
   //add ingredient and moving it down
-  async addIngredient(document, interval, margin) {
+  async addIngredient(document, margin) {
     for (var m = 500; m > margin; m -= this.speedIngredient) {
-      await this.moveIngredient(m, document, interval);
+      await this.moveIngredient(m, document, this.speed);
     }
-    await this.moveIngredient(margin, document, interval);
+    await this.moveIngredient(margin, document, this.speed);
   }
 
   //moving the image of the ingredient
@@ -61,7 +67,7 @@ var Burger = class Burger {
   }
 
   //prepare the burger
-  async prepare(listElement, speed) {
+  async prepare(listElement) {
     //check if the reserve can prepare this generated burger
     if (!checkReserve(listElement)) {
       this.pending = true;
@@ -76,7 +82,7 @@ var Burger = class Burger {
 
       //put each ingredient on the plate
       for (var ingredient of listElement) {
-        await this.sleep(speed * 30);
+        await this.sleep(this.speed * 30);
         removeReserve(ingredient);
 
         //create image
@@ -94,15 +100,16 @@ var Burger = class Burger {
 
         await this.addIngredient(
           imageIngredient,
-          speed,
           this.positionInfo[ingredient].offset + tmp * this.ySpeed
         );
         this.burgerElement.push(imageIngredient);
         tmp++;
       }
 
+      await this.sleep(this.speed * 20);
+
       //push the burger out
-      await burger.pushPlate(speed);
+      await burger.pushPlate(this.speed);
 
       money += this.getBurgerPrice(listElement);
 

@@ -23,7 +23,7 @@ function startGame() {
 
 function makeBurger() {
   if (!burger.pending) {
-    burger.prepare(generateCommand(), 10);
+    burger.prepare(generateCommand());
   }
   //burger.prepare(generateCommand(),chefs["chef"+ currentChef.toString(10)].speed )
 }
@@ -54,9 +54,10 @@ function initChef() {
       false,
       false,
       "./ressources/chefs/" + chef.id + ".png",
-      100,
+      chefs[chef.id].price,
       chefs[chef.id].speed,
-      chefs[chef.id].unlocked
+      chefs[chef.id].unlocked,
+      chef.id
     );
     chefList.push(newChef);
   }
