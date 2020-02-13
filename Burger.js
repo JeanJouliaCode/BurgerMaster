@@ -8,19 +8,19 @@ var Burger = class Burger {
 
     //setting for the different burger image
     this.positionInfo = {
-      bredTop: { width: "47%", left: "22%", offset: 0 },
-      bredBottom: { width: "47%", left: "23%", offset: 0 },
-      bredTopBlack: { width: "47%", left: "25%", offset: 0 },
-      bredBottomBlack: { width: "47%", left: "25%", offset: 0 },
-      beacon: { width: "50%", left: "25%", offset: 0 },
-      cheese: { width: "50%", left: "23%", offset: 0 },
-      egg: { width: "50%", left: "23%", offset: 0 },
-      ketchup: { width: "45%", left: "24%", offset: 0 },
-      meat: { width: "45%", left: "24%", offset: 0 },
-      pickle: { width: "45%", left: "25%", offset: 0 },
-      tomato: { width: "45%", left: "25%", offset: 0 },
-      salad: { width: "45%", left: "25%", offset: 0 },
-      plate: { width: "55%", left: "21%", offset: 0 }
+      bredTop: { width: "49%", left: "23%", offset: 5 },
+      bredBottom: { width: "48%", left: "23%", offset: 6 },
+      bredTopBlack: { width: "49%", left: "23%", offset: 5 },
+      bredBottomBlack: { width: "48%", left: "23%", offset: 6 },
+      beacon: { width: "45%", left: "25%", offset: 5 },
+      cheese: { width: "45%", left: "24%", offset: 2 },
+      egg: { width: "45%", left: "24%", offset: 2 },
+      ketchup: { width: "44%", left: "25%", offset: 2 },
+      meat: { width: "45%", left: "24.5%", offset: 6 },
+      pickle: { width: "40%", left: "26%", offset: 2 },
+      tomato: { width: "43%", left: "26%", offset: 2 },
+      salad: { width: "45%", left: "25%", offset: 2 },
+      plate: { width: "55%", left: "20%", offset: 5 }
     };
 
     // timing between each turn
@@ -69,8 +69,6 @@ var Burger = class Burger {
 
   //prepare the burger
   async prepare(listElement) {
-    displayOrder(listElement);
-
     //check if the reserve can prepare this generated burger
     if (!checkReserve(listElement)) {
       this.pending = true;
@@ -80,8 +78,9 @@ var Burger = class Burger {
 
     //if a bruger is already being prepared, it's prevent from preparing one again
     if (!this.inPreparation) {
+      displayOrder(listElement);
       this.inPreparation = true;
-      var tmp = 0;
+      var generalOffset = 0;
 
       //put each ingredient on the plate
       for (var ingredient of listElement) {
@@ -101,12 +100,12 @@ var Burger = class Burger {
         imageIngredient.style.zIndex = "10";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
 
-        await this.addIngredient(
-          imageIngredient,
-          this.positionInfo[ingredient].offset + tmp * this.ySpeed
-        );
+        console.log(generalOffset);
+        await this.addIngredient(imageIngredient, generalOffset);
+
+        generalOffset += this.positionInfo[ingredient].offset;
+
         this.burgerElement.push(imageIngredient);
-        tmp++;
       }
 
       await this.sleep(this.speed * 20);
