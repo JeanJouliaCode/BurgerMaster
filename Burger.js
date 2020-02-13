@@ -10,16 +10,16 @@ var Burger = class Burger {
     this.positionInfo = {
       bredTop: { width: "47%", left: "22%", offset: 0 },
       bredBottom: { width: "47%", left: "23%", offset: 0 },
-      bredTopBlack: { width: "50%", left: "25%", offset: 0 },
-      bredBottomBlack: { width: "50%", left: "25%", offset: 0 },
+      bredTopBlack: { width: "47%", left: "25%", offset: 0 },
+      bredBottomBlack: { width: "47%", left: "25%", offset: 0 },
       beacon: { width: "50%", left: "25%", offset: 0 },
       cheese: { width: "50%", left: "23%", offset: 0 },
       egg: { width: "50%", left: "23%", offset: 0 },
-      ketchup: { width: "48%", left: "24%", offset: 0 },
+      ketchup: { width: "45%", left: "24%", offset: 0 },
       meat: { width: "45%", left: "24%", offset: 0 },
       pickle: { width: "45%", left: "25%", offset: 0 },
       tomato: { width: "45%", left: "25%", offset: 0 },
-      salad: { width: "50%", left: "25%", offset: 0 },
+      salad: { width: "45%", left: "25%", offset: 0 },
       plate: { width: "55%", left: "21%", offset: 0 }
     };
 
