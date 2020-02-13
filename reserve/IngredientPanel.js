@@ -7,7 +7,7 @@ var ingredientChart = {
   meat: { unlock: true, nb: 17, price: 1, initPrice: 110, initSpeed: 15000 },
   ketchup: {
     unlock: true,
-    nb: 10,
+    nb: 17,
     price: 0.6,
     initPrice: 120,
     initSpeed: 30000
@@ -16,28 +16,28 @@ var ingredientChart = {
   cheese: { unlock: true, nb: 17, price: 1, initPrice: 140, initSpeed: 21000 },
   pickle: {
     unlock: false,
-    nb: 10,
+    nb: 17,
     price: 2.3,
     initPrice: 150,
     initSpeed: 10000
   },
   tomato: {
     unlock: false,
-    nb: 10,
+    nb: 17,
     price: 1.2,
     initPrice: 160,
     initSpeed: 10000
   },
   beacon: {
     unlock: false,
-    nb: 10,
+    nb: 17,
     price: 3,
     initPrice: 170,
     initSpeed: 10000
   },
   bredTopBlack: {
     unlock: false,
-    nb: 10,
+    nb: 17,
     price: 4,
     initPrice: 180,
     initSpeed: 10000

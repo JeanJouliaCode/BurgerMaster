@@ -145,17 +145,17 @@ body {
 }
 
 .upgrade1 {
-  background-color: crimson;
+  background-color: rgb(255, 151, 0);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
 .upgrade2 {
-  background-color: cyan;
+  background-color: rgb(255, 76, 9);
 }
 
 .upgrade3 {
-  background-color: darkkhaki;
+  background-color: rgb(255, 151, 0);
 }
 
 .button {
