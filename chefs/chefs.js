@@ -92,6 +92,7 @@ var Chef = class Chef {
       this.document.children[0].style.visibility = "visible";
       updateScore();
       currentChef = parseInt(this.id.substring(4));
+      chefs[this.id].unlocked = true;
       for (var reserve of foodList) {
         if (reserve.ingredient === chefs[this.id].ingredient) {
           reserve.unlockReserve();
@@ -103,6 +104,15 @@ var Chef = class Chef {
 
   init() {
     this.document.children[0].children[3].src = this.imageSrc;
+
+    for(var upgrade of this.document.children[0].children){
+      console.log(upgrade.nodeName)
+      var imageUpgrade = document.createElement("img");
+      imageUpgrade.classList.add('upgradeImage');
+      imageUpgrade.src = "ressources/chefs/upgrade/spatualGrey.png";
+      upgrade.appendChild(imageUpgrade);
+
+    }
 
     if (!this.unlocked) {
       this.document.children[0].style.height = "0px";

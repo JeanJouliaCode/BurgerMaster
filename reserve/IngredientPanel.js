@@ -95,7 +95,7 @@ var IngredientPanel = class IngredientPanel {
       this.speedOfDelivery *= 0.5;
       this.priceUpgrade += 10;
       this.speedDocument.textContent =
-        (this.speedOfDelivery / 1000).toString(10) + "/s";
+        (this.speedOfDelivery / 1000).toString(10) + " sec";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
     }
   }
@@ -108,7 +108,7 @@ var IngredientPanel = class IngredientPanel {
 
     //display the speed of delivery
     this.speedDocument.textContent =
-      (this.speedOfDelivery / 1000).toString(10) + "sec";
+      (this.speedOfDelivery / 1000).toString(10) + " sec";
     //display the price of the upgrade
     this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
@@ -153,7 +153,7 @@ var IngredientPanel = class IngredientPanel {
     if (this.unlock) {
       //display the speed of delivery
       this.speedDocument.textContent =
-        (this.speedOfDelivery / 1000).toString(10) + "sec";
+        (this.speedOfDelivery / 1000).toString(10) + " sec";
       //display the price of the upgrade
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
 

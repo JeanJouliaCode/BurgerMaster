@@ -1,8 +1,15 @@
 var command = [];
 function generateCommand() {
+  var isBredBlack = false;
   command = ["plate"];
   if (currentChef === 5) {
-    command.push("bredBottomBlack");
+    if(Math.floor(Math.random() * 10) >= 4) {
+      command.push("bredBottomBlack");
+      isBredBlack = true;
+    }
+    else{
+      command.push("bredBottom");
+    }
   } else {
     command.push("bredBottom");
   }
@@ -33,7 +40,7 @@ function generateCommand() {
     }
   }
 
-  if (currentChef === 5) {
+  if (isBredBlack) {
     command.push("bredTopBlack");
   } else {
     command.push("bredTop");
