@@ -80,7 +80,7 @@ var Burger = class Burger {
     if (!this.inPreparation) {
       displayOrder(listElement);
       this.inPreparation = true;
-      var generalOffset = 0;
+      var generalOffset = 25;
 
       //put each ingredient on the plate
       for (var ingredient of listElement) {
@@ -171,10 +171,5 @@ var Burger = class Burger {
     var emptyDiv = document.createElement("div");
     this.servingDiv.appendChild(emptyDiv);
     emptyDiv.position = "relative";
-
-    this.chefImage = document.createElement("img");
-    this.servingDiv.appendChild(this.chefImage);
-    this.chefImage.classList.add("servingChef");
-    this.chefImage.src = "./ressources/chef/chef0.png";
   }
 };

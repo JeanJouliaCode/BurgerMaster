@@ -8,41 +8,41 @@ var ingredientChart = {
   ketchup: {
     unlock: true,
     nb: 17,
-    price: 0.6,
+    price: 1,
     initPrice: 120,
     initSpeed: 30000
   },
-  salad: { unlock: true, nb: 17, price: 0.4, initPrice: 130, initSpeed: 20000 },
-  cheese: { unlock: true, nb: 17, price: 1, initPrice: 140, initSpeed: 21000 },
+  salad: { unlock: true, nb: 17, price: 2, initPrice: 130, initSpeed: 20000 },
+  cheese: { unlock: true, nb: 17, price: 3, initPrice: 140, initSpeed: 21000 },
   pickle: {
     unlock: false,
     nb: 17,
-    price: 2.3,
+    price: 4,
     initPrice: 150,
     initSpeed: 10000
   },
   tomato: {
     unlock: false,
     nb: 17,
-    price: 1.2,
+    price: 5,
     initPrice: 160,
     initSpeed: 10000
   },
   beacon: {
     unlock: false,
     nb: 17,
-    price: 3,
+    price: 6,
     initPrice: 170,
     initSpeed: 10000
   },
   bredTopBlack: {
     unlock: false,
     nb: 17,
-    price: 4,
+    price: 7,
     initPrice: 180,
     initSpeed: 10000
   },
-  egg: { unlock: false, nb: 17, price: 2, initPrice: 190, initSpeed: 100000 }
+  egg: { unlock: false, nb: 17, price: 8, initPrice: 190, initSpeed: 100000 }
 };
 
 //ingredient that can be picked at random with out neading to be in a specific position
