@@ -6,7 +6,10 @@ var chefs = {
     speed: 40,
     unlocked: true,
     price: 10,
-    ingredient: ""
+    ingredient: "",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   },
   chef1: {
     min: 1,
@@ -15,7 +18,10 @@ var chefs = {
     speed: 20,
     unlocked: false,
     price: 20,
-    ingredient: "tomato"
+    ingredient: "tomato",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   },
   chef2: {
     min: 2,
@@ -24,7 +30,10 @@ var chefs = {
     speed: 10,
     unlocked: false,
     price: 30,
-    ingredient: "pickle"
+    ingredient: "pickle",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   },
   chef3: {
     min: 3,
@@ -33,7 +42,10 @@ var chefs = {
     speed: 5,
     unlocked: false,
     price: 40,
-    ingredient: "beacon"
+    ingredient: "beacon",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   },
   chef4: {
     min: 4,
@@ -42,7 +54,10 @@ var chefs = {
     speed: 3,
     unlocked: false,
     price: 50,
-    ingredient: "egg"
+    ingredient: "egg",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   },
   chef5: {
     min: 5,
@@ -51,7 +66,10 @@ var chefs = {
     speed: 1,
     unlocked: false,
     price: 60,
-    ingredient: "bredTopBlack"
+    ingredient: "bredTopBlack",
+    upgrade1: 20,
+    upgrade2: 30,
+    upgrade3: 40
   }
 };
 
@@ -84,6 +102,23 @@ var Chef = class Chef {
     this.init();
   }
 
+  upgradeChef(doc) {
+    if (money > chefs[this.id]["upgrade" + doc.id]) {
+      doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
+
+      switch (doc.children[0].id) {
+        case "1":
+          console.log("chef" + this.id.toString(10) + " : upgrade1");
+        case "2":
+          console.log("chef" + this.id.toString(10) + " : upgrade2");
+        case "3":
+          console.log("chef" + this.id.toString(10) + " : upgrade3");
+      }
+      doc.style.justifyContent = "center";
+      doc.removeChild(doc.children[0]);
+    }
+  }
+
   buy() {
     if (!this.unlock && money > this.price) {
       money -= this.price;
@@ -93,6 +128,7 @@ var Chef = class Chef {
       updateScore();
       currentChef = parseInt(this.id.substring(4));
       chefs[this.id].unlocked = true;
+      this.document.removeChild(this.document.children[1]);
       for (var reserve of foodList) {
         if (reserve.ingredient === chefs[this.id].ingredient) {
           reserve.unlockReserve();
@@ -102,16 +138,27 @@ var Chef = class Chef {
     }
   }
 
+  initUpgrade(upgrade) {
+    upgrade.children[0].textContent = chefs[this.id]["upgrade" + upgrade.id];
+    upgrade.children[0].addEventListener("click", () => {
+      this.upgradeChef(upgrade);
+    });
+  }
+
   init() {
     this.document.children[0].children[3].src = this.imageSrc;
 
-    for(var upgrade of this.document.children[0].children){
-      console.log(upgrade.nodeName)
-      var imageUpgrade = document.createElement("img");
-      imageUpgrade.classList.add('upgradeImage');
-      imageUpgrade.src = "ressources/chefs/upgrade/spatualGrey.png";
-      upgrade.appendChild(imageUpgrade);
+    var upgradeList = [];
 
+    for (var upgrade of this.document.children[0].children) {
+      if (upgrade.id == "1" || upgrade.id == "2" || upgrade.id == "3") {
+        upgradeList.push(upgrade);
+        var imageUpgrade = document.createElement("img");
+        imageUpgrade.classList.add("upgradeImage");
+        imageUpgrade.src = "ressources/chefs/upgrade/spatulaGrey.png";
+        upgrade.appendChild(imageUpgrade);
+        this.initUpgrade(upgrade);
+      }
     }
 
     if (!this.unlocked) {
