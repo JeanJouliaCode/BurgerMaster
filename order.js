@@ -2,7 +2,6 @@ var orderList = [];
 
 function displayOrder(listIngredientOriginal) {
   listIngredient = [...listIngredientOriginal];
-  console.log("display order", orderList);
   for (var ingredient of orderList) {
     ingredient.parentNode.removeChild(ingredient);
   }
@@ -24,10 +23,13 @@ function displayOrder(listIngredientOriginal) {
   }
   var spanDiv = document.createElement("div");
   var span = document.createElement("span");
-  spanDiv.appendChild(span)
+  spanDiv.appendChild(span);
   spanDiv.classList.add("orderElement");
-  span.classList.add('orderElementSpan')
-  span.textContent = "= " + Math.floor(burger.getBurgerPrice(listIngredientOriginal)).toString(10)+"$";
+  span.classList.add("orderElementSpan");
+  span.textContent =
+    "= " +
+    Math.floor(burger.getBurgerPrice(listIngredientOriginal)).toString(10) +
+    "$";
   order.appendChild(span);
   orderList.push(span);
 }

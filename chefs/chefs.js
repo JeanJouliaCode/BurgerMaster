@@ -19,9 +19,9 @@ var chefs = {
     unlocked: false,
     price: 20,
     ingredient: "tomato",
-    upgrade1: 20,
-    upgrade2: 30,
-    upgrade3: 40
+    upgrade1: 40,
+    upgrade2: 50,
+    upgrade3: 60
   },
   chef2: {
     min: 2,
@@ -31,9 +31,9 @@ var chefs = {
     unlocked: false,
     price: 30,
     ingredient: "pickle",
-    upgrade1: 20,
-    upgrade2: 30,
-    upgrade3: 40
+    upgrade1: 70,
+    upgrade2: 80,
+    upgrade3: 90
   },
   chef3: {
     min: 3,
@@ -43,9 +43,9 @@ var chefs = {
     unlocked: false,
     price: 40,
     ingredient: "beacon",
-    upgrade1: 20,
-    upgrade2: 30,
-    upgrade3: 40
+    upgrade1: 100,
+    upgrade2: 110,
+    upgrade3: 120
   },
   chef4: {
     min: 4,
@@ -55,9 +55,9 @@ var chefs = {
     unlocked: false,
     price: 50,
     ingredient: "egg",
-    upgrade1: 20,
-    upgrade2: 30,
-    upgrade3: 40
+    upgrade1: 130,
+    upgrade2: 140,
+    upgrade3: 150
   },
   chef5: {
     min: 5,
@@ -67,9 +67,9 @@ var chefs = {
     unlocked: false,
     price: 60,
     ingredient: "bredTopBlack",
-    upgrade1: 20,
-    upgrade2: 30,
-    upgrade3: 40
+    upgrade1: 160,
+    upgrade2: 170,
+    upgrade3: 180
   }
 };
 

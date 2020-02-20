@@ -70,15 +70,17 @@ var Burger = class Burger {
   //prepare the burger
   async prepare(listElement) {
     //check if the reserve can prepare this generated burger
+    if (this.pending == false) {
+      displayOrder(listElement);
+    }
     if (!checkReserve(listElement)) {
       this.pending = true;
+
       return;
     }
     this.pending = false;
-
     //if a bruger is already being prepared, it's prevent from preparing one again
     if (!this.inPreparation) {
-      displayOrder(listElement);
       this.inPreparation = true;
       var generalOffset = 25;
 
@@ -100,7 +102,6 @@ var Burger = class Burger {
         imageIngredient.style.zIndex = "10";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
 
-        console.log(generalOffset);
         await this.addIngredient(imageIngredient, generalOffset);
 
         generalOffset += this.positionInfo[ingredient].offset;

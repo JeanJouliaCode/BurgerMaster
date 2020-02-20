@@ -70,6 +70,7 @@ var IngredientPanel = class IngredientPanel {
     this.isReserveFilling = true;
     this.speedDocument = null;
     this.button = null;
+    this.ketchupDiv = null;
 
     this.init();
   }
@@ -151,6 +152,13 @@ var IngredientPanel = class IngredientPanel {
 
     //if the reserve start unlocked
     if (this.unlock) {
+      if (this.ingredient == "ketchup") {
+        this.ketchupDiv = document.createElement("div");
+        this.document.appendChild(this.ketchupDiv);
+        this.ketchupDiv.style.width = "100%";
+        this.ketchupDiv.style.backgroundColor = "red";
+        this.ketchupDiv.style.borderRadius = "8px";
+      }
       //display the speed of delivery
       this.speedDocument.textContent =
         (this.speedOfDelivery / 1000).toString(10) + " sec";
@@ -175,9 +183,14 @@ var IngredientPanel = class IngredientPanel {
 
   //remove an ingredient
   remove() {
-    if (this.listElement.length > 0) {
-      var ingredient = this.listElement.pop();
-      ingredient.parentNode.removeChild(ingredient);
+    if (this.listElement.length > 0 || this.ingredient == "ketchup") {
+      if (this.ingredient == "ketchup") {
+        this.ketchupDiv.style.height =
+          (100 / this.nbMax) * (this.nbElement - 1).toString(10) + "%";
+      } else {
+        var ingredient = this.listElement.pop();
+        ingredient.parentNode.removeChild(ingredient);
+      }
       this.nbElement--;
     }
   }
@@ -185,13 +198,18 @@ var IngredientPanel = class IngredientPanel {
   //add an ingredient
   add() {
     if (this.nbElement < this.nbMax) {
-      var imageIngredient = document.createElement("img");
-      imageIngredient.src =
-        "ressources/ingredients/" + this.ingredient + ".png";
-      imageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
-      imageIngredient.classList.add("foodElement");
-      this.document.appendChild(imageIngredient);
-      this.listElement.push(imageIngredient);
+      if (this.ingredient == "ketchup") {
+        this.ketchupDiv.style.height =
+          (100 / this.nbMax) * (this.nbElement + 1).toString(10) + "%";
+      } else {
+        var imageIngredient = document.createElement("img");
+        imageIngredient.src =
+          "ressources/ingredients/" + this.ingredient + ".png";
+        imageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
+        imageIngredient.classList.add("foodElement");
+        this.document.appendChild(imageIngredient);
+        this.listElement.push(imageIngredient);
+      }
       this.nbElement++;
     }
     if (burger.pending) {
