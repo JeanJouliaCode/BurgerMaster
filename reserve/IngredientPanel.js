@@ -199,6 +199,14 @@ var IngredientPanel = class IngredientPanel {
   add() {
     if (this.nbElement < this.nbMax) {
       if (this.ingredient == "ketchup") {
+        if(this.nbElement = this.nbMax-1){
+          this.ketchupDiv.style.borderRadius = "8px";
+        }
+        else{
+          this.ketchupDiv.style.borderRadius = "0px";
+          this.ketchupDiv.style.borderBottomLeftRadius = "8px";
+          this.ketchupDiv.style.borderBottomRightRadius = "8px";
+        }
         this.ketchupDiv.style.height =
           (100 / this.nbMax) * (this.nbElement + 1).toString(10) + "%";
       } else {
