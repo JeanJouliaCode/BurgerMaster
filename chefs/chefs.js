@@ -107,7 +107,7 @@ var Chef = class Chef {
 
   upgradeChef(doc) {
     if (money >= chefs[this.id]["upgrade" + doc.id]) {
-      money-=chefs[this.id]["upgrade" + doc.id];
+      money -= chefs[this.id]["upgrade" + doc.id];
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
 
       switch (doc.children[0].id) {
@@ -127,11 +127,9 @@ var Chef = class Chef {
     }
   }
 
-    //color of button with out enough gold to buy
+  //color of button with out enough gold to buy
   checkMoneyButton() {
-    
     if (!this.unlocked) {
-      console.log(this.id,"up");
       if (money < this.price && this.buttonPrice) {
         this.buttonPrice.style.backgroundColor = "rgb(150,150,150)";
         this.buttonPrice.style.pointerEvents = "none";
@@ -139,14 +137,12 @@ var Chef = class Chef {
         this.buttonPrice.style.backgroundColor = "rgb(250,250,250)";
         this.buttonPrice.style.pointerEvents = "auto";
       }
-    }
-    else{
-      console.log(this.id,"down");
-      for(var upgradeBtn of this.upgradeList){
-        if(upgradeBtn.parentNode){
+    } else {
+      for (var upgradeBtn of this.upgradeList) {
+        if (upgradeBtn.parentNode) {
           var id = upgradeBtn.parentNode.id;
           var unlockState = false;
-          switch(id){
+          switch (id) {
             case "1":
               unlockState = this.upgrade1;
             case "2":
@@ -156,7 +152,6 @@ var Chef = class Chef {
           }
           if (!unlockState) {
             if (money < chefs[this.id]["upgrade" + id]) {
-              
               upgradeBtn.style.backgroundColor = "rgb(150,150,150)";
               upgradeBtn.style.pointerEvents = "none";
             } else {
@@ -165,7 +160,6 @@ var Chef = class Chef {
             }
           }
         }
-
       }
     }
   }
@@ -174,7 +168,7 @@ var Chef = class Chef {
     if (!this.unlocked && money >= this.price) {
       money -= this.price;
       this.unlocked = true;
-      for(var chef of chefList){
+      for (var chef of chefList) {
         chef.document.children[0].style.backgroundColor = "grey";
       }
       this.document.children[0].style.backgroundColor = "white";
@@ -191,9 +185,7 @@ var Chef = class Chef {
       }
       burger.changeSpeed();
     }
-
   }
-
 
   initUpgrade(upgrade) {
     upgrade.children[0].textContent = chefs[this.id]["upgrade" + upgrade.id];
@@ -219,7 +211,7 @@ var Chef = class Chef {
     }
 
     if (!this.unlocked) {
-      this.buttonPrice= this.document.children[1];
+      this.buttonPrice = this.document.children[1];
       this.document.children[0].style.height = "0px";
       this.document.children[0].style.visibility = "hidden";
       this.document.children[1].textContent = this.price.toString(10) + "$";

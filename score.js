@@ -1,4 +1,4 @@
-var money = 500;
+var money = 10000;
 
 function updateScore() {
   var score = document.getElementById("scoreDigit");
@@ -7,8 +7,7 @@ function updateScore() {
     ingredientButton.checkMoneyButton();
   }
 
-
-  for(var chef of chefList){
-    chef.checkMoneyButton()
+  for (var chef of chefList) {
+    chef.checkMoneyButton();
   }
 }

@@ -96,7 +96,7 @@ var IngredientPanel = class IngredientPanel {
       this.speedOfDelivery *= 0.5;
       this.priceUpgrade += 10;
       this.speedDocument.textContent =
-        (this.speedOfDelivery / 1000).toString(10) + " sec";
+        this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
     }
   }
@@ -161,7 +161,7 @@ var IngredientPanel = class IngredientPanel {
       }
       //display the speed of delivery
       this.speedDocument.textContent =
-        (this.speedOfDelivery / 1000).toString(10) + " sec";
+        this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
       //display the price of the upgrade
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
@@ -187,6 +187,9 @@ var IngredientPanel = class IngredientPanel {
       if (this.ingredient == "ketchup") {
         this.ketchupDiv.style.height =
           (100 / this.nbMax) * (this.nbElement - 1).toString(10) + "%";
+        this.ketchupDiv.style.borderRadius = "0px";
+        this.ketchupDiv.style.borderBottomLeftRadius = "8px";
+        this.ketchupDiv.style.borderBottomRightRadius = "8px";
       } else {
         var ingredient = this.listElement.pop();
         ingredient.parentNode.removeChild(ingredient);
@@ -199,16 +202,16 @@ var IngredientPanel = class IngredientPanel {
   add() {
     if (this.nbElement < this.nbMax) {
       if (this.ingredient == "ketchup") {
-        if(this.nbElement = this.nbMax-1){
+        if (this.nbElement == this.nbMax - 1) {
           this.ketchupDiv.style.borderRadius = "8px";
-        }
-        else{
+        } else {
           this.ketchupDiv.style.borderRadius = "0px";
           this.ketchupDiv.style.borderBottomLeftRadius = "8px";
           this.ketchupDiv.style.borderBottomRightRadius = "8px";
         }
         this.ketchupDiv.style.height =
-          (100 / this.nbMax) * (this.nbElement + 1).toString(10) + "%";
+          Math.round((100 / this.nbMax) * (this.nbElement + 1)).toString(10) +
+          "%";
       } else {
         var imageIngredient = document.createElement("img");
         imageIngredient.src =
@@ -223,6 +226,11 @@ var IngredientPanel = class IngredientPanel {
     if (burger.pending) {
       burger.prepare(command);
     }
+  }
+
+  //round
+  roundValue(value, nb) {
+    return Math.round(value * Math.pow(10, nb)) / Math.pow(10, nb);
   }
 
   //loop in charge on delivery
