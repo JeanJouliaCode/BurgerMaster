@@ -94,12 +94,22 @@ var IngredientPanel = class IngredientPanel {
     if (money > this.priceUpgrade && this.unlock) {
       money -= this.priceUpgrade;
       updateScore();
-      this.speedOfDelivery *= 0.5;
-      this.priceUpgrade += 10;
+      this.speedOfDelivery = this.getNewSPeed(this.speedOfDelivery);
+      this.priceUpgrade = this.getNewPrice(this.priceUpgrade)
       this.speedDocument.textContent =
         this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
     }
+    this.updateTootTip();
+  }
+
+  //getPrice
+  getNewPrice(oldPrice) {
+    return oldPrice * 1.10;
+  }
+
+  getNewSPeed(oldSpeed) {
+    return oldSpeed * 0.90;
   }
 
   //unlocked the reserve
@@ -141,6 +151,11 @@ var IngredientPanel = class IngredientPanel {
     }
   }
 
+  updateTootTip() {
+    this.toolTip.childNodes[1].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 0) + " secondes";
+    this.toolTip.childNodes[7].textContent = '1 every ' + this.roundValue(this.getNewSPeed(this.speedOfDelivery) / 1000, 0) + " secondes";
+  }
+
   //initialize the reserve
   init() {
     this.speedDocument = document.getElementById(this.ingredient + "Speed");
@@ -156,7 +171,6 @@ var IngredientPanel = class IngredientPanel {
     this.reservePanel.addEventListener('mouseover', () => {
       if (this.unlock) {
         this.toolTip.style.visibility = 'visible';
-        console.log('visible')
       }
 
     })
@@ -164,9 +178,10 @@ var IngredientPanel = class IngredientPanel {
     this.reservePanel.addEventListener('mouseleave', () => {
       if (this.unlock) {
         this.toolTip.style.visibility = 'hidden';
-        console.log('visible')
       }
     })
+
+    this.updateTootTip();
 
     //if the reserve start unlocked
     if (this.unlock) {

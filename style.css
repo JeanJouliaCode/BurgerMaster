@@ -168,24 +168,35 @@ body {
   position : relative;
   width: 200%;
   height: 30%;
-  background-color: aquamarine;
+  background-color: black;
   z-index: 2;
   top: -300px;
-  left: 100px;
+  left: 90px;
   border-radius: 5px;
   visibility: hidden;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: wheat;
 }
 
 .infoBubbleRight{
   position : relative;
   width: 200%;
   height: 30%;
-  background-color: aquamarine;
+  background-color: black;
   z-index: 2;
   top: -300px;
   left: -180px;
   border-radius: 5px;
   visibility: hidden;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.currentSpeed{
+  margin-top: 10%;
 }
 
 /*''''''''''''''''''''''''''''chefs related css''''''''''''''''''''''''''''*/
