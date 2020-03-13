@@ -164,6 +164,30 @@ body {
   margin-top: 14.5%;
 }
 
+.infoBubbleLeft{
+  position : relative;
+  width: 200%;
+  height: 30%;
+  background-color: aquamarine;
+  z-index: 2;
+  top: -300px;
+  left: 100px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.infoBubbleRight{
+  position : relative;
+  width: 200%;
+  height: 30%;
+  background-color: aquamarine;
+  z-index: 2;
+  top: -300px;
+  left: -180px;
+  border-radius: 5px;
+  visibility: hidden;
+}
+
 /*''''''''''''''''''''''''''''chefs related css''''''''''''''''''''''''''''*/
 
 .characters {
@@ -241,6 +265,7 @@ body {
   z-index: 0;
   top: 0px;
 }
+
 
 body {
   -webkit-touch-callout: none; /* iOS Safari */

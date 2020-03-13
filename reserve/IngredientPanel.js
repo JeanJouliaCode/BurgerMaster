@@ -71,6 +71,7 @@ var IngredientPanel = class IngredientPanel {
     this.speedDocument = null;
     this.button = null;
     this.ketchupDiv = null;
+    this.toolTip = null;
 
     this.init();
   }
@@ -144,11 +145,28 @@ var IngredientPanel = class IngredientPanel {
   init() {
     this.speedDocument = document.getElementById(this.ingredient + "Speed");
     this.button = document.getElementById(this.ingredient + "Button");
+    this.toolTip = document.getElementById(this.ingredient + "ToolTip");
+    this.reservePanel = document.getElementById(this.ingredient);
 
     //listen for click on the upgrade button
     this.button.addEventListener("click", () => {
       this.upgrade();
     });
+
+    this.reservePanel.addEventListener('mouseover', () => {
+      if (this.unlock) {
+        this.toolTip.style.visibility = 'visible';
+        console.log('visible')
+      }
+
+    })
+
+    this.reservePanel.addEventListener('mouseleave', () => {
+      if (this.unlock) {
+        this.toolTip.style.visibility = 'hidden';
+        console.log('visible')
+      }
+    })
 
     //if the reserve start unlocked
     if (this.unlock) {

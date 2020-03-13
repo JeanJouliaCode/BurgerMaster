@@ -1,152 +1,164 @@
 <html lang="en">
-  <head>
-    <link href="style.css" rel="stylesheet" />
-  </head>
 
-  <body onload="startGame()">
-    <div class="fillSpace" id="screen">
-      <div class="leftSide">
-        <div class="tableRegister">
-          <img src="./ressources/background/table.png" class="table">
-          <img src="./ressources/background/register.png" class="register">
-          <span id="scoreDigit" class="money"></span>
-        </div>
-        <div class="order" id="order"></div>
-        <div class="serving" id="serving">
-          <div class="empty"></div>
-        </div> 
+<head>
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body onload="startGame()">
+  <div class="fillSpace" id="screen">
+    <div class="leftSide">
+      <div class="tableRegister">
+        <img src="./ressources/background/table.png" class="table">
+        <img src="./ressources/background/register.png" class="register">
+        <span id="scoreDigit" class="money"></span>
       </div>
-      <div class="rightSide">
-        <div class=" ingredients">
-          <div class="spaceIngredient">
-            <div class="reservePanel">
-              <span class="speedDelivery" id="bredTopSpeed">&#8192</span>
-              <div class="ingredientPile" id="bredTop"></div>
-              <button class="buttonReserve" id="bredTopButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="meatSpeed">&#8192</span>
-              <div class="ingredientPile" id="meat"></div>
-              <button class="buttonReserve" id="meatButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="cheeseSpeed">&#8192</span>
-              <div class="ingredientPile" id="cheese"></div>
-              <button class="buttonReserve" id="cheeseButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="saladSpeed">&#8192</span>
-              <div class="ingredientPile" id="salad"></div>
-              <button class="buttonReserve" id="saladButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="ketchupSpeed">&#8192</span>
-              <div class="ingredientPile" id="ketchup"></div>
-              <button class="buttonReserve" id="ketchupButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="tomatoSpeed">&#8192</span>
-              <div class="ingredientPile" id="tomato"></div>
-              <button class="buttonReserve" id="tomatoButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="pickleSpeed">&#8192</span>
-              <div class="ingredientPile" id="pickle"></div>
-              <button class="buttonReserve" id="pickleButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="beaconSpeed">&#8192</span>
-              <div class="ingredientPile" id="beacon"></div>
-              <button class="buttonReserve" id="beaconButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="eggSpeed">&#8192</span>
-              <div class="ingredientPile" id="egg"></div>
-              <button class="buttonReserve" id="eggButton"></button>
-            </div>
-
-            <div class="reservePanel">
-              <span class="speedDelivery" id="bredTopBlackSpeed">&#8192</span>
-              <div class="ingredientPile" id="bredTopBlack"></div>
-              <button class="buttonReserve" id="bredTopBlackButton"></button>
-            </div>
-
-          </div>
-        </div>
-        <div class="characters">
-          <div class=" locked" id="chef0">
-            <div class="character">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef0.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          <div class=" locked" id="chef1">
-            <div class="character">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef1.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          <div class=" locked" id="chef2">
-            <div class="character ">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef2.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          <div class=" locked" id="chef3">
-            <div class="character ">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef3.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          <div class=" locked" id="chef4">
-            <div class="character ">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef4.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          <div class=" locked" id="chef5">
-            <div class="character ">
-              <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-              <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
-              <img src="./ressources/chefs/chef5.png" class="chef" />
-            </div>
-            <button class="buyChef"></button>
-          </div>
-          
-        </div>
+      <div class="order" id="order"></div>
+      <div class="serving" id="serving">
+        <div class="empty"></div>
       </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="./Burger.js"></script>
-    <script src="./score.js"></script>
-    <script src="./reserve/IngredientPanel.js"></script>
-    <script src="./reserve/reserve.js"></script>
-    <script src="./chefs/chefs.js"></script>
-    <script src="./chefs/chefPanel.js"></script>
-    <script src="./order.js"></script>
-  </body>
+    <div class="rightSide">
+      <div class=" ingredients">
+        <div class="spaceIngredient">
+          <div class="reservePanel">
+            <span class="speedDelivery" id="bredTopSpeed">&#8192</span>
+            <div class="ingredientPile" id="bredTop"></div>
+            <button class="buttonReserve" id="bredTopButton"></button>
+            <div class="infoBubbleLeft" id="bredTopToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="meatSpeed">&#8192</span>
+            <div class="ingredientPile" id="meat"></div>
+            <button class="buttonReserve" id="meatButton"></button>
+            <div class="infoBubbleLeft" id="meatToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="cheeseSpeed">&#8192</span>
+            <div class="ingredientPile" id="cheese"></div>
+            <button class="buttonReserve" id="cheeseButton"></button>
+            <div class="infoBubbleLeft" id="cheeseToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="saladSpeed">&#8192</span>
+            <div class="ingredientPile" id="salad"></div>
+            <button class="buttonReserve" id="saladButton"></button>
+            <div class="infoBubbleLeft" id="saladToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="ketchupSpeed">&#8192</span>
+            <div class="ingredientPile" id="ketchup"></div>
+            <button class="buttonReserve" id="ketchupButton"></button>
+            <div class="infoBubbleLeft" id="ketchupToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="tomatoSpeed">&#8192</span>
+            <div class="ingredientPile" id="tomato"></div>
+            <button class="buttonReserve" id="tomatoButton"></button>
+            <div class="infoBubbleLeft" id="tomatoToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="pickleSpeed">&#8192</span>
+            <div class="ingredientPile" id="pickle"></div>
+            <button class="buttonReserve" id="pickleButton"></button>
+            <div class="infoBubbleLeft" id="pickleToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="beaconSpeed">&#8192</span>
+            <div class="ingredientPile" id="beacon"></div>
+            <button class="buttonReserve" id="beaconButton"></button>
+            <div class="infoBubbleLeft" id="beaconToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="eggSpeed">&#8192</span>
+            <div class="ingredientPile" id="egg"></div>
+            <button class="buttonReserve" id="eggButton"></button>
+            <div class="infoBubbleRight" id="eggToolTip"></div>
+          </div>
+
+          <div class="reservePanel">
+            <span class="speedDelivery" id="bredTopBlackSpeed">&#8192</span>
+            <div class="ingredientPile" id="bredTopBlack"></div>
+            <button class="buttonReserve" id="bredTopBlackButton"></button>
+            <div class="infoBubbleRight" id="bredTopBlackToolTip"></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="characters">
+        <div class=" locked" id="chef0">
+          <div class="character">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef0.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+        <div class=" locked" id="chef1">
+          <div class="character">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef1.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+        <div class=" locked" id="chef2">
+          <div class="character ">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef2.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+        <div class=" locked" id="chef3">
+          <div class="character ">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef3.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+        <div class=" locked" id="chef4">
+          <div class="character ">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef4.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+        <div class=" locked" id="chef5">
+          <div class="character ">
+            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+            <div class="upgrade3 button" id='3'><button class="btnBuyUpgrade"></button></div>
+            <img src="./ressources/chefs/chef5.png" class="chef" />
+          </div>
+          <button class="buyChef"></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+  <script src="./Burger.js"></script>
+  <script src="./score.js"></script>
+  <script src="./reserve/IngredientPanel.js"></script>
+  <script src="./reserve/reserve.js"></script>
+  <script src="./chefs/chefs.js"></script>
+  <script src="./chefs/chefPanel.js"></script>
+  <script src="./order.js"></script>
+</body>
+
 </html>
