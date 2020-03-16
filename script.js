@@ -7,8 +7,14 @@ var chefList = [];
 var isGameGoing = true;
 
 function startGame() {
+  getItemLocalStorage();
   //initialise the burger
   burger = new Burger();
+
+  document.getElementById('meat').addEventListener('click', () => {
+    localStorage.setItem('saveObject', null);
+    console.warn('reset')
+  })
 
   //fill up the food reserve
   initFoodReserve();
@@ -38,7 +44,8 @@ function initFoodReserve() {
       ingredientChart[food.id].initSpeed, // speed of delivery
       food, // HTML Document
       ingredientChart[food.id].nb, // maximum number of food in reserve
-      ingredientChart[food.id].initPrice
+      ingredientChart[food.id].initPrice,
+      ingredientChart[food.id].nbElement
     );
 
     //add element to the list

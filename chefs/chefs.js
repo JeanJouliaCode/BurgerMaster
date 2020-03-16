@@ -9,7 +9,10 @@ var chefs = {
     ingredient: "",
     upgrade1: 20,
     upgrade2: 30,
-    upgrade3: 40
+    upgrade3: 40,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   },
   chef1: {
     min: 1,
@@ -21,7 +24,10 @@ var chefs = {
     ingredient: "tomato",
     upgrade1: 40,
     upgrade2: 50,
-    upgrade3: 60
+    upgrade3: 60,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   },
   chef2: {
     min: 2,
@@ -33,7 +39,10 @@ var chefs = {
     ingredient: "pickle",
     upgrade1: 70,
     upgrade2: 80,
-    upgrade3: 90
+    upgrade3: 90,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   },
   chef3: {
     min: 3,
@@ -45,7 +54,10 @@ var chefs = {
     ingredient: "beacon",
     upgrade1: 100,
     upgrade2: 110,
-    upgrade3: 120
+    upgrade3: 120,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   },
   chef4: {
     min: 4,
@@ -57,7 +69,10 @@ var chefs = {
     ingredient: "egg",
     upgrade1: 130,
     upgrade2: 140,
-    upgrade3: 150
+    upgrade3: 150,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   },
   chef5: {
     min: 5,
@@ -69,11 +84,14 @@ var chefs = {
     ingredient: "bredTopBlack",
     upgrade1: 160,
     upgrade2: 170,
-    upgrade3: 180
+    upgrade3: 180,
+    upgrade1locked: true,
+    upgrade2locked: true,
+    upgrade3locked: true,
   }
 };
 
-currentChef = 0;
+var currentChef = 0;
 
 var Chef = class Chef {
   constructor(
@@ -108,6 +126,7 @@ var Chef = class Chef {
   upgradeChef(doc) {
     if (money >= chefs[this.id]["upgrade" + doc.id]) {
       money -= chefs[this.id]["upgrade" + doc.id];
+      chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
 
       switch (doc.children[0].id) {
@@ -207,6 +226,11 @@ var Chef = class Chef {
         imageUpgrade.src = "ressources/chefs/upgrade/spatulaGrey.png";
         upgrade.appendChild(imageUpgrade);
         this.initUpgrade(upgrade);
+        if (!chefs[this.id]["upgrade" + upgrade.id + "locked"]) {
+          upgrade.children[1].src = "ressources/chefs/upgrade/spatula.png";
+          upgrade.style.justifyContent = "center";
+          upgrade.removeChild(upgrade.children[0]);
+        }
       }
     }
 
@@ -220,7 +244,15 @@ var Chef = class Chef {
       });
     } else {
       this.document.removeChild(this.document.children[1]);
-      this.document.children[0].style.backgroundColor = "white";
+      console.warn(parseInt(this.id.substring(4)), currentChef)
+      if (parseInt(this.id.substring(4)) === currentChef) {
+        console.log("equal")
+        this.document.children[0].style.backgroundColor = "white";
+      }
+      else {
+        this.document.children[0].style.backgroundColor = "grey";
+      }
+
     }
   }
 };

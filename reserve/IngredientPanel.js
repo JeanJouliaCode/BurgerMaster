@@ -3,20 +3,28 @@ var foodList = [];
 
 //every information about the food
 var ingredientChart = {
-  bredTop: { unlock: true, nb: 17, price: 1, initPrice: 20, initSpeed: 16000 },
-  meat: { unlock: true, nb: 17, price: 1, initPrice: 110, initSpeed: 15000 },
+  bredTop: { unlock: true, nb: 17, nbElement: 17, price: 1, initPrice: 20, initSpeed: 16000 },
+  meat: { unlock: true, nb: 17, nbElement: 17, price: 1, initPrice: 110, initSpeed: 15000 },
   ketchup: {
     unlock: true,
     nb: 17,
+    nbElement: 17,
     price: 1,
     initPrice: 120,
     initSpeed: 30000
   },
-  salad: { unlock: true, nb: 17, price: 2, initPrice: 130, initSpeed: 20000 },
-  cheese: { unlock: true, nb: 17, price: 3, initPrice: 140, initSpeed: 21000 },
+  salad: {
+    unlock: true, nb: 17,
+    nbElement: 17, price: 2, initPrice: 130, initSpeed: 20000
+  },
+  cheese: {
+    unlock: true, nb: 17,
+    nbElement: 17, price: 3, initPrice: 140, initSpeed: 21000
+  },
   pickle: {
     unlock: false,
     nb: 17,
+    nbElement: 17,
     price: 4,
     initPrice: 150,
     initSpeed: 10000
@@ -24,6 +32,7 @@ var ingredientChart = {
   tomato: {
     unlock: false,
     nb: 17,
+    nbElement: 17,
     price: 5,
     initPrice: 160,
     initSpeed: 10000
@@ -31,6 +40,7 @@ var ingredientChart = {
   beacon: {
     unlock: false,
     nb: 17,
+    nbElement: 17,
     price: 6,
     initPrice: 170,
     initSpeed: 10000
@@ -38,11 +48,15 @@ var ingredientChart = {
   bredTopBlack: {
     unlock: false,
     nb: 17,
+    nbElement: 17,
     price: 7,
     initPrice: 180,
     initSpeed: 10000
   },
-  egg: { unlock: false, nb: 17, price: 8, initPrice: 190, initSpeed: 100000 }
+  egg: {
+    unlock: false, nb: 17,
+    nbElement: 17, price: 8, initPrice: 190, initSpeed: 100000
+  }
 };
 
 //ingredient that can be picked at random with out neading to be in a specific position
@@ -58,13 +72,14 @@ var regularIngredient = [
 
 //class to manage food reserve
 var IngredientPanel = class IngredientPanel {
-  constructor(ingredient, unlock, speed, document, nbmax, initPrice) {
+  constructor(ingredient, unlock, speed, document, nbmax, initPrice, numberElement) {
     this.speedOfDelivery = speed;
     this.unlock = unlock;
     this.ingredient = ingredient;
     this.document = document;
     this.listElement = [];
     this.nbElement = 0;
+    this.initNumberElement = numberElement;
     this.nbMax = nbmax;
     this.priceUpgrade = initPrice;
     this.isReserveFilling = true;
@@ -72,6 +87,9 @@ var IngredientPanel = class IngredientPanel {
     this.button = null;
     this.ketchupDiv = null;
     this.toolTip = null;
+    this.initValues = true;
+
+    console.warn(this.ingredient, numberElement)
 
     this.init();
   }
@@ -93,23 +111,25 @@ var IngredientPanel = class IngredientPanel {
   upgrade() {
     if (money > this.priceUpgrade && this.unlock) {
       money -= this.priceUpgrade;
-      updateScore();
       this.speedOfDelivery = this.getNewSPeed(this.speedOfDelivery);
+      ingredientChart[this.ingredient].initSpeed = this.speedOfDelivery;
       this.priceUpgrade = this.getNewPrice(this.priceUpgrade)
+      ingredientChart[this.ingredient].initPrice = this.priceUpgrade;
       this.speedDocument.textContent =
         this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
+      updateScore();
     }
     this.updateTootTip();
   }
 
   //getPrice
   getNewPrice(oldPrice) {
-    return oldPrice * 1.10;
+    return this.roundValue(oldPrice * 1.10);
   }
 
   getNewSPeed(oldSpeed) {
-    return oldSpeed * 0.90;
+    return this.roundValue(oldSpeed * 0.90);
   }
 
   //unlocked the reserve
@@ -136,6 +156,8 @@ var IngredientPanel = class IngredientPanel {
     this.unlock = true;
 
     ingredientChart[this.ingredient].unlock = true;
+
+    this.initValues = false;
   }
 
   //color of button with out enough gold to buy
@@ -201,17 +223,20 @@ var IngredientPanel = class IngredientPanel {
       this.checkMoneyButton();
 
       //fill the associated reserve
-      for (var i = 0; i < this.nbMax; i++) {
+      for (var i = 0; i < this.initNumberElement; i++) {
         this.add();
       }
       //start the regular delivery
       this.startLoop();
+
+      this.initValues = false;
     } else {
       //grey everything out
       this.document.style.backgroundColor = "grey";
       this.button.style.pointerEvents = "none";
       this.button.style.backgroundColor = "rgb(88,88,88)";
     }
+
   }
 
   //remove an ingredient
@@ -228,6 +253,9 @@ var IngredientPanel = class IngredientPanel {
         ingredient.parentNode.removeChild(ingredient);
       }
       this.nbElement--;
+      if (!this.initValues) {
+        ingredientChart[this.ingredient].nbElement -= 1;
+      }
     }
   }
 
@@ -255,6 +283,9 @@ var IngredientPanel = class IngredientPanel {
         this.listElement.push(imageIngredient);
       }
       this.nbElement++;
+      if (!this.initValues) {
+        ingredientChart[this.ingredient].nbElement += 1;
+      }
     }
     if (burger.pending) {
       burger.prepare(command);
@@ -262,7 +293,7 @@ var IngredientPanel = class IngredientPanel {
   }
 
   //round
-  roundValue(value, nb) {
+  roundValue(value, nb = 0) {
     return Math.round(value * Math.pow(10, nb)) / Math.pow(10, nb);
   }
 
