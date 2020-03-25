@@ -3,59 +3,59 @@ var foodList = [];
 
 //every information about the food
 var ingredientChart = {
-  bredTop: { unlock: true, nb: 17, nbElement: 17, price: 1, initPrice: 20, initSpeed: 16000 },
-  meat: { unlock: true, nb: 17, nbElement: 17, price: 1, initPrice: 110, initSpeed: 15000 },
+  bredTop: { unlock: true, nb: 20, nbElement: 20, price: 1, initPrice: 20, initSpeed: 16000 },
+  meat: { unlock: true, nb: 20, nbElement: 20, price: 1, initPrice: 110, initSpeed: 15000 },
   ketchup: {
     unlock: true,
-    nb: 17,
-    nbElement: 17,
+    nb: 20,
+    nbElement: 20,
     price: 1,
     initPrice: 120,
     initSpeed: 30000
   },
   salad: {
-    unlock: true, nb: 17,
-    nbElement: 17, price: 2, initPrice: 130, initSpeed: 20000
+    unlock: true, nb: 20,
+    nbElement: 20, price: 2, initPrice: 130, initSpeed: 20000
   },
   cheese: {
-    unlock: true, nb: 17,
-    nbElement: 17, price: 3, initPrice: 140, initSpeed: 21000
+    unlock: true, nb: 30,
+    nbElement: 30, price: 3, initPrice: 140, initSpeed: 21000
   },
   pickle: {
     unlock: false,
-    nb: 17,
-    nbElement: 17,
+    nb: 20,
+    nbElement: 20,
     price: 4,
     initPrice: 150,
     initSpeed: 10000
   },
   tomato: {
     unlock: false,
-    nb: 17,
-    nbElement: 17,
+    nb: 20,
+    nbElement: 20,
     price: 5,
     initPrice: 160,
     initSpeed: 10000
   },
   beacon: {
     unlock: false,
-    nb: 17,
-    nbElement: 17,
+    nb: 20,
+    nbElement: 20,
     price: 6,
     initPrice: 170,
     initSpeed: 10000
   },
   bredTopBlack: {
     unlock: false,
-    nb: 17,
-    nbElement: 17,
+    nb: 20,
+    nbElement: 20,
     price: 7,
     initPrice: 180,
     initSpeed: 10000
   },
   egg: {
-    unlock: false, nb: 17,
-    nbElement: 17, price: 8, initPrice: 190, initSpeed: 100000
+    unlock: false, nb: 20,
+    nbElement: 20, price: 8, initPrice: 190, initSpeed: 100000
   }
 };
 
@@ -274,13 +274,19 @@ var IngredientPanel = class IngredientPanel {
           Math.round((100 / this.nbMax) * (this.nbElement + 1)).toString(10) +
           "%";
       } else {
+        var divImageIngredient = document.createElement("div");
         var imageIngredient = document.createElement("img");
+        divImageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
         imageIngredient.src =
-          "ressources/ingredients/" + this.ingredient + ".png";
-        imageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
+          "ressources/pileElement/" + this.ingredient + ".png";
+        imageIngredient.style.height = "120%";
+        if(this.ingredient === "cheese"){
+          imageIngredient.style.height = "190%";
+        }
         imageIngredient.classList.add("foodElement");
-        this.document.appendChild(imageIngredient);
-        this.listElement.push(imageIngredient);
+        divImageIngredient.appendChild(imageIngredient);
+        this.document.appendChild(divImageIngredient);
+        this.listElement.push(divImageIngredient);
       }
       this.nbElement++;
       if (!this.initValues) {
