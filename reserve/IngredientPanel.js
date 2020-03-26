@@ -89,8 +89,6 @@ var IngredientPanel = class IngredientPanel {
     this.toolTip = null;
     this.initValues = true;
 
-    console.warn(this.ingredient, numberElement)
-
     this.init();
   }
 
@@ -119,8 +117,9 @@ var IngredientPanel = class IngredientPanel {
         this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
       updateScore();
+      this.updateTootTip();
     }
-    this.updateTootTip();
+    
   }
 
   //getPrice
@@ -211,7 +210,7 @@ var IngredientPanel = class IngredientPanel {
         this.ketchupDiv = document.createElement("div");
         this.document.appendChild(this.ketchupDiv);
         this.ketchupDiv.style.width = "100%";
-        this.ketchupDiv.style.backgroundColor = "red";
+        this.ketchupDiv.style.backgroundColor = "rgb(255, 76, 9)";
         this.ketchupDiv.style.borderRadius = "5px";
       }
       //display the speed of delivery
@@ -280,7 +279,6 @@ var IngredientPanel = class IngredientPanel {
         var Terminaison = (Math.random()>0.6)?"Dif": "";
         imageIngredient.src =
           "ressources/pileElement/" +this.ingredient + Terminaison + ".png";
-        console.log("ressources/pileElement/" +this.ingredient + Terminaison + ".png")
         imageIngredient.style.height = "120%";
         if(this.ingredient === "cheese"){
           imageIngredient.style.height = "190%";

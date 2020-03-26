@@ -28,6 +28,11 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  
+}
+
+.order:last-child {
+  float: right;
 }
 
 .table {
@@ -124,8 +129,8 @@ body {
 .ingredients {
   width: 100%;
   margin: 0px 0px 0 10px;
-  background: rgb(9,12,13);
   background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
+  border-radius: 5px;
 }
 
 .ingredientPile {
@@ -139,8 +144,6 @@ body {
   justify-content: flex-start;
   border-radius: 5px;
   overflow: hidden;
-  border-style: solid;
-  border-width: 2px;
 }
 
 .foodElement {
@@ -165,6 +168,10 @@ body {
   position: relative;
   top: 8px;
   font-size: 10px;
+  font-family: Sauce;
+  font-size: 1vw;
+  color: rgb(255, 151, 0);
+
 }
 
 .buttonReserve {
@@ -172,6 +179,8 @@ body {
   height: 7%;
   border-radius: 8px;
   margin-top: 14.5%;
+  font-family: Sauce;
+  font-size: 1vw;
 }
 
 .infoBubbleLeft{
@@ -186,7 +195,7 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  color: wheat;
+  color: rgb(0, 0, 0);
 }
 
 .infoBubbleRight{
@@ -201,7 +210,7 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
-  color: wheat;
+  color: rgb(0, 0, 0);
 }
 
 .toopTipText{
@@ -228,8 +237,8 @@ body {
   align-items: center;
   margin: 10px 0px 0px 10px;
   width: 100%;
-  background-color: radial-gradient(circle, rgba(255,216,73,1) 0%, rgba(246,228,87,1) 50%, rgba(244,255,98,1) 88%);
-  background: rgb(255,216,73);
+  background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
+  border-radius: 5px;
 }
 
 .character {
@@ -240,7 +249,7 @@ body {
   height: 100%;
   width: 100%;
   border-radius: 10px;
-  background-color: rgb(173, 173, 173);
+  background-color: rgba(173, 173, 173, 0.5);
   visibility: visible;
 }
 
@@ -267,6 +276,8 @@ body {
   height: 60%;
   border-radius: 10px;
   margin-right: 10px;
+  font-family: Sauce;
+  font-size: 1vw;
 }
 .button {
   flex-direction: row-reverse;
@@ -315,4 +326,36 @@ body {
   margin-top: 100%;
   left: 20%;
   border-radius: 10px;
+  font-family: Sauce;
+  font-size: 1vw;
+}
+
+.infoBubbleChefLeft{
+  visibility: hidden;
+  position : relative;
+  z-index: 2;
+  top: -137%;
+  left: -10%;
+  border-radius: 5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: rgb(0, 0, 0);
+}
+.infoBubbleChefRight{
+  visibility: hidden;
+  position : relative;
+
+  z-index: 2;
+  top: -137%;
+  left: -15%;
+  border-radius: 5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: rgb(0, 0, 0);
+}
+
+.innerTextInfoBubble{
+  padding: 10%;
 }

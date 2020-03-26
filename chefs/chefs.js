@@ -188,7 +188,9 @@ var Chef = class Chef {
       money -= this.price;
       this.unlocked = true;
       for (var chef of chefList) {
-        chef.document.children[0].style.backgroundColor = "grey";
+        chef.document.children[0].style.backgroundColor = "Black";
+        var chefImage = document.getElementById(chef.id+"Img");
+        chefImage.src = './ressources/chefs/'+chef.id +"Dead" +'.png';
       }
       this.document.children[0].style.backgroundColor = "white";
       this.document.children[0].style.height = "100%";
@@ -202,12 +204,16 @@ var Chef = class Chef {
           reserve.unlockReserve();
         }
       }
+
+      var chefImage = document.getElementById(this.id+"Img");
+      chefImage.src = './ressources/chefs/'+this.id +'.png';
+
       burger.changeSpeed();
     }
   }
 
   initUpgrade(upgrade) {
-    upgrade.children[0].textContent = chefs[this.id]["upgrade" + upgrade.id];
+    upgrade.children[0].textContent = chefs[this.id]["upgrade" + upgrade.id] + "$";
     upgrade.children[0].addEventListener("click", () => {
       this.upgradeChef(upgrade);
     });
@@ -215,7 +221,9 @@ var Chef = class Chef {
 
   init() {
     this.document.children[0].children[3].src = this.imageSrc;
-
+    this.toolTip = document.getElementById(this.id+"InfoBubble");
+    this.chefDiv = document.getElementById(this.id);
+    console.log("test",this.chefDiv)
     this.upgradeList = [];
 
     for (var upgrade of this.document.children[0].children) {
@@ -234,6 +242,19 @@ var Chef = class Chef {
       }
     }
 
+    this.chefDiv.addEventListener('mouseover', () => {
+      if (this.unlocked) {
+        this.toolTip.style.visibility = 'visible';
+      }
+
+    })
+
+    this.chefDiv.addEventListener('mouseleave', () => {
+      if (this.unlocked) {
+        this.toolTip.style.visibility = 'hidden';
+      }
+    })
+
     if (!this.unlocked) {
       this.buttonPrice = this.document.children[1];
       this.document.children[0].style.height = "0px";
@@ -246,11 +267,12 @@ var Chef = class Chef {
       this.document.removeChild(this.document.children[1]);
       console.warn(parseInt(this.id.substring(4)), currentChef)
       if (parseInt(this.id.substring(4)) === currentChef) {
-        console.log("equal")
         this.document.children[0].style.backgroundColor = "white";
       }
       else {
-        this.document.children[0].style.backgroundColor = "grey";
+        var chefImage = document.getElementById(this.id+"Img");
+        this.document.children[0].style.backgroundColor = 'Black';
+        chefImage.src = './ressources/chefs/'+this.id +"Dead" +'.png';
       }
 
     }

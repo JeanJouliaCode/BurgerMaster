@@ -30,7 +30,7 @@ function displayOrder(listIngredientOriginal) {
     "= " +
     Math.floor(burger.getBurgerPrice(listIngredientOriginal)).toString(10) +
     "$";
-  span.style.fontFamily = "Segment7Standard";
+  span.style.fontFamily = "Sauce";
   order.appendChild(span);
   orderList.push(span);
 }
