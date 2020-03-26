@@ -101,6 +101,11 @@ body {
   src: url("./ressources/Segment7Standard.otf") format("opentype");
 }
 
+@font-face {
+  font-family: Sauce;
+  src: url("./ressources/Awesome Sauce DEMO.otf") format("opentype");
+}
+
 /*#################################right side related css#########################################*/
 .rightSide {
   width: calc(64.5% - 10px);
@@ -119,7 +124,8 @@ body {
 .ingredients {
   width: 100%;
   margin: 0px 0px 0 10px;
-  background-color: rgba(173, 173, 173, 0.5);
+  background: rgb(9,12,13);
+  background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
 }
 
 .ingredientPile {
@@ -132,6 +138,9 @@ body {
   flex-direction: column-reverse;
   justify-content: flex-start;
   border-radius: 5px;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 2px;
 }
 
 .foodElement {
@@ -142,6 +151,7 @@ body {
   width: 9.95%;
   height: 100%;
   text-align: center;
+  
 }
 
 .locked {
@@ -168,10 +178,9 @@ body {
   position : relative;
   width: 200%;
   height: 30%;
-  background-color: black;
   z-index: 2;
-  top: -300px;
-  left: 90px;
+  top: -7%;
+  left: -30%;
   border-radius: 5px;
   visibility: hidden;
   display:flex;
@@ -184,16 +193,26 @@ body {
   position : relative;
   width: 200%;
   height: 30%;
-  background-color: black;
   z-index: 2;
-  top: -300px;
-  left: -180px;
+  top: -7%;
+  left: -80%;
   border-radius: 5px;
   visibility: hidden;
   display:flex;
   flex-direction: column;
   justify-content: space-evenly;
   color: wheat;
+}
+
+.toopTipText{
+  z-index: 3;
+  font-family: Sauce;
+}
+
+.tooltipSauce{
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 .currentSpeed{
@@ -209,7 +228,8 @@ body {
   align-items: center;
   margin: 10px 0px 0px 10px;
   width: 100%;
-  background-color: rgba(173, 173, 173, 0.5);
+  background-color: radial-gradient(circle, rgba(255,216,73,1) 0%, rgba(246,228,87,1) 50%, rgba(244,255,98,1) 88%);
+  background: rgb(255,216,73);
 }
 
 .character {

@@ -31,7 +31,6 @@ function makeBurger() {
   if (!burger.pending) {
     burger.prepare(generateCommand());
   }
-  //burger.prepare(generateCommand(),chefs["chef"+ currentChef.toString(10)].speed )
 }
 
 function initFoodReserve() {

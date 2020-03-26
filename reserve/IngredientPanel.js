@@ -212,7 +212,7 @@ var IngredientPanel = class IngredientPanel {
         this.document.appendChild(this.ketchupDiv);
         this.ketchupDiv.style.width = "100%";
         this.ketchupDiv.style.backgroundColor = "red";
-        this.ketchupDiv.style.borderRadius = "8px";
+        this.ketchupDiv.style.borderRadius = "5px";
       }
       //display the speed of delivery
       this.speedDocument.textContent =
@@ -246,8 +246,8 @@ var IngredientPanel = class IngredientPanel {
         this.ketchupDiv.style.height =
           (100 / this.nbMax) * (this.nbElement - 1).toString(10) + "%";
         this.ketchupDiv.style.borderRadius = "0px";
-        this.ketchupDiv.style.borderBottomLeftRadius = "8px";
-        this.ketchupDiv.style.borderBottomRightRadius = "8px";
+        this.ketchupDiv.style.borderBottomLeftRadius = "3px";
+        this.ketchupDiv.style.borderBottomRightRadius = "3px";
       } else {
         var ingredient = this.listElement.pop();
         ingredient.parentNode.removeChild(ingredient);
@@ -264,11 +264,11 @@ var IngredientPanel = class IngredientPanel {
     if (this.nbElement < this.nbMax) {
       if (this.ingredient == "ketchup") {
         if (this.nbElement == this.nbMax - 1) {
-          this.ketchupDiv.style.borderRadius = "8px";
+          this.ketchupDiv.style.borderRadius = "3px";
         } else {
           this.ketchupDiv.style.borderRadius = "0px";
-          this.ketchupDiv.style.borderBottomLeftRadius = "8px";
-          this.ketchupDiv.style.borderBottomRightRadius = "8px";
+          this.ketchupDiv.style.borderBottomLeftRadius = "3px";
+          this.ketchupDiv.style.borderBottomRightRadius = "3px";
         }
         this.ketchupDiv.style.height =
           Math.round((100 / this.nbMax) * (this.nbElement + 1)).toString(10) +
@@ -277,8 +277,10 @@ var IngredientPanel = class IngredientPanel {
         var divImageIngredient = document.createElement("div");
         var imageIngredient = document.createElement("img");
         divImageIngredient.style.height = (100 / this.nbMax).toString(10) + "%";
+        var Terminaison = (Math.random()>0.6)?"Dif": "";
         imageIngredient.src =
-          "ressources/pileElement/" + this.ingredient + ".png";
+          "ressources/pileElement/" +this.ingredient + Terminaison + ".png";
+        console.log("ressources/pileElement/" +this.ingredient + Terminaison + ".png")
         imageIngredient.style.height = "120%";
         if(this.ingredient === "cheese"){
           imageIngredient.style.height = "190%";
