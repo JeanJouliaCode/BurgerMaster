@@ -24,10 +24,11 @@ function displayOrder(listIngredientOriginal) {
   var spanDiv = document.createElement("div");
   var span = document.createElement("span");
   spanDiv.appendChild(span);
+  spanDiv.classList.add("orderLastElement");
   spanDiv.classList.add("orderElement");
   span.classList.add("orderElementSpan");
   span.textContent =
-    "= " +
+    
     Math.floor(burger.getBurgerPrice(listIngredientOriginal)).toString(10) +
     "$";
   span.style.fontFamily = "Sauce";

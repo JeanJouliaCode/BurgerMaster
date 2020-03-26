@@ -189,6 +189,8 @@ var IngredientPanel = class IngredientPanel {
       this.upgrade();
     });
 
+    var hoverBool = false;
+
     this.reservePanel.addEventListener('mouseover', () => {
       if (this.unlock) {
         this.toolTip.style.visibility = 'visible';
