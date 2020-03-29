@@ -139,6 +139,9 @@ var IngredientPanel = class IngredientPanel {
   //unlocked the reserve
   unlockReserve() {
     this.document.style.backgroundColor = "rgb(238, 237, 237)";
+    if(this.ingredient == "pickle"){
+      this.document.style.backgroundColor = 'rgb(154, 212, 157)';
+    }
 
     //display the speed of delivery
     this.speedDocument.textContent =
