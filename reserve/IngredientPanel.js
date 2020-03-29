@@ -114,7 +114,7 @@ var IngredientPanel = class IngredientPanel {
       this.priceUpgrade = this.getNewPrice(this.priceUpgrade)
       ingredientChart[this.ingredient].initPrice = this.priceUpgrade;
       this.speedDocument.textContent =
-        "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
+        "every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
       for(var i= 0; i<3 ; i++){
@@ -142,7 +142,7 @@ var IngredientPanel = class IngredientPanel {
 
     //display the speed of delivery
     this.speedDocument.textContent =
-    "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
+    "every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
     //display the price of the upgrade
     this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
@@ -227,7 +227,7 @@ var IngredientPanel = class IngredientPanel {
       }
       //display the speed of delivery
       this.speedDocument.textContent =
-      "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
+      "every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
       //display the price of the upgrade
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
