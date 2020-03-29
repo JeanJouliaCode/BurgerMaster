@@ -114,8 +114,13 @@ var IngredientPanel = class IngredientPanel {
       this.priceUpgrade = this.getNewPrice(this.priceUpgrade)
       ingredientChart[this.ingredient].initPrice = this.priceUpgrade;
       this.speedDocument.textContent =
-        this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
+        "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
+
+      for(var i= 0; i<3 ; i++){
+        this.add();
+      }
+
       updateScore();
       this.updateTootTip();
     }
@@ -137,7 +142,7 @@ var IngredientPanel = class IngredientPanel {
 
     //display the speed of delivery
     this.speedDocument.textContent =
-      (this.speedOfDelivery / 1000).toString(10) + " sec";
+    "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
     //display the price of the upgrade
     this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
@@ -191,14 +196,19 @@ var IngredientPanel = class IngredientPanel {
 
     var hoverBool = false;
 
-    this.reservePanel.addEventListener('mouseover', () => {
+    this.button.addEventListener('mouseover', () => {
+      hoverBool = true;
       if (this.unlock) {
-        this.toolTip.style.visibility = 'visible';
+        setTimeout(()=>{
+          if(hoverBool){
+            this.toolTip.style.visibility = 'visible';
+          }
+        },500)
       }
-
     })
 
-    this.reservePanel.addEventListener('mouseleave', () => {
+    this.button.addEventListener('mouseleave', () => {
+      hoverBool = false;
       if (this.unlock) {
         this.toolTip.style.visibility = 'hidden';
       }
@@ -217,7 +227,7 @@ var IngredientPanel = class IngredientPanel {
       }
       //display the speed of delivery
       this.speedDocument.textContent =
-        this.roundValue(this.speedOfDelivery / 1000, 5).toString(10) + " sec";
+      "1 every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
       //display the price of the upgrade
       this.button.textContent = this.priceUpgrade.toString(10) + "$";
 

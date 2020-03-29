@@ -4,7 +4,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   display: flex;
-  rgb(238, 237, 237);
+  background-color: #10222C;
 }
 
 body {
@@ -122,7 +122,7 @@ body {
 
 @font-face {
   font-family: Sauce;
-  src: url("./ressources/Awesome Sauce DEMO.otf") format("opentype");
+  src: url("./ressources/Amaranth-Regular.otf") format("opentype");
 }
 
 /*#################################right side related css#########################################*/
@@ -143,7 +143,7 @@ body {
 .ingredients {
   width: 100%;
   margin: 0px 0px 0 10px;
-  background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
+  background-image: url("./ressources/background/fondReserve.png");
 }
 
 .ingredientPile {
@@ -174,6 +174,10 @@ body {
   width: calc(100%/6);
   background-color: #10222C;
   height: 100%;
+  box-sizing: border-box;
+  border-style: solid ;
+  border-width: 0.5px ;
+  border-color: #09161d ;
 }
 
 .speedDelivery {
@@ -182,7 +186,7 @@ body {
   font-size: 10px;
   font-family: Sauce;
   font-size: 1vw;
-  color: rgb(255, 151, 0);
+  color: white;
 
 }
 
@@ -196,7 +200,7 @@ body {
 	font-weight:bold;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #528ecc;
-  margin-top: 14.5%;
+  margin-top: 10.5%;
   font-family: Sauce;
   font-size: 1vw;
   border: none;
@@ -218,7 +222,7 @@ body {
   width: 200%;
   height: 30%;
   z-index: 2;
-  top: -7%;
+  top: -45%;
   left: -30%;
   border-radius: 5px;
   visibility: hidden;
@@ -233,7 +237,7 @@ body {
   width: 200%;
   height: 30%;
   z-index: 2;
-  top: -7%;
+  top: -45%;
   left: -80%;
   border-radius: 5px;
   visibility: hidden;
@@ -261,11 +265,11 @@ body {
 /*''''''''''''''''''''''''''''chefs related css''''''''''''''''''''''''''''*/
 
 .characters {
-  height: calc(46% - 10px);
+  height: calc(46% - 0px);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 10px 0px 0px 10px;
+  margin: 0px 0px 0px 10px;
   width: 100%;
   background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
 }
@@ -282,7 +286,7 @@ body {
 }
 
 .upgrade1 {
-  background-color: #007d96;
+  background-color: rgb(255, 76, 9);
 }
 
 .upgrade2 {
@@ -290,21 +294,41 @@ body {
 }
 
 .upgrade3 {
-  background-color: #007d96;
+  background-color: rgb(255, 76, 9);
 }
 
 .upgradeImage {
   height: 90%;
 }
 
+
 .btnBuyUpgrade {
-  width: 45%;
+  width: 30%;
   height: 60%;
-  border-radius: 10px;
-  margin-right: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
+	box-shadow: 6px 6px 0px 1px #142d3a;
+	background-color:#007d96;
+	display:inline-block;
+	cursor:pointer;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
   font-family: Sauce;
   font-size: 1vw;
+  border: none;
+  color: white
+  ;
 }
+
+.btnBuyUpgrade:hover {
+	background-color:#0088a3;
+}
+.btnBuyUpgrade:active {
+	position:relative;
+	top:1px;
+}
+
 .button {
   flex-direction: row-reverse;
   display: flex;
@@ -312,6 +336,10 @@ body {
   height: 13%;
   align-items: center;
   justify-content: flex-start;
+  box-sizing: border-box;
+  border-style: solid ;
+  border-width: 0.5px ;
+  border-color: #10222C ;
 }
 
 .fillSpaceBackground {
@@ -351,9 +379,27 @@ body {
   height: 10%;
   margin-top: 100%;
   left: 20%;
-  border-radius: 10px;
+  font-family: Sauce;
+	box-shadow: 6px 6px 0px 1px #142d3a;
+	background-color:#007d96;
+	display:inline-block;
+	cursor:pointer;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
   font-family: Sauce;
   font-size: 1vw;
+  border: none;
+  color: white
+  ;
+}
+
+.buyChef:hover {
+	background-color:#0088a3;
+}
+.buyChef:active {
+	position:relative;
+	top:1px;
 }
 
 .infoBubbleChefLeft{

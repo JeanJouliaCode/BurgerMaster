@@ -150,11 +150,13 @@ var Chef = class Chef {
   checkMoneyButton() {
     if (!this.unlocked) {
       if (money < this.price && this.buttonPrice) {
-        this.buttonPrice.style.backgroundColor = "rgb(150,150,150)";
+        this.buttonPrice.style.backgroundColor = "#10222C";
         this.buttonPrice.style.pointerEvents = "none";
+        this.buttonPrice.style.boxShadow = 'none';
       } else {
-        this.buttonPrice.style.backgroundColor = "rgb(250,250,250)";
+        this.buttonPrice.style.backgroundColor = "#007d96";
         this.buttonPrice.style.pointerEvents = "auto";
+        this.buttonPrice.style.boxShadow = '6px 6px 0px 1px #142d3a';
       }
     } else {
       for (var upgradeBtn of this.upgradeList) {
@@ -171,11 +173,13 @@ var Chef = class Chef {
           }
           if (!unlockState) {
             if (money < chefs[this.id]["upgrade" + id]) {
-              upgradeBtn.style.backgroundColor = "rgb(150,150,150)";
+              upgradeBtn.style.backgroundColor = "#10222C";
               upgradeBtn.style.pointerEvents = "none";
+              upgradeBtn.style.boxShadow = 'none';
             } else {
-              upgradeBtn.style.backgroundColor = "rgb(250,250,250)";
+              upgradeBtn.style.backgroundColor = "#007d96";
               upgradeBtn.style.pointerEvents = "auto";
+              upgradeBtn.style.boxShadow = '6px 6px 0px 1px #142d3a';
             }
           }
         }
@@ -188,7 +192,7 @@ var Chef = class Chef {
       money -= this.price;
       this.unlocked = true;
       for (var chef of chefList) {
-        chef.document.children[0].style.backgroundColor = "Black";
+        chef.document.children[0].style.backgroundColor = "#10222C";
         var chefImage = document.getElementById(chef.id+"Img");
         chefImage.src = './ressources/chefs/'+chef.id +"Dead" +'.png';
       }
@@ -242,14 +246,21 @@ var Chef = class Chef {
       }
     }
 
-    this.chefDiv.addEventListener('mouseover', () => {
-      if (this.unlocked) {
-        this.toolTip.style.visibility = 'visible';
-      }
+    var hoverBool = false;
 
+    this.chefDiv.addEventListener('mouseover', () => {
+      hoverBool = true;
+      if (this.unlocked) {
+        setTimeout(()=>{
+          if(hoverBool){
+            this.toolTip.style.visibility = 'visible';
+          }
+        },500)
+      }
     })
 
     this.chefDiv.addEventListener('mouseleave', () => {
+      hoverBool = false;
       if (this.unlocked) {
         this.toolTip.style.visibility = 'hidden';
       }
