@@ -134,8 +134,6 @@ var IngredientPanel = class IngredientPanel {
   //unlocked the reserve
   unlockReserve() {
     this.document.style.backgroundColor = "rgb(238, 237, 237)";
-    this.button.style.pointerEvents = "auto";
-    this.button.style.backgroundColor = "rgb(238, 237, 237)";
 
     //display the speed of delivery
     this.speedDocument.textContent =
@@ -163,11 +161,13 @@ var IngredientPanel = class IngredientPanel {
   checkMoneyButton() {
     if (this.unlock) {
       if (money < this.priceUpgrade) {
-        this.button.style.backgroundColor = "rgb(150,150,150)";
+        this.button.style.backgroundColor = "#10222C";
         this.button.style.pointerEvents = "none";
+        this.button.style.boxShadow = 'none';
       } else {
-        this.button.style.backgroundColor = "rgb(250,250,250)";
+        this.button.style.backgroundColor = "#007d96";
         this.button.style.pointerEvents = "auto";
+        this.button.style.boxShadow = '6px 6px 0px 1px #142d3a';
       }
     }
   }
@@ -233,9 +233,10 @@ var IngredientPanel = class IngredientPanel {
       this.initValues = false;
     } else {
       //grey everything out
-      this.document.style.backgroundColor = "grey";
+      this.document.style.backgroundColor = "#10222C";
       this.button.style.pointerEvents = "none";
-      this.button.style.backgroundColor = "rgb(88,88,88)";
+      this.button.style.backgroundColor = "#10222C";
+      this.button.style.boxShadow = 'none';
     }
 
   }

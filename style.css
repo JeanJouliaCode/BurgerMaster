@@ -4,7 +4,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   display: flex;
-  background-color:black;
+  rgb(238, 237, 237);
 }
 
 body {
@@ -25,7 +25,7 @@ body {
   width: 35.3%;
   border-radius: 30px;
   margin: 2% auto 0;
-  background-color: rgb(253, 208, 139);
+  background-color: #007d96;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,6 +44,13 @@ body {
   position: absolute;
   bottom: 0px;
   width: 100%;
+}
+
+.wall {
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  transform: translate(0px,-100%);
 }
 
 .tableRegister {
@@ -137,7 +144,6 @@ body {
   width: 100%;
   margin: 0px 0px 0 10px;
   background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
-  border-radius: 5px;
 }
 
 .ingredientPile {
@@ -165,10 +171,9 @@ body {
 }
 
 .locked {
-  width: 13.8%;
-  background-color: black;
-  border-radius: 10px;
-  height: 92%;
+  width: calc(100%/6);
+  background-color: #10222C;
+  height: 100%;
 }
 
 .speedDelivery {
@@ -184,11 +189,29 @@ body {
 .buttonReserve {
   width: 84%;
   height: 7%;
-  border-radius: 8px;
+	box-shadow: 6px 6px 0px 1px #142d3a;
+	background-color:#007d96;
+	display:inline-block;
+	cursor:pointer;
+	font-weight:bold;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
   margin-top: 14.5%;
   font-family: Sauce;
   font-size: 1vw;
+  border: none;
+  color: white
+  ;
 }
+
+.buttonReserve:hover {
+	background-color:#0088a3;
+}
+.buttonReserve:active {
+	position:relative;
+	top:1px;
+}
+
 
 .infoBubbleLeft{
   position : relative;
@@ -245,7 +268,6 @@ body {
   margin: 10px 0px 0px 10px;
   width: 100%;
   background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
-  border-radius: 5px;
 }
 
 .character {
@@ -255,15 +277,12 @@ body {
   justify-content: flex-end;
   height: 100%;
   width: 100%;
-  border-radius: 10px;
   background-color: rgba(173, 173, 173, 0.5);
   visibility: visible;
 }
 
 .upgrade1 {
-  background-color: rgb(255, 151, 0);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  background-color: #007d96;
 }
 
 .upgrade2 {
@@ -271,7 +290,7 @@ body {
 }
 
 .upgrade3 {
-  background-color: rgb(255, 151, 0);
+  background-color: #007d96;
 }
 
 .upgradeImage {

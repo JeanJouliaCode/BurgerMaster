@@ -184,7 +184,7 @@ var Chef = class Chef {
   }
 
   buy() {
-    if (!this.unlocked && money >= this.price) {
+    if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef+1) {
       money -= this.price;
       this.unlocked = true;
       for (var chef of chefList) {
@@ -271,7 +271,7 @@ var Chef = class Chef {
       }
       else {
         var chefImage = document.getElementById(this.id+"Img");
-        this.document.children[0].style.backgroundColor = 'Black';
+        this.document.children[0].style.backgroundColor = '#10222C';
         chefImage.src = './ressources/chefs/'+this.id +"Dead" +'.png';
       }
 
