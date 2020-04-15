@@ -23,16 +23,12 @@ var Burger = class Burger {
       plate: { width: "55%", left: "20%", offset: 5 }
     };
 
-    // timing between each turn
-    this.ySpeed = 6;
-
     //is a burger beeing prepared
     this.inPreparation = false;
 
     //vertical pixel movement at each turn
     this.speedIngredient = 40;
 
-    this.speedIngredientPourcent = 5;
     this.pending = false;
 
     //image of the chef
@@ -42,6 +38,8 @@ var Burger = class Burger {
     this.init();
 
     this.speed = chefs["chef" + currentChef.toString(10)].speed;
+
+    this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }
 
   changeSpeed() {

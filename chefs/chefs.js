@@ -3,16 +3,14 @@ var chefs = {
     min: 1,
     max: 2,
     nbUnlocked: 5,
-    speed: 40,
+    speed: 20,
     unlocked: true,
     price: 10,
     ingredient: "",
     upgrade1: 20,
     upgrade2: 30,
-    upgrade3: 40,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   },
   chef1: {
     min: 1,
@@ -24,10 +22,8 @@ var chefs = {
     ingredient: "tomato",
     upgrade1: 40,
     upgrade2: 50,
-    upgrade3: 60,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   },
   chef2: {
     min: 2,
@@ -39,10 +35,8 @@ var chefs = {
     ingredient: "pickle",
     upgrade1: 70,
     upgrade2: 80,
-    upgrade3: 90,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   },
   chef3: {
     min: 3,
@@ -54,10 +48,8 @@ var chefs = {
     ingredient: "beacon",
     upgrade1: 100,
     upgrade2: 110,
-    upgrade3: 120,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   },
   chef4: {
     min: 4,
@@ -69,10 +61,8 @@ var chefs = {
     ingredient: "egg",
     upgrade1: 130,
     upgrade2: 140,
-    upgrade3: 150,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   },
   chef5: {
     min: 5,
@@ -84,10 +74,8 @@ var chefs = {
     ingredient: "bredTopBlack",
     upgrade1: 160,
     upgrade2: 170,
-    upgrade3: 180,
     upgrade1locked: true,
     upgrade2locked: true,
-    upgrade3locked: true,
   }
 };
 
@@ -107,7 +95,6 @@ var Chef = class Chef {
   ) {
     this.upgrade1 = upgrade1;
     this.upgrade2 = upgrade2;
-    this.upgrade3 = upgrade3;
 
     this.imageSrc = imageSrc;
     this.price = price;
@@ -128,6 +115,7 @@ var Chef = class Chef {
       money -= chefs[this.id]["upgrade" + doc.id];
       chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
+      this.toolTipUpgrade.style.visibility = 'hidden';
 
       switch (doc.children[0].id) {
         case "1":
@@ -136,9 +124,6 @@ var Chef = class Chef {
         case "2":
           console.log("chef" + this.id.toString(10) + " : upgrade2");
           this.upgrade2 = true;
-        case "3":
-          console.log("chef" + this.id.toString(10) + " : upgrade3");
-          this.upgrade3 = true;
       }
       doc.style.justifyContent = "center";
       doc.removeChild(doc.children[0]);
@@ -168,8 +153,6 @@ var Chef = class Chef {
               unlockState = this.upgrade1;
             case "2":
               unlockState = this.upgrade2;
-            case "3":
-              unlockState = this.upgrade3;
           }
           if (!unlockState) {
             if (money < chefs[this.id]["upgrade" + id]) {
@@ -188,13 +171,13 @@ var Chef = class Chef {
   }
 
   buy() {
-    if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef+1) {
+    if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef + 1) {
       money -= this.price;
       this.unlocked = true;
       for (var chef of chefList) {
         chef.document.children[0].style.backgroundColor = "#10222C";
-        var chefImage = document.getElementById(chef.id+"Img");
-        chefImage.src = './ressources/chefs/'+chef.id +"Dead" +'.png';
+        var chefImage = document.getElementById(chef.id + "Img");
+        chefImage.src = './ressources/chefs/' + chef.id + "Dead" + '.png';
       }
       this.document.children[0].style.backgroundColor = "white";
       this.document.children[0].style.height = "100%";
@@ -209,8 +192,8 @@ var Chef = class Chef {
         }
       }
 
-      var chefImage = document.getElementById(this.id+"Img");
-      chefImage.src = './ressources/chefs/'+this.id +'.png';
+      var chefImage = document.getElementById(this.id + "Img");
+      chefImage.src = './ressources/chefs/' + this.id + '.png';
 
       burger.changeSpeed();
     }
@@ -221,17 +204,55 @@ var Chef = class Chef {
     upgrade.children[0].addEventListener("click", () => {
       this.upgradeChef(upgrade);
     });
+
+    var hoverBool = false;
+
+    document.getElementById(this.id + "upgrade" + "1").style.display = "none";
+    document.getElementById(this.id + "upgrade" + "2").style.display = "none";
+
+    upgrade.children[0].addEventListener('mouseover', () => {
+      hoverBool = true;
+      if (this.unlocked) {
+        setTimeout(() => {
+          if (hoverBool && chefs[this.id]["upgrade" + upgrade.id + "locked"]) {
+
+            console.warn(upgrade.id)
+            console.warn(this.id + "upgrade" + "1")
+            if (upgrade.id === "1") {
+              console.warn("1")
+              document.getElementById(this.id + "upgrade" + "1").style.display = "block";
+              document.getElementById(this.id + "upgrade" + "2").style.display = "none";
+            }
+            else {
+              document.getElementById(this.id + "upgrade" + "2").style.display = "block";
+              document.getElementById(this.id + "upgrade" + "1").style.display = "none";
+            }
+            this.toolTipUpgrade.style.visibility = 'visible';
+          }
+        }, 500)
+      }
+    })
+
+    upgrade.children[0].addEventListener('mouseleave', () => {
+      hoverBool = false;
+      if (this.unlocked) {
+        this.toolTipUpgrade.style.visibility = 'hidden';
+        document.getElementById(this.id + "upgrade" + "1").style.display = "none";
+        document.getElementById(this.id + "upgrade" + "2").style.display = "none";
+      }
+    })
   }
 
   init() {
     this.document.children[0].children[3].src = this.imageSrc;
-    this.toolTip = document.getElementById(this.id+"InfoBubble");
-    this.chefDiv = document.getElementById(this.id);
-    console.log("test",this.chefDiv)
+    this.toolTip = document.getElementById(this.id + "InfoBubble");
+    this.toolTipUpgrade = document.getElementById(this.id + "InfoBubbleUpgrade");
+    this.chefDiv = document.getElementById(this.id + "Img");
+    console.log("test", this.chefDiv)
     this.upgradeList = [];
 
     for (var upgrade of this.document.children[0].children) {
-      if (upgrade.id == "1" || upgrade.id == "2" || upgrade.id == "3") {
+      if (upgrade.id == "1" || upgrade.id == "2") {
         this.upgradeList.push(upgrade.children[0]);
         var imageUpgrade = document.createElement("img");
         imageUpgrade.classList.add("upgradeImage");
@@ -251,11 +272,11 @@ var Chef = class Chef {
     this.chefDiv.addEventListener('mouseover', () => {
       hoverBool = true;
       if (this.unlocked) {
-        setTimeout(()=>{
-          if(hoverBool){
+        setTimeout(() => {
+          if (hoverBool) {
             this.toolTip.style.visibility = 'visible';
           }
-        },500)
+        }, 500)
       }
     })
 
@@ -281,9 +302,9 @@ var Chef = class Chef {
         this.document.children[0].style.backgroundColor = "white";
       }
       else {
-        var chefImage = document.getElementById(this.id+"Img");
+        var chefImage = document.getElementById(this.id + "Img");
         this.document.children[0].style.backgroundColor = '#10222C';
-        chefImage.src = './ressources/chefs/'+this.id +"Dead" +'.png';
+        chefImage.src = './ressources/chefs/' + this.id + "Dead" + '.png';
       }
 
     }
