@@ -28,7 +28,7 @@ function startGame() {
 }
 
 function makeBurger() {
-  if (!burger.pending) {
+  if (!pending) {
     burger.prepare(generateCommand());
   }
 }

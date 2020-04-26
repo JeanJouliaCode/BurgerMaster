@@ -112,18 +112,33 @@ var Chef = class Chef {
 
   upgradeChef(doc) {
     if (money >= chefs[this.id]["upgrade" + doc.id]) {
+      console.log('upgrade1')
       money -= chefs[this.id]["upgrade" + doc.id];
       chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
       this.toolTipUpgrade.style.visibility = 'hidden';
-
-      switch (doc.children[0].id) {
-        case "1":
-          this.upgrade1 = true;
-          console.log("chef" + this.id.toString(10) + " : upgrade1");
+      console.log('upgrade2',doc.id)
+      switch (doc.id) {
         case "2":
-          console.log("chef" + this.id.toString(10) + " : upgrade2");
+          this.upgrade1 = true;
+          break
+        case "1":
           this.upgrade2 = true;
+          switch (this.id) {
+            case "chef0":
+              upgradeDoublePrice();
+              break;
+            case "chef1":
+              upgradeUpgradeLowest();
+              break;
+            case "chef2":
+              upgradeBiggerBurger();
+              break;
+            case "chef5":
+              upgradeTowerBurger();
+              break;
+          }
+          break;
       }
       doc.style.justifyContent = "center";
       doc.removeChild(doc.children[0]);

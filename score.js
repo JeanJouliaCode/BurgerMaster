@@ -5,6 +5,11 @@ var save = {
   ingredientChart: null,
   chefs: null,
   currentChef: null,
+  towerBurger: null,
+  offsetmax: null,
+  command : null,
+  pending : null,
+  inPreparation : null,
 }
 
 function getItemLocalStorage() {
@@ -17,6 +22,11 @@ function getItemLocalStorage() {
     chefs = save.chefs;
     currentChef = save.currentChef;
     ingredientChart = save.ingredientChart;
+    towerBurger = save.towerBurger;
+    offsetmax = save.offsetmax;
+    command = save.command;
+    pending = save.pending;
+    inPreparation = save.inPreparation;
   }
 }
 
@@ -28,6 +38,11 @@ function updateScore() {
   save.money = money;
   save.chefs = chefs;
   save.currentChef = currentChef;
+  save.towerBurger = towerBurger;
+  save.offsetmax = offsetmax;
+  save.command = command;
+  save.pending = pending;
+  save.inPreparation = inPreparation;
   localStorage.setItem('saveObject', JSON.stringify(save));
   var score = document.getElementById("scoreDigit");
   score.textContent = (Math.round(money * 10) / 10).toString(10);

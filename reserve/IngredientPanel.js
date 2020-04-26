@@ -309,7 +309,7 @@ var IngredientPanel = class IngredientPanel {
         ingredientChart[this.ingredient].nbElement += 1;
       }
     }
-    if (burger.pending) {
+    if (pending) {
       burger.prepare(command);
     }
   }

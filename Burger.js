@@ -1,3 +1,8 @@
+var pending = false;
+
+//is a burger beeing prepared
+var inPreparation = false;
+
 var Burger = class Burger {
   constructor() {
     // get div of the burger
@@ -23,13 +28,8 @@ var Burger = class Burger {
       plate: { width: "55%", left: "20%", offset: 5 }
     };
 
-    //is a burger beeing prepared
-    this.inPreparation = false;
-
     //vertical pixel movement at each turn
     this.speedIngredient = 40;
-
-    this.pending = false;
 
     //image of the chef
     this.chefImage = null;
@@ -44,6 +44,7 @@ var Burger = class Burger {
 
   changeSpeed() {
     this.speed = chefs["chef" + currentChef.toString(10)].speed;
+    this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }
 
   //sleep fonction
@@ -68,18 +69,18 @@ var Burger = class Burger {
   //prepare the burger
   async prepare(listElement) {
     //check if the reserve can prepare this generated burger
-    if (this.pending == false) {
+    if (pending == false) {
       displayOrder(listElement);
     }
     if (!checkReserve(listElement)) {
-      this.pending = true;
+      pending = true;
 
       return;
     }
-    this.pending = false;
+    pending = false;
     //if a bruger is already being prepared, it's prevent from preparing one again
-    if (!this.inPreparation) {
-      this.inPreparation = true;
+    if (!inPreparation) {
+      inPreparation = true;
       var generalOffset = 25;
 
       //put each ingredient on the plate
@@ -114,10 +115,12 @@ var Burger = class Burger {
 
       money += this.getBurgerPrice(listElement);
 
+
+
+      inPreparation = false;
+
       //update displayed score
       updateScore();
-
-      this.inPreparation = false;
 
       //make another burger
       makeBurger();
