@@ -117,7 +117,7 @@ var Chef = class Chef {
       chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
       this.toolTipUpgrade.style.visibility = 'hidden';
-      console.log('upgrade2',doc.id)
+      console.log('upgrade2', doc.id)
       switch (doc.id) {
         case "2":
           this.upgrade1 = true;
@@ -133,6 +133,9 @@ var Chef = class Chef {
               break;
             case "chef2":
               upgradeBiggerBurger();
+              break;
+            case "chef3":
+              randomMoreExpensiveBurger();
               break;
             case "chef5":
               upgradeTowerBurger();

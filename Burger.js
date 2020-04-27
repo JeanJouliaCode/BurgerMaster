@@ -3,6 +3,8 @@ var pending = false;
 //is a burger beeing prepared
 var inPreparation = false;
 
+var priceBrugerMultiplicator = 1;
+
 var Burger = class Burger {
   constructor() {
     // get div of the burger
@@ -136,7 +138,7 @@ var Burger = class Burger {
         priceBurger += ingredientChart[element].price;
       }
     }
-    return priceBurger;
+    return priceBrugerMultiplicator != 1 && Math.random() > 0.8 ? priceBurger * priceBrugerMultiplicator : priceBurger;
   }
 
   //push the plate and everything to the side
