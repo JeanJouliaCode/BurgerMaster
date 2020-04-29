@@ -10,6 +10,8 @@ var save = {
   command : null,
   pending : null,
   inPreparation : null,
+  priceIncrease: null,
+  isThereKetchup: null,
 }
 
 function getItemLocalStorage() {
@@ -27,6 +29,8 @@ function getItemLocalStorage() {
     command = save.command;
     pending = save.pending;
     inPreparation = save.inPreparation;
+    priceIncrease = save.priceIncrease;
+    isThereKetchup = save.isThereKetchup;
   }
 }
 
@@ -43,6 +47,8 @@ function updateScore() {
   save.command = command;
   save.pending = pending;
   save.inPreparation = inPreparation;
+  save.priceIncrease = priceIncrease;
+  save.isThereKetchup = isThereKetchup;
   localStorage.setItem('saveObject', JSON.stringify(save));
   var score = document.getElementById("scoreDigit");
   score.textContent = (Math.round(money * 10) / 10).toString(10);

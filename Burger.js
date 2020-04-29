@@ -1,5 +1,7 @@
 var pending = false;
 
+var priceIncrease  = false; 
+
 //is a burger beeing prepared
 var inPreparation = false;
 
@@ -138,6 +140,7 @@ var Burger = class Burger {
         priceBurger += ingredientChart[element].price;
       }
     }
+
     return priceBrugerMultiplicator != 1 && Math.random() > 0.8 ? priceBurger * priceBrugerMultiplicator : priceBurger;
   }
 

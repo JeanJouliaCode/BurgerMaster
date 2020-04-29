@@ -129,13 +129,16 @@ var Chef = class Chef {
               upgradeDoublePrice();
               break;
             case "chef1":
-              upgradeUpgradeLowest();
+              alwaysKetchup();     
               break;
             case "chef2":
-              upgradeBiggerBurger();
+              upgradeUpgradeLowest();            
               break;
             case "chef3":
-              randomMoreExpensiveBurger();
+              upgradeBiggerBurger();
+              break;
+            case 'chef4':
+              multiplyPriceBurger();
               break;
             case "chef5":
               upgradeTowerBurger();
@@ -173,7 +176,7 @@ var Chef = class Chef {
               unlockState = this.upgrade2;
           }
           if (!unlockState) {
-            if (money < chefs[this.id]["upgrade" + id]) {
+            if (money < chefs[this.id]["upgrade" + id] || parseInt(this.id.substring(4)) != currentChef) {
               upgradeBtn.style.backgroundColor = "#10222C";
               upgradeBtn.style.pointerEvents = "none";
               upgradeBtn.style.boxShadow = 'none';
@@ -209,11 +212,16 @@ var Chef = class Chef {
           reserve.unlockReserve();
         }
       }
+      for(var up of chefList[parseInt(this.id.substring(4)) - 1].upgradeList){
+        up.parentElement.style.backgroundColor = '#142d3a';
+      }
 
       var chefImage = document.getElementById(this.id + "Img");
       chefImage.src = './ressources/chefs/' + this.id + '.png';
 
       burger.changeSpeed();
+
+      updateScore();
     }
   }
 
@@ -228,16 +236,12 @@ var Chef = class Chef {
     document.getElementById(this.id + "upgrade" + "1").style.display = "none";
     document.getElementById(this.id + "upgrade" + "2").style.display = "none";
 
-    upgrade.children[0].addEventListener('mouseover', () => {
+    upgrade.addEventListener('mouseover', () => {
       hoverBool = true;
       if (this.unlocked) {
         setTimeout(() => {
-          if (hoverBool && chefs[this.id]["upgrade" + upgrade.id + "locked"]) {
-
-            console.warn(upgrade.id)
-            console.warn(this.id + "upgrade" + "1")
+          if (hoverBool) {
             if (upgrade.id === "1") {
-              console.warn("1")
               document.getElementById(this.id + "upgrade" + "1").style.display = "block";
               document.getElementById(this.id + "upgrade" + "2").style.display = "none";
             }
@@ -251,7 +255,7 @@ var Chef = class Chef {
       }
     })
 
-    upgrade.children[0].addEventListener('mouseleave', () => {
+    upgrade.addEventListener('mouseleave', () => {
       hoverBool = false;
       if (this.unlocked) {
         this.toolTipUpgrade.style.visibility = 'hidden';
@@ -266,11 +270,13 @@ var Chef = class Chef {
     this.toolTip = document.getElementById(this.id + "InfoBubble");
     this.toolTipUpgrade = document.getElementById(this.id + "InfoBubbleUpgrade");
     this.chefDiv = document.getElementById(this.id + "Img");
-    console.log("test", this.chefDiv)
     this.upgradeList = [];
+
+    //this.document.children[0].children[0].style.backgroundColor = "blue";
 
     for (var upgrade of this.document.children[0].children) {
       if (upgrade.id == "1" || upgrade.id == "2") {
+        //upgrade.style.backgroundColor = "blue";
         this.upgradeList.push(upgrade.children[0]);
         var imageUpgrade = document.createElement("img");
         imageUpgrade.classList.add("upgradeImage");
@@ -323,6 +329,9 @@ var Chef = class Chef {
         var chefImage = document.getElementById(this.id + "Img");
         this.document.children[0].style.backgroundColor = '#10222C';
         chefImage.src = './ressources/chefs/' + this.id + "Dead" + '.png';
+        for(var up of this.upgradeList){
+          up.parentElement.style.backgroundColor = '#142d3a';
+        }
       }
 
     }

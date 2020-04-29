@@ -5,6 +5,7 @@ function upgradeDoublePrice() {
 
 function upgradeUpgradeLowest() {
     var ingredient = [
+
         { name: "bredTop", nb: 0 }
         , { name: "meat", nb: ingredientChart.meat.nbElement }
         , { name: "cheese", nb: ingredientChart.cheese.nbElement }
@@ -30,13 +31,13 @@ function upgradeUpgradeLowest() {
 
     var upgrade2 = ingredient[1].name;
 
+
     console.log(upgrade1, upgrade2);
 
     for (var food of foodList) {
         if (food.ingredient == upgrade1 || food.ingredient == upgrade2) {
             for (i = 0; i < 3; i++) {
                 food.upgrade();
-                console.log('upgraded')
             }
         }
     }
@@ -47,9 +48,17 @@ function upgradeTowerBurger() {
     towerBurger = true;
 }
 
-function upgradeBiggerBurger() {
-    offsetmax = 2;
+function upgradeBiggerBurger(){
+    offsetmax = 1;
 }
+
+function multiplyPriceBurger(){
+    priceIncrease = true;
+}
+
+function alwaysKetchup(){
+    isThereKetchup =true;
+
 
 function randomMoreExpensiveBurger() {
     priceBrugerMultiplicator = 3;

@@ -9,7 +9,7 @@ var ingredientChart = {
     unlock: true,
     nb: 20,
     nbElement: 20,
-    price: 1,
+    price: 3,
     initPrice: 120,
     initSpeed: 30000
   },
