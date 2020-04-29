@@ -4,6 +4,8 @@ var towerBurger = false;
 
 var offsetmax = 0;
 
+var isThereKetchup =false;
+
 function generateCommand() {
   var isBredBlack = false;
   command = ["plate"];
@@ -19,7 +21,7 @@ function generateCommand() {
     command.push("bredBottom");
   }
 
-  if (Math.floor(Math.random() * 10) >= 5) {
+  if (Math.floor(Math.random() * 10) >= 5 || isThereKetchup) {
     command.push("ketchup");
   }
 

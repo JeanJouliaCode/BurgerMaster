@@ -7,6 +7,7 @@ var chefList = [];
 var isGameGoing = true;
 
 function startGame() {
+  //currentChef = 0;
   getItemLocalStorage();
   //initialise the burger
   burger = new Burger();
@@ -28,9 +29,113 @@ function startGame() {
 }
 
 function makeBurger() {
+  
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('nothing',list)
+  // currentChef = 0;
+  // upgradeDoublePrice();
+  
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('upgradeDoublePrice',list)
+  // currentChef = 0;
+  // alwaysKetchup()
+  
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('alwaysKetchup',list)
+  // currentChef = 0;
+  // upgradeUpgradeLowest()
+  
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+  
+  // console.log('upgradeUpgradeLowest',list)
+  // currentChef = 0;
+  // upgradeBiggerBurger()
+  
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('upgradeBiggerBurger',list)
+  // currentChef = 0;
+  // multiplyPriceBurger()
+
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('multiplyPriceBurger',list)
+  // currentChef = 0;
+  // upgradeTowerBurger()
+
+  // var list = [];
+  // for(var i= 0 ; i<6 ; i++){
+  //   var price = 0;
+  //   for(var j = 0 ; j < 1000 ; j++){
+  //     price += burger.getBurgerPrice(generateCommand());
+  //   }
+  //   list.push({"c": currentChef , "price" :price/1000 })
+  //   currentChef++;
+  // }
+
+  // console.log('upgradeTowerBurger',list)
+
+
+
+  // return;
+
+  
+  
   if (!pending) {
     burger.prepare(generateCommand());
   }
+  updateScore();
 }
 
 function initFoodReserve() {

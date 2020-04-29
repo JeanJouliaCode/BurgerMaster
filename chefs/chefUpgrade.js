@@ -16,12 +16,9 @@ function upgradeUpgradeLowest(){
     ,{name:"egg",nb:ingredientChart.egg.nbElement}
     ,{name:"bredTopBlack",nb:ingredientChart.bredTopBlack.nbElement}]
 
-    console.log(ingredient.length);
     
     for( i = 0 ; i<ingredient.length ; i++){
         for( j = 0 ; j<(ingredient.length-i-1); j++){
-            console.log(ingredient[j], j)
-            console.log(ingredient[j+1], j+1)
             if(ingredient[j].nb>ingredient[j+1].nb){
                 var tmp = ingredient[j];
                 ingredient[j]= ingredient[j+1];
@@ -35,12 +32,9 @@ function upgradeUpgradeLowest(){
     var upgrade2 = ingredient[1].name;
 
     for(var food of foodList){
-        console.log(food)
         if(food.ingredient == upgrade1 || food.ingredient == upgrade2){
-            console.log('validated')
             for(i=0 ; i<3 ; i++){
                 food.upgrade();
-                console.log('upgraded')
             }
         }
     }
@@ -52,6 +46,14 @@ function upgradeTowerBurger(){
 }
 
 function upgradeBiggerBurger(){
-    offsetmax = 2;
+    offsetmax = 1;
+}
+
+function multiplyPriceBurger(){
+    priceIncrease = true;
+}
+
+function alwaysKetchup(){
+    isThereKetchup =true;
 }
 

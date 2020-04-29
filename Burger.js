@@ -1,5 +1,7 @@
 var pending = false;
 
+var priceIncrease  = false; 
+
 //is a burger beeing prepared
 var inPreparation = false;
 
@@ -136,7 +138,7 @@ var Burger = class Burger {
         priceBurger += ingredientChart[element].price;
       }
     }
-    return priceBurger;
+    return priceIncrease && Math.random()>0.80 ? priceBurger*3  : priceBurger;
   }
 
   //push the plate and everything to the side
