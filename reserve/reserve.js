@@ -10,11 +10,11 @@ function generateCommand() {
   var isBredBlack = false;
   command = ["plate"];
   if (currentChef === 5) {
-    if(Math.floor(Math.random() * 10) >= 4) {
+    if (Math.floor(Math.random() * 10) >= 4) {
       command.push("bredBottomBlack");
       isBredBlack = true;
     }
-    else{
+    else {
       command.push("bredBottom");
     }
   } else {
@@ -29,21 +29,21 @@ function generateCommand() {
     command.push("meat");
   }
 
-  var nbElementAdded = towerBurger && Math.random()> 0.80 ? 30 : 
+  var nbElementAdded = towerBurger && Math.random() > 0.80 ? 30 :
     Math.floor(
       Math.random() *
-        (chefs["chef" + currentChef.toString(10)].max + offsetmax-
-          chefs["chef" + currentChef.toString(10)].min +offsetmax +
-          1)
-    ) + chefs["chef" + currentChef.toString(10)].min +offsetmax;
-    
+      (chefs["chef" + currentChef.toString(10)].max + offsetmax -
+        chefs["chef" + currentChef.toString(10)].min +
+        1)
+    ) + chefs["chef" + currentChef.toString(10)].min;
+
   var i = 0;
 
   while (i < nbElementAdded) {
     var ingredient =
       regularIngredient[Math.floor(Math.random() * regularIngredient.length)];
 
-    if (ingredientChart[ingredient].unlock ) {
+    if (ingredientChart[ingredient].unlock) {
       i++;
       command.push(ingredient);
     }
