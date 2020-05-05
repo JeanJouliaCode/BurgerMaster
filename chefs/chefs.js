@@ -115,7 +115,7 @@ var Chef = class Chef {
       chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
       this.toolTipUpgrade.style.visibility = 'hidden';
-      console.log('doc',doc)
+      
       switch (doc.id) {
         case "1":
           this.upgrade1 = false;
