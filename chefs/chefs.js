@@ -86,7 +86,6 @@ var Chef = class Chef {
     document,
     upgrade1,
     upgrade2,
-    upgrade3,
     imageSrc,
     price,
     speed,
@@ -112,18 +111,17 @@ var Chef = class Chef {
 
   upgradeChef(doc) {
     if (money >= chefs[this.id]["upgrade" + doc.id]) {
-      console.log('upgrade1')
       money -= chefs[this.id]["upgrade" + doc.id];
       chefs[this.id]["upgrade" + doc.id + "locked"] = false;
       doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
       this.toolTipUpgrade.style.visibility = 'hidden';
-      console.log('upgrade2', doc.id)
+      
       switch (doc.id) {
-        case "2":
-          this.upgrade1 = true;
-          break
         case "1":
-          this.upgrade2 = true;
+          this.upgrade1 = false;
+          break
+        case "2":
+          this.upgrade2 = false;
           switch (this.id) {
             case "chef0":
               upgradeDoublePrice();
@@ -166,27 +164,29 @@ var Chef = class Chef {
       }
     } else {
       for (var upgradeBtn of this.upgradeList) {
-        if (upgradeBtn.parentNode) {
-          var id = upgradeBtn.parentNode.id;
-          var unlockState = false;
+          var id = upgradeBtn.id;
+          var locked = false;
           switch (id) {
-            case "1":
-              unlockState = this.upgrade1;
             case "2":
-              unlockState = this.upgrade2;
+              locked = this.upgrade2;
+              break;
+            case "1":
+              locked = this.upgrade1;
+              break;
           }
-          if (!unlockState) {
-            if (money < chefs[this.id]["upgrade" + id] || parseInt(this.id.substring(4)) != currentChef) {
-              upgradeBtn.style.backgroundColor = "#10222C";
-              upgradeBtn.style.pointerEvents = "none";
-              upgradeBtn.style.boxShadow = 'none';
+          console.log('fggf',this.id,locked , this.upgrade1,this.upgrade2)
+          if (locked ) {
+            if (money < chefs[this.id]["upgrade" + id] || parseInt(this.id.substring(4)) !== currentChef) {
+              upgradeBtn.children[0].style.backgroundColor = "#10222C";
+              upgradeBtn.children[0].style.pointerEvents = "none";
+              upgradeBtn.children[0].style.boxShadow = 'none';
             } else {
-              upgradeBtn.style.backgroundColor = "#007d96";
-              upgradeBtn.style.pointerEvents = "auto";
-              upgradeBtn.style.boxShadow = '6px 6px 0px 1px #142d3a';
+              upgradeBtn.children[0].style.backgroundColor = "#007d96";
+              upgradeBtn.children[0].style.pointerEvents = "auto";
+              upgradeBtn.children[0].style.boxShadow = '6px 6px 0px 1px #142d3a';
             }
           }
-        }
+        
       }
     }
   }
@@ -213,7 +213,12 @@ var Chef = class Chef {
         }
       }
       for(var up of chefList[parseInt(this.id.substring(4)) - 1].upgradeList){
-        up.parentElement.style.backgroundColor = '#142d3a';
+        console.log('gfgf')
+        console.log('hey',chefList[parseInt(this.id.substring(4)) - 1]['upgrade'+up.id])
+        if(chefList[parseInt(this.id.substring(4)) - 1]['upgrade'+up.id] ){
+          up.style.backgroundColor = '#142d3a';
+        }
+        
       }
 
       var chefImage = document.getElementById(this.id + "Img");
@@ -277,10 +282,14 @@ var Chef = class Chef {
     for (var upgrade of this.document.children[0].children) {
       if (upgrade.id == "1" || upgrade.id == "2") {
         //upgrade.style.backgroundColor = "blue";
-        this.upgradeList.push(upgrade.children[0]);
+        this.upgradeList.push(upgrade);
         var imageUpgrade = document.createElement("img");
         imageUpgrade.classList.add("upgradeImage");
         imageUpgrade.src = "ressources/chefs/upgrade/spatulaGrey.png";
+        if(parseInt(this.id.substring(4)) < currentChef && chefs[this.id]["upgrade" + upgrade.id + "locked"]){
+          console.log(upgrade.id , this.id)
+          upgrade.style.backgroundColor = '#142d3a';
+        }
         upgrade.appendChild(imageUpgrade);
         this.initUpgrade(upgrade);
         if (!chefs[this.id]["upgrade" + upgrade.id + "locked"]) {
@@ -321,7 +330,7 @@ var Chef = class Chef {
       });
     } else {
       this.document.removeChild(this.document.children[1]);
-      console.warn(parseInt(this.id.substring(4)), currentChef)
+      console.warn(parseInt(this.id.substring(4)))
       if (parseInt(this.id.substring(4)) === currentChef) {
         this.document.children[0].style.backgroundColor = "white";
       }
@@ -329,9 +338,6 @@ var Chef = class Chef {
         var chefImage = document.getElementById(this.id + "Img");
         this.document.children[0].style.backgroundColor = '#10222C';
         chefImage.src = './ressources/chefs/' + this.id + "Dead" + '.png';
-        for(var up of this.upgradeList){
-          up.parentElement.style.backgroundColor = '#142d3a';
-        }
       }
 
     }
