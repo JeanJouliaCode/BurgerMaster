@@ -44,7 +44,7 @@ var Burger = class Burger {
     this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }
 
-  changeSpeed() {
+  changeSpeed(s) {
     this.speed = chefs["chef" + currentChef.toString(10)].speed;
     this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }

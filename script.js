@@ -20,15 +20,13 @@ function startGame() {
   //fill up the food reserve
   initFoodReserve();
 
-  updateScore();
-
   initChef();
 
   //get div order to maker burger when clicked for test purpose
   makeBurger();
 }
 
-function makeBurger() {
+async function makeBurger() {
   
   // var list = [];
   // for(var i= 0 ; i<6 ; i++){
@@ -127,9 +125,18 @@ function makeBurger() {
   // console.log('upgradeTowerBurger',list)
 
 
-
   // return;
 
+  // for(i = 0 ; i<50 ; i+=3){
+  //   console.log('speed',i);
+  //   var t1 = new Date();
+  //   burger.changeSpeed(i)
+  //   await burger.prepare(['bredTop','bredTop','bredTop','bredTop','bredTop']);
+  //   var t2 =  new Date()- t1;
+  //   console.log(t2);
+  // }
+
+  // return 
   
   
   if (!pending) {
@@ -161,9 +168,8 @@ function initChef() {
   for (chef of document.getElementsByClassName("locked")) {
     var newChef = new Chef(
       chef,
-      false,
-      false,
-      false,
+      chefs[chef.id].upgrade1locked,
+      chefs[chef.id].upgrade2locked,
       "./ressources/chefs/" + chef.id + ".png",
       chefs[chef.id].price,
       chefs[chef.id].speed,
