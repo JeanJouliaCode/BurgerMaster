@@ -1,6 +1,8 @@
 //create the display for the burger
 var burger;
 
+var tamponTmp = 0;
+
 //chef List
 var chefList = [];
 
@@ -26,119 +28,16 @@ function startGame() {
   makeBurger();
 }
 
+window.onblur = function() {
+
+};
+
+window.onfocus = function() {
+
+};
+
 async function makeBurger() {
-  
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('nothing',list)
-  // currentChef = 0;
-  // upgradeDoublePrice();
-  
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('upgradeDoublePrice',list)
-  // currentChef = 0;
-  // alwaysKetchup()
-  
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('alwaysKetchup',list)
-  // currentChef = 0;
-  // upgradeUpgradeLowest()
-  
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-  
-  // console.log('upgradeUpgradeLowest',list)
-  // currentChef = 0;
-  // upgradeBiggerBurger()
-  
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('upgradeBiggerBurger',list)
-  // currentChef = 0;
-  // multiplyPriceBurger()
-
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('multiplyPriceBurger',list)
-  // currentChef = 0;
-  // upgradeTowerBurger()
-
-  // var list = [];
-  // for(var i= 0 ; i<6 ; i++){
-  //   var price = 0;
-  //   for(var j = 0 ; j < 1000 ; j++){
-  //     price += burger.getBurgerPrice(generateCommand());
-  //   }
-  //   list.push({"c": currentChef , "price" :price/1000 })
-  //   currentChef++;
-  // }
-
-  // console.log('upgradeTowerBurger',list)
-
-
-  // return;
-
-  // for(i = 0 ; i<50 ; i+=3){
-  //   console.log('speed',i);
-  //   var t1 = new Date();
-  //   burger.changeSpeed(i)
-  //   await burger.prepare(['bredTop','bredTop','bredTop','bredTop','bredTop']);
-  //   var t2 =  new Date()- t1;
-  //   console.log(t2);
-  // }
-
-  // return 
-  
-  
+  console.log('pending',pending)
   if (!pending) {
     burger.prepare(generateCommand());
   }

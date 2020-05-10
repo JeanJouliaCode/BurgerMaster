@@ -53,6 +53,15 @@ var Burger = class Burger {
 
   //sleep fonction
   sleep(ms) {
+    var msBis = ms;
+    if(tamponTmp>0){
+      if(tamponTmp>=msBis){
+        tamponTmp-=msBis;
+        return
+      }
+      msBis-= tamponTmp;
+      tamponTmp=0;
+    }
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
@@ -78,9 +87,9 @@ var Burger = class Burger {
     }
     if (!checkReserve(listElement)) {
       pending = true;
-
       return;
     }
+
     pending = false;
     //if a bruger is already being prepared, it's prevent from preparing one again
     if (!inPreparation) {

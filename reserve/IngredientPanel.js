@@ -155,22 +155,22 @@ var IngredientPanel = class IngredientPanel {
   getNewSPeed(oldSpeed) {
     switch(currentChef){
       case '0':
-        oldPrice+=690;
+        oldPrice+=890;
         break;
       case '1':
-        oldPrice+=280;
+        oldPrice+=480;
         break;
       case '2':
-        oldPrice+=180;
+        oldPrice+=280;
         break;
       case '3':
-        oldPrice+=75;
+        oldPrice+=175;
         break;
       case '4':
-        oldPrice+=17;
+        oldPrice+=117;
         break;
       case '5':
-        oldPrice+=10;
+        oldPrice+=80;
         break;
     }
     return this.roundValue(oldSpeed * 0.90);

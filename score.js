@@ -9,7 +9,6 @@ var save = {
   offsetmax: null,
   command : null,
   pending : null,
-  inPreparation : null,
   priceIncrease: null,
   isThereKetchup: null,
 }
@@ -28,7 +27,6 @@ function getItemLocalStorage() {
     offsetmax = save.offsetmax;
     command = save.command;
     pending = save.pending;
-    inPreparation = save.inPreparation;
     priceIncrease = save.priceIncrease;
     isThereKetchup = save.isThereKetchup;
   }
@@ -46,7 +44,6 @@ function updateScore() {
   save.offsetmax = offsetmax;
   save.command = command;
   save.pending = pending;
-  save.inPreparation = inPreparation;
   save.priceIncrease = priceIncrease;
   save.isThereKetchup = isThereKetchup;
   localStorage.setItem('saveObject', JSON.stringify(save));
