@@ -15,7 +15,7 @@ var ingredientChart = {
   },
   salad: {
     unlock: true, nb: 20,
-    nbElement: 10, price: 2, initPrice: 40, initSpeed: 28000
+    nbElement: 10, price: 2, initPrice: 40, initSpeed: 25000
   },
   cheese: {
     unlock: true, nb: 30,
@@ -155,16 +155,16 @@ var IngredientPanel = class IngredientPanel {
   getNewSPeed(oldSpeed) {
     switch(currentChef){
       case '0':
-        oldPrice+=490;
+        oldPrice+=690;
         break;
       case '1':
-        oldPrice+=180;
+        oldPrice+=280;
         break;
       case '2':
-        oldPrice+=80;
+        oldPrice+=180;
         break;
       case '3':
-        oldPrice+=35;
+        oldPrice+=75;
         break;
       case '4':
         oldPrice+=17;
