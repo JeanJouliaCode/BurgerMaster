@@ -3,59 +3,59 @@ var foodList = [];
 
 //every information about the food
 var ingredientChart = {
-  bredTop: { unlock: true, nb: 20, nbElement: 20, price: 1, initPrice: 20, initSpeed: 16000 },
-  meat: { unlock: true, nb: 20, nbElement: 20, price: 1, initPrice: 110, initSpeed: 15000 },
+  bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 22000 },
+  meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 24000 },
   ketchup: {
     unlock: true,
     nb: 20,
-    nbElement: 20,
+    nbElement: 10,
     price: 3,
-    initPrice: 120,
-    initSpeed: 30000
+    initPrice: 40,
+    initSpeed: 28000
   },
   salad: {
     unlock: true, nb: 20,
-    nbElement: 20, price: 2, initPrice: 130, initSpeed: 20000
+    nbElement: 10, price: 2, initPrice: 40, initSpeed: 28000
   },
   cheese: {
     unlock: true, nb: 30,
-    nbElement: 30, price: 3, initPrice: 140, initSpeed: 21000
+    nbElement: 15, price: 3, initPrice: 40, initSpeed: 26000
   },
   pickle: {
     unlock: false,
     nb: 20,
     nbElement: 20,
     price: 4,
-    initPrice: 150,
-    initSpeed: 10000
+    initPrice: 260,
+    initSpeed: 3660
   },
   tomato: {
     unlock: false,
     nb: 20,
     nbElement: 20,
-    price: 5,
+    price: 200,
     initPrice: 160,
-    initSpeed: 10000
+    initSpeed: 6650
   },
   beacon: {
     unlock: false,
     nb: 20,
     nbElement: 20,
     price: 6,
-    initPrice: 170,
-    initSpeed: 10000
+    initPrice: 300,
+    initSpeed: 1960
   },
   bredTopBlack: {
     unlock: false,
     nb: 20,
     nbElement: 20,
     price: 7,
-    initPrice: 180,
-    initSpeed: 10000
+    initPrice: 640,
+    initSpeed: 405
   },
   egg: {
     unlock: false, nb: 20,
-    nbElement: 20, price: 8, initPrice: 190, initSpeed: 100000
+    nbElement: 20, price: 8, initPrice: 400, initSpeed: 1120
   }
 };
 
@@ -129,10 +129,50 @@ var IngredientPanel = class IngredientPanel {
 
   //getPrice
   getNewPrice(oldPrice) {
+    switch(currentChef){
+      case '0':
+        oldPrice+=7.5;
+        break;
+      case '1':
+        oldPrice+=3.75;
+        break;
+      case '2':
+        oldPrice+=2;
+        break;
+      case '3':
+        oldPrice+=4.16;
+        break;
+      case '4':
+        oldPrice+=10;
+        break;
+      case '5':
+        oldPrice+=12;
+        break;
+    }
     return this.roundValue(oldPrice * 1.10);
   }
 
   getNewSPeed(oldSpeed) {
+    switch(currentChef){
+      case '0':
+        oldPrice+=490;
+        break;
+      case '1':
+        oldPrice+=180;
+        break;
+      case '2':
+        oldPrice+=80;
+        break;
+      case '3':
+        oldPrice+=35;
+        break;
+      case '4':
+        oldPrice+=17;
+        break;
+      case '5':
+        oldPrice+=10;
+        break;
+    }
     return this.roundValue(oldSpeed * 0.90);
   }
 

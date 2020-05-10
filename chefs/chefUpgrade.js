@@ -58,9 +58,15 @@ function multiplyPriceBurger(){
 
 function alwaysKetchup(){
     isThereKetchup =true;
-
+}
 
 function randomMoreExpensiveBurger() {
     priceBrugerMultiplicator = 3;
+}
+
+function upgradeSpeedChef(speed){
+    chefs["chef" + currentChef.toString(10)].speed = speed;
+    burger.changeSpeed();
+    
 }
 

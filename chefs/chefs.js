@@ -3,12 +3,12 @@ var chefs = {
     min: 1,
     max: 2,
     nbUnlocked: 5,
-    speed: 20,
+    speed: 28,
     unlocked: true,
-    price: 10,
+    price: 400,
     ingredient: "",
-    upgrade1: 20,
-    upgrade2: 30,
+    upgrade1: 100,
+    upgrade2: 120,
     upgrade1locked: true,
     upgrade2locked: true,
   },
@@ -16,9 +16,9 @@ var chefs = {
     min: 1,
     max: 3,
     nbUnlocked: 6,
-    speed: 20,
+    speed: 23,
     unlocked: false,
-    price: 20,
+    price: 800,
     ingredient: "tomato",
     upgrade1: 40,
     upgrade2: 50,
@@ -29,9 +29,9 @@ var chefs = {
     min: 2,
     max: 4,
     nbUnlocked: 7,
-    speed: 10,
+    speed: 16,
     unlocked: false,
-    price: 30,
+    price: 1600,
     ingredient: "pickle",
     upgrade1: 70,
     upgrade2: 80,
@@ -42,9 +42,9 @@ var chefs = {
     min: 3,
     max: 5,
     nbUnlocked: 8,
-    speed: 5,
+    speed: 8,
     unlocked: false,
-    price: 40,
+    price: 32000,
     ingredient: "beacon",
     upgrade1: 100,
     upgrade2: 110,
@@ -55,9 +55,9 @@ var chefs = {
     min: 4,
     max: 6,
     nbUnlocked: 9,
-    speed: 3,
+    speed: 4,
     unlocked: false,
-    price: 50,
+    price: 60000,
     ingredient: "egg",
     upgrade1: 130,
     upgrade2: 140,
@@ -68,9 +68,9 @@ var chefs = {
     min: 5,
     max: 7,
     nbUnlocked: 10,
-    speed: 1,
+    speed: 2,
     unlocked: false,
-    price: 60,
+    price: 120000,
     ingredient: "bredTopBlack",
     upgrade1: 160,
     upgrade2: 170,
@@ -111,42 +111,63 @@ var Chef = class Chef {
 
   upgradeChef(doc) {
     if (money >= chefs[this.id]["upgrade" + doc.id]) {
-      money -= chefs[this.id]["upgrade" + doc.id];
-      chefs[this.id]["upgrade" + doc.id + "locked"] = false;
-      doc.children[1].src = "ressources/chefs/upgrade/spatula.png";
-      this.toolTipUpgrade.style.visibility = 'hidden';
+      money -= chefs[this.id]["upgrade" + doc.id];// update money
+      chefs[this.id]["upgrade" + doc.id + "locked"] = false; // Change locked state upgrade
+      doc.children[1].src = "ressources/chefs/upgrade/spatula.png"; // change spatula image to colored one
+      this.toolTipUpgrade.style.visibility = 'hidden'; // hide tooltip when object selected 
       
-      switch (doc.id) {
+      switch (doc.id) { //Which upgrade of the chef has been upgraded
         case "1":
-          this.upgrade1 = false;
-          break
-        case "2":
-          this.upgrade2 = false;
+          this.upgrade1 = false; // Upgrade 1 is not locked anymore
           switch (this.id) {
             case "chef0":
-              upgradeDoublePrice();
+              upgradeSpeedChef(26); // Increase price of burger 
               break;
             case "chef1":
-              alwaysKetchup();     
+              upgradeSpeedChef(19); // There is always ketchup in the burger 
               break;
             case "chef2":
-              upgradeUpgradeLowest();            
+              upgradeSpeedChef(12); // Tow lowest reserve get upgraded 3 times for 3      
               break;
             case "chef3":
-              upgradeBiggerBurger();
+              upgradeSpeedChef(6); // Burger are generally bigger
               break;
             case 'chef4':
-              multiplyPriceBurger();
+              upgradeSpeedChef(3); // burger price is increased
               break;
             case "chef5":
-              upgradeTowerBurger();
+              upgradeSpeedChef(1); // there is a chance for burger to be very tall 
+              break;
+          }
+          break
+        case "2":
+          this.upgrade2 = false; // Upgrade 2 is not locked anymore
+          switch (this.id) {
+            case "chef0":
+              upgradeDoublePrice(); // Increase price of burger 
+              break;
+            case "chef1":
+              alwaysKetchup(); // There is always ketchup in the burger 
+              break;
+            case "chef2":
+              upgradeUpgradeLowest(); // Tow lowest reserve get upgraded 3 times for 3      
+              break;
+            case "chef3":
+              upgradeBiggerBurger(); // Burger are generally bigger
+              break;
+            case 'chef4':
+              multiplyPriceBurger(); // burger price is increased
+              break;
+            case "chef5":
+              upgradeTowerBurger(); // there is a chance for burger to be very tall 
               break;
           }
           break;
       }
-      doc.style.justifyContent = "center";
-      doc.removeChild(doc.children[0]);
-      updateScore();
+
+      doc.style.justifyContent = "center"; // make the image go to teh center of the upgrade
+      doc.removeChild(doc.children[0]); // remove the button
+      updateScore(); //update the score to save the changes
     }
   }
 
@@ -163,20 +184,20 @@ var Chef = class Chef {
         this.buttonPrice.style.boxShadow = '6px 6px 0px 1px #142d3a';
       }
     } else {
-      for (var upgradeBtn of this.upgradeList) {
-          var id = upgradeBtn.id;
-          var locked = false;
-          switch (id) {
+      for (var upgradeBtn of this.upgradeList) { // go throught the list of upgrade
+          var id = upgradeBtn.id; // get id of upgrade
+          var locked = false; 
+          switch (id) { //check if the current upgrade is locked
             case "2":
-              locked = this.upgrade2;
+              locked = this.upgrade2; 
               break;
             case "1":
-              locked = this.upgrade1;
+              locked = this.upgrade1; 
               break;
           }
           console.log('fggf',this.id,locked , this.upgrade1,this.upgrade2)
-          if (locked ) {
-            if (money < chefs[this.id]["upgrade" + id] || parseInt(this.id.substring(4)) !== currentChef) {
+          if (locked ) { //if locked, don't update button
+            if (money < chefs[this.id]["upgrade" + id] ) { // if upgrade worth more than you have, make the button locked
               upgradeBtn.children[0].style.backgroundColor = "#10222C";
               upgradeBtn.children[0].style.pointerEvents = "none";
               upgradeBtn.children[0].style.boxShadow = 'none';
@@ -192,14 +213,16 @@ var Chef = class Chef {
   }
 
   buy() {
+    // if you have enough money and that the chef is the one after to current one 
     if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef + 1) {
       money -= this.price;
       this.unlocked = true;
-      for (var chef of chefList) {
+      for (var chef of chefList) { //kill current chef
         chef.document.children[0].style.backgroundColor = "#10222C";
         var chefImage = document.getElementById(chef.id + "Img");
         chefImage.src = './ressources/chefs/' + chef.id + "Dead" + '.png';
       }
+
       this.document.children[0].style.backgroundColor = "white";
       this.document.children[0].style.height = "100%";
       this.document.children[0].style.visibility = "visible";
@@ -215,9 +238,6 @@ var Chef = class Chef {
       for(var up of chefList[parseInt(this.id.substring(4)) - 1].upgradeList){
         console.log('gfgf')
         console.log('hey',chefList[parseInt(this.id.substring(4)) - 1]['upgrade'+up.id])
-        if(chefList[parseInt(this.id.substring(4)) - 1]['upgrade'+up.id] ){
-          up.style.backgroundColor = '#142d3a';
-        }
         
       }
 
@@ -286,10 +306,6 @@ var Chef = class Chef {
         var imageUpgrade = document.createElement("img");
         imageUpgrade.classList.add("upgradeImage");
         imageUpgrade.src = "ressources/chefs/upgrade/spatulaGrey.png";
-        if(parseInt(this.id.substring(4)) < currentChef && chefs[this.id]["upgrade" + upgrade.id + "locked"]){
-          console.log(upgrade.id , this.id)
-          upgrade.style.backgroundColor = '#142d3a';
-        }
         upgrade.appendChild(imageUpgrade);
         this.initUpgrade(upgrade);
         if (!chefs[this.id]["upgrade" + upgrade.id + "locked"]) {

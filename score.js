@@ -1,4 +1,4 @@
-var money = 900000;
+var money = 25;
 
 var save = {
   money: 0,
