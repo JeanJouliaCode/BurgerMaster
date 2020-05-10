@@ -3,6 +3,8 @@ var burger;
 
 var tamponTmp = 0;
 
+var date0;
+
 //chef List
 var chefList = [];
 
@@ -29,11 +31,13 @@ function startGame() {
 }
 
 window.onblur = function() {
-
+  console.log('unFocused')
+  date0 = new Date();
 };
 
 window.onfocus = function() {
-
+  console.log('focused')
+  tamponTmp = new Date() - date0;
 };
 
 async function makeBurger() {

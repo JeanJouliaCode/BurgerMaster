@@ -53,8 +53,10 @@ var Burger = class Burger {
 
   //sleep fonction
   sleep(ms) {
+    console.log('tmp', tamponTmp)
     var msBis = ms;
     if(tamponTmp>0){
+      console.log('tmp used')
       if(tamponTmp>=msBis){
         tamponTmp-=msBis;
         return
