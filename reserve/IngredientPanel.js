@@ -4,7 +4,7 @@ var foodList = [];
 //every information about the food
 var ingredientChart = {
   bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 22000 },
-  meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 24000 },
+  meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 15000 },
   ketchup: {
     unlock: true,
     nb: 20,
