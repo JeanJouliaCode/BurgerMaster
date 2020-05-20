@@ -94,6 +94,15 @@ var IngredientPanel = class IngredientPanel {
 
   //sleep method even if it's bad
   sleepM(ms) {
+    var msBis = ms;
+    if(tamponTmp2[this.ingredient]>0){
+      if(tamponTmp2[this.ingredient]>=msBis){
+        tamponTmp2[this.ingredient]-=msBis;
+        return
+      }
+      msBis-= tamponTmp2[this.ingredient];
+      tamponTmp2[this.ingredient]=0;
+    }
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
@@ -108,6 +117,9 @@ var IngredientPanel = class IngredientPanel {
   //upgrade the speed of delivery
   upgrade() {
     if (money > this.priceUpgrade && this.unlock) {
+      if(tamponTmp == 0){
+        this.lightYellow();
+      }
       money -= this.priceUpgrade;
       this.speedOfDelivery = this.getNewSPeed(this.speedOfDelivery);
       ingredientChart[this.ingredient].initSpeed = this.speedOfDelivery;
@@ -125,6 +137,21 @@ var IngredientPanel = class IngredientPanel {
       this.updateTootTip();
     }
     
+  }
+
+  async lightYellow() {
+    this.reservePanel.style.backgroundColor="#FF961B";
+    this.reservePanel.style.transform = "scale(1.01)";
+    await burger.sleep(100);
+    if (this.ingredient == "pickle"){
+      
+      this.reservePanel.style.backgroundColor="rgb(154, 212, 157)";
+      return;
+    }
+    else{
+      this.reservePanel.style.backgroundColor="#FFFFFF";
+    }
+    this.reservePanel.style.transform = "scale(1)";
   }
 
   //getPrice

@@ -3,6 +3,19 @@ var burger;
 
 var tamponTmp = 0;
 
+var tamponTmp2 = {
+  bredTop: 0,
+  meat: 0,
+  ketchup: 0,
+  salad: 0,
+  cheese: 0,
+  pickle: 0,
+  tomato: 0,
+  beacon: 0,
+  bredTopBlack: 0,
+  egg: 0
+};
+
 var date0;
 
 //chef List
@@ -31,13 +44,7 @@ function startGame() {
 }
 
 window.onblur = function() {
-  console.log('unFocused')
-  date0 = new Date();
-};
-
-window.onfocus = function() {
-  console.log('focused')
-  tamponTmp = new Date() - date0;
+  window.focus();
 };
 
 async function makeBurger() {

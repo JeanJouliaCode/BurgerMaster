@@ -157,6 +157,7 @@ body {
   justify-content: flex-start;
   border-radius: 5px;
   overflow: hidden;
+  transition: background-color 0.3s;
 }
 
 .foodElement {

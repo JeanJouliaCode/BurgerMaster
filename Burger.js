@@ -46,17 +46,15 @@ var Burger = class Burger {
     this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }
 
-  changeSpeed(s) {
+  changeSpeed() {
     this.speed = chefs["chef" + currentChef.toString(10)].speed;
     this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
   }
 
   //sleep fonction
   sleep(ms) {
-    console.log('tmp', tamponTmp)
     var msBis = ms;
     if(tamponTmp>0){
-      console.log('tmp used')
       if(tamponTmp>=msBis){
         tamponTmp-=msBis;
         return
@@ -100,7 +98,6 @@ var Burger = class Burger {
 
       //put each ingredient on the plate
       for (var ingredient of listElement) {
-        await this.sleep(this.speed * 30);
         removeReserve(ingredient);
 
         //create image
@@ -123,7 +120,6 @@ var Burger = class Burger {
         this.burgerElement.push(imageIngredient);
       }
 
-      await this.sleep(this.speed * 20);
 
       //push the burger out
       await burger.pushPlate(this.speed);
