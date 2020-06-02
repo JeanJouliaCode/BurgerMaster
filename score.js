@@ -49,13 +49,13 @@ function updateScore() {
   localStorage.setItem('saveObject', JSON.stringify(save));
   var score = document.getElementById("scoreDigit");
   score.textContent = (Math.round(money * 10) / 10).toString(10);
-  if(tamponTmp!= 0){
-    for (var ingredientButton of foodList) {
-      ingredientButton.checkMoneyButton();
-    }
 
-    for (var chef of chefList) {
-      chef.checkMoneyButton();
-    }
+  for (var ingredientButton of foodList) {
+    ingredientButton.checkMoneyButton();
   }
+
+  for (var chef of chefList) {
+    chef.checkMoneyButton();
+  }
+
 }

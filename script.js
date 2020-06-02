@@ -1,21 +1,6 @@
 //create the display for the burger
 var burger;
 
-var tamponTmp = 0;
-
-var tamponTmp2 = {
-  bredTop: 0,
-  meat: 0,
-  ketchup: 0,
-  salad: 0,
-  cheese: 0,
-  pickle: 0,
-  tomato: 0,
-  beacon: 0,
-  bredTopBlack: 0,
-  egg: 0
-};
-
 var date0;
 
 //chef List
@@ -42,10 +27,6 @@ function startGame() {
   //get div order to maker burger when clicked for test purpose
   makeBurger();
 }
-
-window.onblur = function() {
-  window.focus();
-};
 
 async function makeBurger() {
   console.log('pending',pending)

@@ -1,6 +1,6 @@
 var pending = false;
 
-var priceIncrease  = false; 
+var priceIncrease = false;
 
 //is a burger beeing prepared
 var inPreparation = false;
@@ -8,96 +8,107 @@ var inPreparation = false;
 var priceBrugerMultiplicator = 1;
 
 var Burger = class Burger {
-  constructor() {
-    // get div of the burger
-    this.servingDiv = document.getElementById("serving");
+    constructor() {
+        // get div of the burger
+        this.servingDiv = document.getElementById("serving");
 
-    //list of burger image
-    this.burgerElement = [];
+        //list of burger image
+        this.burgerElement = [];
 
-    //setting for the different burger image
-    this.positionInfo = {
-      bredTop: { width: "49%", left: "23%", offset: 5 },
-      bredBottom: { width: "48%", left: "23%", offset: 6 },
-      bredTopBlack: { width: "49%", left: "23%", offset: 5 },
-      bredBottomBlack: { width: "48%", left: "23%", offset: 6 },
-      beacon: { width: "45%", left: "25%", offset: 5 },
-      cheese: { width: "45%", left: "24%", offset: 2 },
-      egg: { width: "45%", left: "24%", offset: 2 },
-      ketchup: { width: "44%", left: "25%", offset: 2 },
-      meat: { width: "45%", left: "24.5%", offset: 6 },
-      pickle: { width: "40%", left: "26%", offset: 2 },
-      tomato: { width: "43%", left: "26%", offset: 2 },
-      salad: { width: "45%", left: "25%", offset: 2 },
-      plate: { width: "55%", left: "20%", offset: 5 }
-    };
+        //setting for the different burger image
+        this.positionInfo = {
+            bredTop: { width: "49%", left: "23%", offset: 5 },
+            bredBottom: { width: "48%", left: "23%", offset: 6 },
+            bredTopBlack: { width: "49%", left: "23%", offset: 5 },
+            bredBottomBlack: { width: "48%", left: "23%", offset: 6 },
+            beacon: { width: "45%", left: "25%", offset: 5 },
+            cheese: { width: "45%", left: "24%", offset: 2 },
+            egg: { width: "45%", left: "24%", offset: 2 },
+            ketchup: { width: "44%", left: "25%", offset: 2 },
+            meat: { width: "45%", left: "24.5%", offset: 6 },
+            pickle: { width: "40%", left: "26%", offset: 2 },
+            tomato: { width: "43%", left: "26%", offset: 2 },
+            salad: { width: "45%", left: "25%", offset: 2 },
+            plate: { width: "55%", left: "20%", offset: 5 }
+        };
 
-    //vertical pixel movement at each turn
-    this.speedIngredient = 40;
+        //vertical pixel movement at each turn
+        this.speedIngredient = 40;
 
-    //image of the chef
-    this.chefImage = null;
+        //image of the chef
+        this.chefImage = null;
 
-    //init the burger and chef image
-    this.init();
+        //init the burger and chef image
+        this.init();
 
-    this.speed = chefs["chef" + currentChef.toString(10)].speed;
+        this.speed = chefs["chef" + currentChef.toString(10)].speed;
 
-    this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
-  }
-
-  changeSpeed() {
-    this.speed = chefs["chef" + currentChef.toString(10)].speed;
-    this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
-  }
-
-  //sleep fonction
-  sleep(ms) {
-    var msBis = ms;
-    if(tamponTmp>0){
-      if(tamponTmp>=msBis){
-        tamponTmp-=msBis;
-        return
-      }
-      msBis-= tamponTmp;
-      tamponTmp=0;
-    }
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  //add ingredient and moving it down
-  async addIngredient(document, margin) {
-    for (var m = 150; m > margin; m -= this.speedIngredientPourcent) {
-      await this.moveIngredient(m, document, this.speed);
-    }
-    await this.moveIngredient(margin, document, this.speed);
-  }
-
-  //moving the image of the ingredient
-  async moveIngredient(margin, document, timing) {
-    await this.sleep(timing);
-    document.style.paddingBottom = margin.toString(10) + "%";
-  }
-
-  //prepare the burger
-  async prepare(listElement) {
-    //check if the reserve can prepare this generated burger
-    if (pending == false) {
-      displayOrder(listElement);
-    }
-    if (!checkReserve(listElement)) {
-      pending = true;
-      return;
+        this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
     }
 
-    pending = false;
-    //if a bruger is already being prepared, it's prevent from preparing one again
-    if (!inPreparation) {
-      inPreparation = true;
-      var generalOffset = 25;
+    changeSpeed() {
+        this.speed = chefs["chef" + currentChef.toString(10)].speed;
+        this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
+    }
 
-      //put each ingredient on the plate
-      for (var ingredient of listElement) {
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+    //add ingredient and moving it down
+    async addIngredient(document, margin, m, i, ingredient, listElement) {
+
+        if (m > margin) {
+            console.log('addIngredient', m, margin)
+            m -= this.speedIngredientPourcent;
+            this.moveIngredient(m, document, this.speed);
+            this.objAddIngredient = { 'document': document, 'margin': margin, 'm': m, 'i': i, 'ingredient': ingredient, 'listElement': listElement }
+            this.worker.postMessage(this.speed.toString() + '-' + 'addIngredient')
+                //this.addIngredient(document, margin, m, i, ingredient, listElement);
+            return;
+        }
+        console.log('done')
+        await this.moveIngredient(margin, document, this.speed);
+        margin += this.positionInfo[ingredient].offset;
+        this.preparePhaseDown(margin, listElement, i + 1);
+    }
+
+    //moving the image of the ingredient
+    moveIngredient(margin, document) {
+        document.style.paddingBottom = margin.toString(10) + "%";
+    }
+
+    //prepare the burger
+    async prepare(listElement) {
+        //check if the reserve can prepare this generated burger
+        if (pending == false) {
+            displayOrder(listElement);
+        }
+        if (!checkReserve(listElement)) {
+            pending = true;
+            return;
+        }
+
+        pending = false;
+        //if a bruger is already being prepared, it's prevent from preparing one again
+        if (!inPreparation) {
+            inPreparation = true;
+            var generalOffset = 25;
+
+            this.preparePhaseDown(generalOffset, listElement, 0);
+        }
+    }
+
+    preparePhaseDown(generalOffset, listElement, i) {
+        console.log('test length', ingredient, i, listElement)
+        if (listElement.length <= i) {
+            this.lastPhase(listElement);
+            return;
+        }
+
+        var ingredient = listElement[i];
+
         removeReserve(ingredient);
 
         //create image
@@ -113,77 +124,110 @@ var Burger = class Burger {
         imageIngredient.style.zIndex = "10";
         imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
 
-        await this.addIngredient(imageIngredient, generalOffset);
-
-        generalOffset += this.positionInfo[ingredient].offset;
-
         this.burgerElement.push(imageIngredient);
-      }
 
+        this.addIngredient(imageIngredient, generalOffset, 150, i, ingredient, listElement);
 
-      //push the burger out
-      await burger.pushPlate(this.speed);
-
-      money += this.getBurgerPrice(listElement);
-
-
-
-      inPreparation = false;
-
-      //update displayed score
-      updateScore();
-
-      //make another burger
-      makeBurger();
-    }
-  }
-
-  //return burger price
-  getBurgerPrice(listElement) {
-    var priceBurger = 0.0;
-
-    for (var element of listElement) {
-      if (ingredientChart[element]) {
-        priceBurger += ingredientChart[element].price;
-      }
     }
 
-    return priceBrugerMultiplicator != 1 && Math.random() > 0.8 ? priceBurger * priceBrugerMultiplicator : priceBurger;
-  }
+    async lastPhase(listElement) {
+        //push the burger out
+        await burger.pushPlate(this.speed);
 
-  //push the plate and everything to the side
-  async pushPlate(speed) {
-    var pixelArray = [];
-    for (var element of this.burgerElement) {
-      var marginPixel =
-        parseInt(
-          element.style.left.substring(0, element.style.left.length - 1)
-        ) / 100;
-      pixelArray.push(marginPixel * this.servingDiv.clientWidth);
-      element.style.left =
-        (marginPixel * this.servingDiv.clientWidth).toString(10) + "px";
+        money += this.getBurgerPrice(listElement);
     }
 
-    for (var i = 0; i < 500 / this.speedIngredient; i++) {
-      var tmp = 0;
-      await this.sleep(speed);
-      for (var element of this.burgerElement) {
-        pixelArray[tmp] = pixelArray[tmp] + this.speedIngredient;
-        element.style.left = pixelArray[tmp].toString(10) + "px";
-        tmp++;
-      }
+    //return burger price
+    getBurgerPrice(listElement) {
+        var priceBurger = 0.0;
+
+        for (var element of listElement) {
+            if (ingredientChart[element]) {
+                priceBurger += ingredientChart[element].price;
+            }
+        }
+
+        return priceBrugerMultiplicator != 1 && Math.random() > 0.8 ? priceBurger * priceBrugerMultiplicator : priceBurger;
     }
 
-    for (var element of this.burgerElement) {
-      element.parentNode.removeChild(element);
+    //push the plate and everything to the side
+    async pushPlate(speed) {
+        var pixelArray = [];
+        for (var element of this.burgerElement) {
+            var marginPixel =
+                parseInt(
+                    element.style.left.substring(0, element.style.left.length - 1)
+                ) / 100;
+            pixelArray.push(marginPixel * this.servingDiv.clientWidth);
+            element.style.left =
+                (marginPixel * this.servingDiv.clientWidth).toString(10) + "px";
+        }
+        this.pushPlatePhase(speed, pixelArray, 0)
     }
-    this.burgerElement = [];
-  }
 
-  //init the image by putting an empty div and alowing image to be stack on top of another
-  init() {
-    var emptyDiv = document.createElement("div");
-    this.servingDiv.appendChild(emptyDiv);
-    emptyDiv.position = "relative";
-  }
+    async pushPlatePhase(speed, pixelArray, i) {
+        var tmp = 0
+        if (i < 500 / this.speedIngredient) {
+            for (var element of this.burgerElement) {
+                pixelArray[tmp] = pixelArray[tmp] + this.speedIngredient;
+                element.style.left = pixelArray[tmp].toString(10) + "px";
+                tmp++;
+            }
+            i++;
+            this.objPushPlatePhase = { 'speed': speed, 'pixelArray': pixelArray, 'i': i };
+            this.worker.postMessage(this.speed.toString() + '-' + 'pushPlatePhase')
+                //await this.pushPlatePhase(speed, pixelArray, i);
+            return;
+        }
+        for (var element of this.burgerElement) {
+            element.parentNode.removeChild(element);
+        }
+        this.burgerElement = [];
+
+        inPreparation = false;
+
+        //update displayed score
+        updateScore();
+
+        //make another burger
+        makeBurger();
+
+    }
+
+    //init the image by putting an empty div and alowing image to be stack on top of another
+    init() {
+        this.worker = new Worker(URL.createObjectURL(new Blob(["(" + workerTimer.toString() + ")()"], { type: 'text/javascript' })));
+        this.worker.onmessage = (e) => {
+            console.log('################', e.data)
+            switch (e.data) {
+                case 'addIngredient':
+                    this.addIngredient(this.objAddIngredient.document, this.objAddIngredient.margin, this.objAddIngredient.m, this.objAddIngredient.i, this.objAddIngredient.ingredient, this.objAddIngredient.listElement);
+                    break;
+                case 'pushPlatePhase':
+                    this.pushPlatePhase(this.objPushPlatePhase.speed, this.objPushPlatePhase.pixelArray, this.objPushPlatePhase.i);
+                    break;
+            }
+        }
+        var emptyDiv = document.createElement("div");
+        this.servingDiv.appendChild(emptyDiv);
+        emptyDiv.position = "relative";
+    }
 };
+
+function workerTimer() {
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    onmessage = function(e) {
+        var info = e.data.split('-');
+        waitTheTime(parseInt(info[0]), info[1])
+
+    }
+
+    async function waitTheTime(time, message) {
+        await sleep(time);
+        postMessage(message);
+    }
+}
