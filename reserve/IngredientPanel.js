@@ -106,11 +106,12 @@ var IngredientPanel = class IngredientPanel {
 
     //upgrade the speed of delivery
     upgrade() {
-        if (money > this.priceUpgrade && this.unlock) {
+        if (money >= this.priceUpgrade && this.unlock) {
             this.lightYellow();
 
             money -= this.priceUpgrade;
             this.speedOfDelivery = this.getNewSPeed(this.speedOfDelivery);
+            this.worker.postMessage(this.speedOfDelivery)
             ingredientChart[this.ingredient].initSpeed = this.speedOfDelivery;
             this.priceUpgrade = this.getNewPrice(this.priceUpgrade)
             ingredientChart[this.ingredient].initPrice = this.priceUpgrade;
@@ -311,9 +312,9 @@ var IngredientPanel = class IngredientPanel {
 
     initLoop(valueSpeed) {
         //start the regular delivery
-        var worker = new Worker(URL.createObjectURL(new Blob(["(" + startLoop.toString() + ")()"], { type: 'text/javascript' })));
+        this.worker = new Worker(URL.createObjectURL(new Blob(["(" + startLoop.toString() + ")()"], { type: 'text/javascript' })));
 
-        worker.onmessage = (e) => {
+        this.worker.onmessage = (e) => {
             console.log('message to add')
             switch (e.data) {
                 case 'add':
@@ -321,7 +322,7 @@ var IngredientPanel = class IngredientPanel {
             }
         }
 
-        worker.postMessage(valueSpeed)
+        this.worker.postMessage(valueSpeed)
     }
 
     //remove an ingredient
@@ -392,9 +393,9 @@ var IngredientPanel = class IngredientPanel {
 };
 
 function startLoop() {
-    console.log('Im alive')
-
     var speedOfDelivery = 1000000;
+
+    var init = true;
 
     var isReserveFilling = true;
 
@@ -422,10 +423,9 @@ function startLoop() {
     onmessage = function(e) {
         speedOfDelivery = e.data;
 
-        console.log(e.data)
-
-        loop();
+        if (init) {
+            init = false;
+            loop();
+        }
     }
-
-    console.log('Im alive 2')
 }
