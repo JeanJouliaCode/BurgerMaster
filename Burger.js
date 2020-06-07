@@ -7,6 +7,10 @@ var inPreparation = false;
 
 var priceBrugerMultiplicator = 1;
 
+var speed = 0;
+
+var speedList = [28, 26, 23, 19, 16, 12, 8, 6, 4, 3, 2, 1]
+
 var Burger = class Burger {
     constructor() {
         // get div of the burger
@@ -41,13 +45,13 @@ var Burger = class Burger {
         //init the burger and chef image
         this.init();
 
-        this.speed = chefs["chef" + currentChef.toString(10)].speed;
+        this.speed = speedList[speed];
 
         this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
     }
 
     changeSpeed() {
-        this.speed = chefs["chef" + currentChef.toString(10)].speed;
+        this.speed = speedList[speed];
         this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
     }
 
@@ -85,10 +89,12 @@ var Burger = class Burger {
         if (pending == false) {
             displayOrder(listElement);
         }
+        console.log('%c word is :' + checkReserve(listElement), ' color: #DB00FF');
         if (!checkReserve(listElement)) {
             pending = true;
             return;
         }
+        console.log('%c check reserve :' + checkReserve(listElement) + 'pending :' + pending, ' color: #DB00FF');
 
         pending = false;
         //if a bruger is already being prepared, it's prevent from preparing one again
@@ -198,7 +204,6 @@ var Burger = class Burger {
     init() {
         this.worker = new Worker(URL.createObjectURL(new Blob(["(" + workerTimer.toString() + ")()"], { type: 'text/javascript' })));
         this.worker.onmessage = (e) => {
-            console.log('################', e.data)
             switch (e.data) {
                 case 'addIngredient':
                     this.addIngredient(this.objAddIngredient.document, this.objAddIngredient.margin, this.objAddIngredient.m, this.objAddIngredient.i, this.objAddIngredient.ingredient, this.objAddIngredient.listElement);

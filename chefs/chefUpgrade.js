@@ -1,4 +1,3 @@
-
 function upgradeDoublePrice() {
     ingredientChart.bredTop.price = 5;
 }
@@ -6,16 +5,8 @@ function upgradeDoublePrice() {
 function upgradeUpgradeLowest() {
     var ingredient = [
 
-        { name: "bredTop", nb: 0 }
-        , { name: "meat", nb: ingredientChart.meat.nbElement }
-        , { name: "cheese", nb: ingredientChart.cheese.nbElement }
-        , { name: "salad", nb: ingredientChart.salad.nbElement }
-        , { name: "ketchup", nb: ingredientChart.ketchup.nbElement }
-        , { name: "tomato", nb: ingredientChart.tomato.nbElement }
-        , { name: "pickle", nb: ingredientChart.pickle.nbElement }
-        , { name: "beacon", nb: ingredientChart.beacon.nbElement }
-        , { name: "egg", nb: ingredientChart.egg.nbElement }
-        , { name: "bredTopBlack", nb: ingredientChart.bredTopBlack.nbElement }]
+        { name: "bredTop", nb: 0 }, { name: "meat", nb: ingredientChart.meat.nbElement }, { name: "cheese", nb: ingredientChart.cheese.nbElement }, { name: "salad", nb: ingredientChart.salad.nbElement }, { name: "ketchup", nb: ingredientChart.ketchup.nbElement }, { name: "tomato", nb: ingredientChart.tomato.nbElement }, { name: "pickle", nb: ingredientChart.pickle.nbElement }, { name: "beacon", nb: ingredientChart.beacon.nbElement }, { name: "egg", nb: ingredientChart.egg.nbElement }, { name: "bredTopBlack", nb: ingredientChart.bredTopBlack.nbElement }
+    ]
 
     for (i = 0; i < ingredient.length; i++) {
         for (j = 0; j < (ingredient.length - i - 1); j++) {
@@ -48,25 +39,18 @@ function upgradeTowerBurger() {
     towerBurger = true;
 }
 
-function upgradeBiggerBurger(){
+function upgradeBiggerBurger() {
     offsetmax = 1;
 }
 
-function multiplyPriceBurger(){
+function multiplyPriceBurger() {
     priceIncrease = true;
 }
 
-function alwaysKetchup(){
-    isThereKetchup =true;
+function alwaysKetchup() {
+    isThereKetchup = true;
 }
 
 function randomMoreExpensiveBurger() {
     priceBrugerMultiplicator = 3;
 }
-
-function upgradeSpeedChef(speed){
-    chefs["chef" + currentChef.toString(10)].speed = speed;
-    burger.changeSpeed();
-    
-}
-

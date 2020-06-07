@@ -88,7 +88,6 @@ var Chef = class Chef {
         upgrade2,
         imageSrc,
         price,
-        speed,
         unlocked,
         id
     ) {
@@ -97,7 +96,6 @@ var Chef = class Chef {
 
         this.imageSrc = imageSrc;
         this.price = price;
-        this.speed = speed;
         this.unlocked = unlocked;
         this.document = document;
         this.buttonPrice = null;
@@ -121,24 +119,31 @@ var Chef = class Chef {
                     this.upgrade1 = false; // Upgrade 1 is not locked anymore
                     switch (this.id) {
                         case "chef0":
-                            upgradeSpeedChef(26); // Increase price of burger 
+                            speed++;
+                            //upgradeSpeedChef(26); // Increase price of burger 
                             break;
                         case "chef1":
-                            upgradeSpeedChef(19); // There is always ketchup in the burger 
+                            speed++;
+                            //upgradeSpeedChef(19); // There is always ketchup in the burger 
                             break;
                         case "chef2":
-                            upgradeSpeedChef(12); // Tow lowest reserve get upgraded 3 times for 3      
+                            speed++;
+                            //upgradeSpeedChef(12); // Tow lowest reserve get upgraded 3 times for 3      
                             break;
                         case "chef3":
-                            upgradeSpeedChef(6); // Burger are generally bigger
+                            speed++;
+                            //upgradeSpeedChef(6); // Burger are generally bigger
                             break;
                         case 'chef4':
-                            upgradeSpeedChef(3); // burger price is increased
+                            speed++;
+                            //upgradeSpeedChef(3); // burger price is increased
                             break;
                         case "chef5":
-                            upgradeSpeedChef(1); // there is a chance for burger to be very tall 
+                            speed++;
+                            //upgradeSpeedChef(1); // there is a chance for burger to be very tall 
                             break;
                     }
+                    burger.changeSpeed();
                     break
                 case "2":
                     this.upgrade2 = false; // Upgrade 2 is not locked anymore
@@ -235,15 +240,9 @@ var Chef = class Chef {
                     reserve.unlockReserve();
                 }
             }
-            for (var up of chefList[parseInt(this.id.substring(4)) - 1].upgradeList) {
-                console.log('gfgf')
-                console.log('hey', chefList[parseInt(this.id.substring(4)) - 1]['upgrade' + up.id])
-
-            }
-
             var chefImage = document.getElementById(this.id + "Img");
             chefImage.src = './ressources/chefs/' + this.id + '.png';
-
+            speed++;
             burger.changeSpeed();
 
             updateScore();

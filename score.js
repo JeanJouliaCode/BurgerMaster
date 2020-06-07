@@ -11,6 +11,7 @@ var save = {
     pending: null,
     priceIncrease: null,
     isThereKetchup: null,
+    speed: null,
 }
 
 function getItemLocalStorage() {
@@ -29,6 +30,7 @@ function getItemLocalStorage() {
         pending = save.pending;
         priceIncrease = save.priceIncrease;
         isThereKetchup = save.isThereKetchup;
+        speed = save.speed;
     }
 }
 
@@ -46,6 +48,7 @@ function updateScore() {
     save.pending = pending;
     save.priceIncrease = priceIncrease;
     save.isThereKetchup = isThereKetchup;
+    save.speed = speed;
     localStorage.setItem('saveObject', JSON.stringify(save));
     var score = document.getElementById("scoreDigit");
     score.textContent = (Math.round(money * 10) / 10).toString(10);

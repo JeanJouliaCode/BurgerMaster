@@ -1,279 +1,274 @@
 <html lang="en">
 
 <head>
-  <link href="style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
 </head>
 
 <body onload="startGame()">
-  <div class="fillSpace" id="screen">
-    <div class="leftSide">
-      <div class="tableRegister">
-        <img src="./ressources/background/servingBackground.png" class="wall">
-        <img src="./ressources/background/table.png" class="table">
-        <img src="./ressources/background/register.png" class="register">
-        <span id="scoreDigit" class="money"></span>
-      </div>
-      <div class="order" id="order"></div>
-      <div class="serving" id="serving">
-        <div class="empty"></div>
-      </div>
+    <div class="fillSpace" id="screen">
+        <div class="leftSide">
+            <div class="tableRegister">
+                <img src="./ressources/background/servingBackground.png" class="wall">
+                <img src="./ressources/background/table.png" class="table">
+                <img src="./ressources/background/register.png" class="register">
+                <span id="scoreDigit" class="money"></span>
+            </div>
+            <div class="order" id="order"></div>
+            <div class="serving" id="serving">
+                <div class="empty"></div>
+            </div>
+        </div>
+        <div class="rightSide">
+            <div class=" ingredients">
+                <div class="spaceIngredient">
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="bredTopSpeed">&#8192</span>
+                        <div class="ingredientPile" id="bredTop"></div>
+                        <button class="buttonReserve" id="bredTopButton"></button>
+                        <div class="infoBubbleLeft" id="bredTopToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="meatSpeed">&#8192</span>
+                        <div class="ingredientPile" id="meat"></div>
+                        <button class="buttonReserve" id="meatButton"></button>
+                        <div class="infoBubbleLeft" id="meatToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="cheeseSpeed">&#8192</span>
+                        <div class="ingredientPile" id="cheese"></div>
+                        <button class="buttonReserve" id="cheeseButton"></button>
+                        <div class="infoBubbleLeft" id="cheeseToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="saladSpeed">&#8192</span>
+                        <div class="ingredientPile" id="salad"></div>
+                        <button class="buttonReserve" id="saladButton"></button>
+                        <div class="infoBubbleLeft" id="saladToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="ketchupSpeed">&#8192</span>
+                        <div class="ingredientPile" id="ketchup"></div>
+                        <button class="buttonReserve" id="ketchupButton"></button>
+                        <div class="infoBubbleLeft" id="ketchupToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="tomatoSpeed">&#8192</span>
+                        <div class="ingredientPile" id="tomato"></div>
+                        <button class="buttonReserve" id="tomatoButton"></button>
+                        <div class="infoBubbleLeft" id="tomatoToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="pickleSpeed">&#8192</span>
+                        <div style="background-color: rgb(154, 212, 157);" class="ingredientPile" id="pickle"></div>
+                        <button class="buttonReserve" id="pickleButton"></button>
+                        <div class="infoBubbleLeft" id="pickleToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="beaconSpeed">&#8192</span>
+                        <div class="ingredientPile" id="beacon"></div>
+                        <button class="buttonReserve" id="beaconButton"></button>
+                        <div class="infoBubbleLeft" id="beaconToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="eggSpeed">&#8192</span>
+                        <div class="ingredientPile" id="egg"></div>
+                        <button class="buttonReserve" id="eggButton"></button>
+                        <div class="infoBubbleLeft" id="eggToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                    <div class="reservePanel">
+                        <span class="speedDelivery" id="bredTopBlackSpeed">&#8192</span>
+                        <div class="ingredientPile" id="bredTopBlack"></div>
+                        <button class="buttonReserve" id="bredTopBlackButton"></button>
+                        <div class="infoBubbleRight" id="bredTopBlackToolTip">
+                            <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
+                            <span class="toopTipText">after upgrade</span><br>
+                            <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="characters">
+                <div class=" locked" id="chef0">
+                    <div class="character">
+                        <div class="infoBubbleChefLeft" id="chef0InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" style="text-align: center;"><strong>Level 1
+                  chef</strong><br />David is a promissing figure in the world of fast food<br />main hobby: Finger skating&nbsp;
+                            </p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef0InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade2"><strong>Golden bread</strong><br />This upgrade change the price of bread from 1 to 5$</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef0.png" class="chef" id="chef0Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+                <div class=" locked" id="chef1">
+                    <div class="character">
+                        <div class="infoBubbleChefLeft" id="chef1InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef1InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade2"><strong>Ketchup gun</strong><br />Burger wil now always have ketchup</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef1.png" class="chef" id="chef1Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+                <div class=" locked" id="chef2">
+                    <div class="character ">
+                        <div class="infoBubbleChefLeft" id="chef2InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef2InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade2"><strong>Mega upgrade</strong><br />This will upgrade 3 time the first 2 lowest reserve</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef2.png" class="chef" id="chef2Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+                <div class=" locked" id="chef3">
+                    <div class="character ">
+                        <div class="infoBubbleChefLeft" id="chef3InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef3InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade2"><strong>Burger fertilizer</strong><br />burger are now more likely to be bigger
+                            </p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef3.png" class="chef" id="chef3Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+                <div class=" locked" id="chef4">
+                    <div class="character ">
+                        <div class="infoBubbleChefLeft" id="chef4InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef4InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade2"><strong>False advertising</strong><br /> Burger have a 20% chance to be 3 time more expensive</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef4.png" class="chef" id="chef4Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+                <div class=" locked" id="chef5">
+                    <div class="character ">
+                        <div class="infoBubbleChefRight" id="chef5InfoBubble">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                        </div>
+                        <div class="infoBubbleUpgradeLeft" id="chef5InfoBubbleUpgrade">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <img src="./ressources/tooltip.png" class="tooltipSauce">
+                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade2"><strong>Burger tower</strong><br />Burger will have 20% of chance of being 30 ingredients tall</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade1">With this new tool, the chef will be faster</p>
+                        </div>
+                        <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
+                        <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
+                        <img src="./ressources/chefs/chef5.png" class="chef" id="chef5Img" />
+                    </div>
+                    <button class="buyChef"></button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="rightSide">
-      <div class=" ingredients">
-        <div class="spaceIngredient">
-          <div class="reservePanel">
-            <span class="speedDelivery" id="bredTopSpeed">&#8192</span>
-            <div class="ingredientPile" id="bredTop"></div>
-            <button class="buttonReserve" id="bredTopButton"></button>
-            <div class="infoBubbleLeft" id="bredTopToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="meatSpeed">&#8192</span>
-            <div class="ingredientPile" id="meat"></div>
-            <button class="buttonReserve" id="meatButton"></button>
-            <div class="infoBubbleLeft" id="meatToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="cheeseSpeed">&#8192</span>
-            <div class="ingredientPile" id="cheese"></div>
-            <button class="buttonReserve" id="cheeseButton"></button>
-            <div class="infoBubbleLeft" id="cheeseToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="saladSpeed">&#8192</span>
-            <div class="ingredientPile" id="salad"></div>
-            <button class="buttonReserve" id="saladButton"></button>
-            <div class="infoBubbleLeft" id="saladToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="ketchupSpeed">&#8192</span>
-            <div class="ingredientPile" id="ketchup"></div>
-            <button class="buttonReserve" id="ketchupButton"></button>
-            <div class="infoBubbleLeft" id="ketchupToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="tomatoSpeed">&#8192</span>
-            <div class="ingredientPile" id="tomato"></div>
-            <button class="buttonReserve" id="tomatoButton"></button>
-            <div class="infoBubbleLeft" id="tomatoToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="pickleSpeed">&#8192</span>
-            <div style="background-color: rgb(154, 212, 157);" class="ingredientPile" id="pickle"></div>
-            <button class="buttonReserve" id="pickleButton"></button>
-            <div class="infoBubbleLeft" id="pickleToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="beaconSpeed">&#8192</span>
-            <div class="ingredientPile" id="beacon"></div>
-            <button class="buttonReserve" id="beaconButton"></button>
-            <div class="infoBubbleLeft" id="beaconToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="eggSpeed">&#8192</span>
-            <div class="ingredientPile" id="egg"></div>
-            <button class="buttonReserve" id="eggButton"></button>
-            <div class="infoBubbleLeft" id="eggToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-          <div class="reservePanel">
-            <span class="speedDelivery" id="bredTopBlackSpeed">&#8192</span>
-            <div class="ingredientPile" id="bredTopBlack"></div>
-            <button class="buttonReserve" id="bredTopBlackButton"></button>
-            <div class="infoBubbleRight" id="bredTopBlackToolTip">
-              <span class="currentSpeed toopTipText">current speed: 12/s</span><br>
-              <span class="toopTipText">after upgrade</span><br>
-              <span class="afterUpgrade toopTipText">current speed: 14/s</span><br>
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="characters">
-        <div class=" locked" id="chef0">
-          <div class="character">
-            <div class="infoBubbleChefLeft" id="chef0InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" style="text-align: center;"><strong>Level 1
-                  chef</strong><br />David is a promissing figure in the world of fast food<br />main hobby: Finger
-                skating&nbsp;</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef0InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef0upgrade2">this upgrade change the price of bread from 1 to 5$</p>
-              <p class="toopTipText innerTextInfoBubble" id="chef0upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef0.png" class="chef" id="chef0Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-        <div class=" locked" id="chef1">
-          <div class="character">
-            <div class="infoBubbleChefLeft" id="chef1InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards.
-                They are found on every continent except Australia.</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef1InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef1upgrade2">Burger wil now always have ketchup</p>
-              <p class="toopTipText innerTextInfoBubble" id="chef1upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef1.png" class="chef" id="chef1Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-        <div class=" locked" id="chef2">
-          <div class="character ">
-            <div class="infoBubbleChefLeft" id="chef2InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards.
-                They are found on every continent except Australia.</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef2InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef2upgrade2">This will upgrade 3 time the first 2 lowest reserve</p>
-              <p class="toopTipText innerTextInfoBubble" id="chef2upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef2.png" class="chef" id="chef2Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-        <div class=" locked" id="chef3">
-          <div class="character ">
-            <div class="infoBubbleChefLeft" id="chef3InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards.
-                They are found on every continent except Australia.</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef3InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef3upgrade2">burger are now more likely to be bigger
-                </p>
-              <p class="toopTipText innerTextInfoBubble" id="chef3upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef3.png" class="chef" id="chef3Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-        <div class=" locked" id="chef4">
-          <div class="character ">
-            <div class="infoBubbleChefLeft" id="chef4InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards.
-                They are found on every continent except Australia.</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef4InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef4upgrade2"> Burger have a 20% chance to be 3 time more expensive</p>
-              <p class="toopTipText innerTextInfoBubble" id="chef4upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef4.png" class="chef" id="chef4Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-        <div class=" locked" id="chef5">
-          <div class="character ">
-            <div class="infoBubbleChefRight" id="chef5InfoBubble">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards.
-                They are found on every continent except Australia.</p>
-            </div>
-            <div class="infoBubbleUpgradeLeft" id="chef5InfoBubbleUpgrade">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <img src="./ressources/tooltip.png" class="tooltipSauce">
-              <p class="toopTipText innerTextInfoBubble" id="chef5upgrade2">Burger will have 20% of chance of being 30 ingredients tall</p>
-              <p class="toopTipText innerTextInfoBubble" id="chef5upgrade1">With this new tool, the chef will be faster</p>
-            </div>
-            <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
-            <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-            <img src="./ressources/chefs/chef5.png" class="chef" id="chef5Img" />
-          </div>
-          <button class="buyChef"></button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="./script.js"></script>
-  <script src="./Burger.js"></script>
-  <script src="./score.js"></script>
-  <script src="./reserve/IngredientPanel.js"></script>
-  <script src="./reserve/reserve.js"></script>
-  <script src="./chefs/chefs.js"></script>
-  <script src="./chefs/chefPanel.js"></script>
-  <script src="./order.js"></script>
-  <script src="./chefs/chefUpgrade.js"></script>
+    <script src="./script.js"></script>
+    <script src="./Burger.js"></script>
+    <script src="./score.js"></script>
+    <script src="./reserve/IngredientPanel.js"></script>
+    <script src="./reserve/reserve.js"></script>
+    <script src="./chefs/chefs.js"></script>
+    <script src="./chefs/chefPanel.js"></script>
+    <script src="./order.js"></script>
+    <script src="./chefs/chefUpgrade.js"></script>
 </body>
 
 </html>
