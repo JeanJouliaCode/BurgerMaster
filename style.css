@@ -1,452 +1,484 @@
 .fillSpace {
-  width: 100%;
-  height: 100%;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  display: flex;
-  background-color: #10222C;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    background-color: #10222C;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
+
 /*###############################left side related css##################################*/
+
 .leftSide {
-  width: 35.5%;
-  background-color: rgb(238, 237, 237);
+    width: 35.5%;
+    background-color: rgb(238, 237, 237);
 }
 
 .order {
-  position: absolute;
-  top: 0px;
-  left: 0.2%;
-  height: 60px;
-  width: 35.3%;
-  border-radius: 30px;
-  margin: 2% auto 0;
-  background-color: #007d96;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  
+    position: absolute;
+    top: 0px;
+    left: 0.2%;
+    height: 60px;
+    width: 35.3%;
+    border-radius: 30px;
+    margin: 2% auto 0;
+    background-color: #007d96;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.orderLastElement{
-  padding-left: 10%;
+.orderLastElement {
+    padding-left: 10%;
 }
 
 .order:last-child {
-  float: right;
+    float: right;
 }
 
 .table {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
 }
 
 .wall {
-  position: absolute;
-  width: 100%;
-  top: 0px;
-  transform: translate(0px,-100%);
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    transform: translate(0px, -100%);
 }
 
 .tableRegister {
-  bottom: 0px;
-  position: absolute;
-  padding-bottom: 18%;
-  width: 35.5%;
-  height: 0px;
+    bottom: 0px;
+    position: absolute;
+    padding-bottom: 18%;
+    width: 35.5%;
+    height: 0px;
 }
 
 .money {
-  position: relative;
-  font-family: Segment7Standard;
-  font-size: 3.5vw;
-  color: rgb(196, 236, 245);
-  float: right;
-  margin-right: 13.1%;
-  margin-top: 32.5%;
-  letter-spacing: 0.4vw;
-  bottom: 2%;
+    position: relative;
+    font-family: Segment7Standard;
+    font-size: 3.5vw;
+    color: rgb(196, 236, 245);
+    float: right;
+    margin-right: 13.1%;
+    margin-top: 32.5%;
+    letter-spacing: 0.4vw;
+    bottom: 2%;
 }
 
 .register {
-  position: absolute;
-  bottom: 0px;
-  width: 60%;
-  margin-left: 40%;
+    position: absolute;
+    bottom: 0px;
+    width: 60%;
+    margin-left: 40%;
 }
 
 .orderElement {
-  margin-left: 0.5%;
-  height: 40%;
-  width: 6%;
+    margin-left: 0.5%;
+    height: 40%;
+    width: 6%;
 }
 
 .orderElementImage {
-  position: relative;
-  width: 100%;
-  height: auto;
-  top: 25%;
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 25%;
 }
 
 .orderElementSpan {
-  font-size: 30px;
-  position: relative;
-  margin-left: auto;
-  margin-right: 5%;
+    font-size: 30px;
+    position: relative;
+    margin-left: auto;
+    margin-right: 5%;
 }
 
 .serving {
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-  width: 35.5%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 35.5%;
 }
 
 .tableServing {
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  bottom: 0px;
-  left: 0px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0px;
+    left: 0px;
 }
 
 @font-face {
-  font-family: Segment7Standard;
-  src: url("./ressources/Segment7Standard.otf") format("opentype");
+    font-family: Segment7Standard;
+    src: url("./ressources/Segment7Standard.otf") format("opentype");
 }
 
 @font-face {
-  font-family: Sauce;
-  src: url("./ressources/Amaranth-Regular.ttf") format("opentype");
+    font-family: Sauce;
+    src: url("./ressources/Amaranth-Regular.ttf") format("opentype");
 }
+
 
 /*#################################right side related css#########################################*/
+
 .rightSide {
-  width: calc(64.5% - 0.5px);
+    width: calc(64.5% - 0.5px);
 }
+
 
 /*''''''''''''''''''''''''''''reserve related css''''''''''''''''''''''''''''''''*/
 
 .spaceIngredient {
-  margin: 0 2%;
-  height: 54%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    margin: 0 2%;
+    height: 54%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .ingredients {
-  width: 100%;
-  margin: 0px 0px 0 0.5px;
-  background-image: url("./ressources/background/fondReserve.png");
+    width: 100%;
+    margin: 0px 0px 0 0.5px;
+    background-image: url("./ressources/background/fondReserve.png");
+}
+
+.foodElementDiv {
+    display: flex;
+    height: 83%;
+}
+
+.loadDiv {
+    width: 4%;
+    height: 95%;
+    margin-top: 15%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.load {
+    background-color: #09161d;
+    width: 100%;
+    height: 0%;
+    bottom: 0px;
+    position: relative;
 }
 
 .ingredientPile {
-  height: 80%;
-  width: 65%;
-
-  margin: 15% auto 0 auto;
-  background-color: rgb(238, 237, 237);
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-start;
-  border-radius: 5px;
-  overflow: hidden;
-  transition: background-color 0.3s;
+    height: 95%;
+    width: 65%;
+    margin-top: 15%;
+    margin-left: 15.5%;
+    background-color: rgb(238, 237, 237);
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background-color 0.3s;
 }
 
 .foodElement {
-  width: 100%;
+    width: 100%;
 }
 
 .reservePanel {
-  width: 9.95%;
-  height: 100%;
-  text-align: center;
-  
+    width: 9.95%;
+    height: 100%;
+    text-align: center;
 }
 
 .locked {
-  width: calc(100%/6);
-  background-color: #10222C;
-  height: 100%;
-  box-sizing: border-box;
-  border-style: solid ;
-  border-width: 0.5px ;
-  border-color: #09161d ;
+    width: calc(100%/6);
+    background-color: #10222C;
+    height: 100%;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #09161d;
 }
 
 .speedDelivery {
-  position: relative;
-  top: 8px;
-  font-size: 10px;
-  font-family: Sauce;
-  font-size: 1vw;
-  color: white;
-
+    position: relative;
+    top: 8px;
+    font-size: 10px;
+    font-family: Sauce;
+    font-size: 1vw;
+    color: white;
 }
 
 .buttonReserve {
-  width: 84%;
-  height: 7%;
-	box-shadow: 6px 6px 0px 1px #142d3a;
-	background-color:#007d96;
-	display:inline-block;
-	cursor:pointer;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
-  margin-top: 10.5%;
-  font-family: Sauce;
-  font-size: 1vw;
-  border: none;
-  color: white;
-  letter-spacing: 0.15vw;
-  ;
+    width: 84%;
+    height: 7%;
+    box-shadow: 6px 6px 0px 1px #142d3a;
+    background-color: #007d96;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    margin-top: 10.5%;
+    font-family: Sauce;
+    font-size: 1vw;
+    border: none;
+    color: white;
+    letter-spacing: 0.15vw;
+    ;
 }
 
 .buttonReserve:hover {
-	background-color:#0088a3;
+    background-color: #0088a3;
 }
+
 .buttonReserve:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
-
-.infoBubbleLeft{
-  position : relative;
-  width: 200%;
-  height: 30%;
-  z-index: 2;
-  top: -45%;
-  left: -30%;
-  border-radius: 5px;
-  visibility: hidden;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
+.infoBubbleLeft {
+    position: relative;
+    width: 200%;
+    height: 30%;
+    z-index: 2;
+    top: -45%;
+    left: -30%;
+    border-radius: 5px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
 }
 
-.infoBubbleRight{
-  position : relative;
-  width: 200%;
-  height: 30%;
-  z-index: 2;
-  top: -45%;
-  left: -80%;
-  border-radius: 5px;
-  visibility: hidden;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
+.infoBubbleRight {
+    position: relative;
+    width: 200%;
+    height: 30%;
+    z-index: 2;
+    top: -45%;
+    left: -80%;
+    border-radius: 5px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
 }
 
-.toopTipText{
-  font-size: 1vw;
-  z-index: 3;
-  font-family: Sauce;
+.toopTipText {
+    font-size: 1vw;
+    z-index: 3;
+    font-family: Sauce;
 }
 
-.tooltipSauce{
-  height: 100%;
-  width: 100%;
-  position: absolute;
+.tooltipSauce {
+    height: 100%;
+    width: 100%;
+    position: absolute;
 }
 
-.currentSpeed{
-  margin-top: 10%;
+.currentSpeed {
+    margin-top: 10%;
 }
+
 
 /*''''''''''''''''''''''''''''chefs related css''''''''''''''''''''''''''''*/
 
 .characters {
-  height: calc(46% - 0px);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 0px 0px 0px 0.5px;
-  width: 100%;
-  background: radial-gradient(circle, rgba(103,58,33,1) 0%, rgba(136,90,64,1) 50%, rgba(103,58,33,1) 88%);
+    height: calc(46% - 0px);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0px 0px 0px 0.5px;
+    width: 100%;
+    background: radial-gradient(circle, rgba(103, 58, 33, 1) 0%, rgba(136, 90, 64, 1) 50%, rgba(103, 58, 33, 1) 88%);
 }
 
 .character {
-  position: relative;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(173, 173, 173, 0.5);
-  visibility: visible;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(173, 173, 173, 0.5);
+    visibility: visible;
 }
 
 .upgrade1 {
-  background-color: #FF961B;
+    background-color: #FF961B;
 }
 
 .upgrade2 {
-  background-color: #FF961B;
+    background-color: #FF961B;
 }
 
 .upgrade3 {
-  background-color: #FF961B;
+    background-color: #FF961B;
 }
 
 .upgradeImage {
-  height: 90%;
-  margin-left: 3%;
+    height: 90%;
+    margin-left: 3%;
 }
 
-
 .btnBuyUpgrade {
-  width: 40%;
-  height: 60%;
-  margin-right: 10%;
-  margin-left: 10%;
-	box-shadow: 6px 6px 0px 1px #142d3a;
-	background-color:#007d96;
-	display:inline-block;
-	cursor:pointer;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
-  font-family: Sauce;
-  font-size: 1vw;
-  border: none;
-  color: white;
-  letter-spacing: 0.15vw;
-  ;
+    width: 40%;
+    height: 60%;
+    margin-right: 10%;
+    margin-left: 10%;
+    box-shadow: 6px 6px 0px 1px #142d3a;
+    background-color: #007d96;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    font-family: Sauce;
+    font-size: 1vw;
+    border: none;
+    color: white;
+    letter-spacing: 0.15vw;
+    ;
 }
 
 .btnBuyUpgrade:hover {
-	background-color:#0088a3;
+    background-color: #0088a3;
 }
+
 .btnBuyUpgrade:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
 .button {
-  flex-direction: row-reverse;
-  display: flex;
-  width: 100%;
-  height: 15%;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  border-style: solid ;
-  border-width: 0.5px ;
-  border-color: #10222C ;
+    flex-direction: row-reverse;
+    display: flex;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #10222C;
 }
 
 .fillSpaceBackground {
-  width: 100%;
-  height: 100%;
-  z-index: 100;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
 }
 
 .chef {
-  position: relative;
-  -webkit-transform: translateX(-50%);
-  left: 50%;
-  height: 70%;
+    position: relative;
+    -webkit-transform: translateX(-50%);
+    left: 50%;
+    height: 70%;
 }
 
 .servingChef {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    top: 0px;
 }
 
-
 body {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
 .buyChef {
-  position: relative;
-  width: 60%;
-  height: 10%;
-  margin-top: 100%;
-  left: 20%;
-  font-family: Sauce;
-	box-shadow: 6px 6px 0px 1px #142d3a;
-	background-color:#007d96;
-	display:inline-block;
-	cursor:pointer;
-	font-weight:bold;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #528ecc;
-  font-family: Sauce;
-  font-size: 1vw;
-  border: none;
-  color: white;
-  letter-spacing: 0.15vw;
-  ;
+    position: relative;
+    width: 60%;
+    height: 10%;
+    margin-top: 100%;
+    left: 20%;
+    font-family: Sauce;
+    box-shadow: 6px 6px 0px 1px #142d3a;
+    background-color: #007d96;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #528ecc;
+    font-family: Sauce;
+    font-size: 1vw;
+    border: none;
+    color: white;
+    letter-spacing: 0.15vw;
+    ;
 }
 
 .buyChef:hover {
-	background-color:#0088a3;
+    background-color: #0088a3;
 }
+
 .buyChef:active {
-	position:relative;
-	top:1px;
+    position: relative;
+    top: 1px;
 }
 
-.infoBubbleUpgradeLeft{
-  visibility: hidden;
-  position : relative;
-  z-index: 2;
-  top: -73%;
-  left: -0%;
-  border-radius: 5px;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
+.infoBubbleUpgradeLeft {
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+    top: -73%;
+    left: -0%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
 }
 
-.infoBubbleChefLeft{
-  visibility: hidden;
-  position : relative;
-  z-index: 2;
-  top: -150%;
-  left: 0%;
-  border-radius: 5px;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
-}
-.infoBubbleChefRight{
-  visibility: hidden;
-  position : relative;
-
-  z-index: 2;
-  top: -150%;
-  left: -0%;
-  border-radius: 5px;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  color: rgb(0, 0, 0);
+.infoBubbleChefLeft {
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+    top: -150%;
+    left: 0%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
 }
 
-.innerTextInfoBubble{
-  padding: 10%;
+.infoBubbleChefRight {
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+    top: -150%;
+    left: -0%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: rgb(0, 0, 0);
+}
+
+.innerTextInfoBubble {
+    padding: 10%;
 }

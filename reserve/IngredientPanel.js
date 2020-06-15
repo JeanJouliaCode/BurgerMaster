@@ -247,6 +247,7 @@ var IngredientPanel = class IngredientPanel {
         this.button = document.getElementById(this.ingredient + "Button");
         this.toolTip = document.getElementById(this.ingredient + "ToolTip");
         this.reservePanel = document.getElementById(this.ingredient);
+        this.loading = document.getElementById(this.ingredient + "Load");
 
         //listen for click on the upgrade button
         this.button.addEventListener("click", () => {
@@ -315,10 +316,16 @@ var IngredientPanel = class IngredientPanel {
         this.worker = new Worker(URL.createObjectURL(new Blob(["(" + startLoop.toString() + ")()"], { type: 'text/javascript' })));
 
         this.worker.onmessage = (e) => {
-            console.log('message to add')
             switch (e.data) {
                 case 'add':
                     this.add();
+                    break;
+                default:
+                    if (this.nbMax <= this.nbElement) {
+                        this.loading.style.height = "0%";
+                        break;
+                    }
+                    this.loading.style.height = this.roundValue(e.data * 100).toString() + "%";
             }
         }
 
@@ -403,6 +410,9 @@ function startLoop() {
     async function sleepM() {
         for (var i = 0; i < speedOfDelivery; i += 10) {
             await sleep(10);
+            if (i % 50 == 0) {
+                postMessage(i / speedOfDelivery);
+            }
         }
         return;
     }
@@ -415,6 +425,7 @@ function startLoop() {
     async function loop() {
         while (isReserveFilling) {
             await sleepM();
+            postMessage(1)
             postMessage('add');
             console.log('add')
         }
