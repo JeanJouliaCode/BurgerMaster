@@ -8,6 +8,8 @@ var chefList = [];
 
 var isGameGoing = true;
 
+var rulesDisplayed = false;
+
 function startGame() {
     //currentChef = 0;
     getItemLocalStorage();
@@ -16,7 +18,6 @@ function startGame() {
 
     document.getElementById('meat').addEventListener('click', () => {
         localStorage.setItem('saveObject', null);
-        console.warn('reset')
     })
 
     //fill up the food reserve
@@ -24,13 +25,13 @@ function startGame() {
 
     initChef();
 
+    initRules();
+
     //get div order to maker burger when clicked for test purpose
     makeBurger();
 }
 
 async function makeBurger() {
-    console.log('pending', pending)
-    console.log('%c word is :' + pending, ' color: #DB0004');
     if (!pending) {
         burger.prepare(generateCommand());
     } else {
@@ -71,4 +72,26 @@ function initChef() {
         );
         chefList.push(newChef);
     }
+}
+
+function initRules() {
+    button = document.getElementById('ruleBtn');
+    rules = document.getElementById('rule');
+    cross = document.getElementById('cross');
+
+    button.addEventListener('click', () => {
+        console.log('click')
+        if (rulesDisplayed) {
+            rules.style.display = 'none';
+        }
+        if (!rulesDisplayed) {
+            rules.style.display = 'block';
+        }
+        rulesDisplayed = !rulesDisplayed;
+    })
+
+    cross.addEventListener('click', () => {
+        rules.style.display = 'none';
+        rulesDisplayed = false;
+    })
 }

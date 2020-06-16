@@ -1,5 +1,6 @@
 function upgradeDoublePrice() {
     ingredientChart.bredTop.price = 5;
+    changeBread();
 }
 
 function upgradeUpgradeLowest() {
@@ -22,12 +23,9 @@ function upgradeUpgradeLowest() {
 
     var upgrade2 = ingredient[1].name;
 
-
-    console.log(upgrade1, upgrade2);
-
     for (var food of foodList) {
         if (food.ingredient == upgrade1 || food.ingredient == upgrade2) {
-            for (i = 0; i < 3; i++) {
+            for (i = 0; i < 5; i++) {
                 food.upgrade();
             }
         }

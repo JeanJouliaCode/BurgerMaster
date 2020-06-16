@@ -83,9 +83,6 @@ function checkReserve(listIngredient) {
         reserveCount[ingredient]--;
         isReserveEnough = reserveCount[ingredient] < 0 ? false : isReserveEnough;
     }
-    console.log('%c check reserve:' + isReserveEnough, ' color: #DFFF00');
-    console.log(listIngredient)
-    console.log(reserveCount)
     return isReserveEnough;
 }
 

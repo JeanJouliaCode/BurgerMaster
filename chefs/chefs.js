@@ -161,7 +161,7 @@ var Chef = class Chef {
                             upgradeBiggerBurger(); // Burger are generally bigger
                             break;
                         case 'chef4':
-                            multiplyPriceBurger(); // burger price is increased
+                            randomMoreExpensiveBurger(); // burger price is increased
                             break;
                         case "chef5":
                             upgradeTowerBurger(); // there is a chance for burger to be very tall 
@@ -200,7 +200,6 @@ var Chef = class Chef {
                         locked = this.upgrade1;
                         break;
                 }
-                console.log('fggf', this.id, locked, this.upgrade1, this.upgrade2)
                 if (locked) { //if locked, don't update button
                     if (money < chefs[this.id]["upgrade" + id]) { // if upgrade worth more than you have, make the button locked
                         upgradeBtn.children[0].style.backgroundColor = "#10222C";
@@ -344,7 +343,6 @@ var Chef = class Chef {
             });
         } else {
             this.document.removeChild(this.document.children[1]);
-            console.warn(parseInt(this.id.substring(4)))
             if (parseInt(this.id.substring(4)) === currentChef) {
                 this.document.children[0].style.backgroundColor = "white";
             } else {

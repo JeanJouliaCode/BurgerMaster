@@ -11,6 +11,43 @@ body {
     margin: 0;
 }
 
+.rules {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background-color: #10222C;
+    z-index: 100;
+    left: 10%;
+    top: 10%;
+    margin-left: auto;
+    border-width: 5px;
+    border-color: #FF961B;
+    border-style: solid;
+    border-radius: 10px;
+    display: none;
+}
+
+.rulesLink {
+    position: absolute;
+    font-size: 1vw;
+    bottom: 1%;
+    left: 1%;
+    z-index: 100;
+    font-family: Sauce;
+    color: #FF961B;
+    cursor: pointer;
+}
+
+.cross {
+    position: relative;
+    top: 2%;
+    margin-left: 97%;
+    font-size: 2vw;
+    font-family: Sauce;
+    color: #FF961B;
+    cursor: pointer;
+}
+
 
 /*###############################left side related css##################################*/
 
@@ -99,6 +136,7 @@ body {
     position: relative;
     margin-left: auto;
     margin-right: 5%;
+    transition: color 1s;
 }
 
 .serving {

@@ -3,8 +3,8 @@ var foodList = [];
 
 //every information about the food
 var ingredientChart = {
-    bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 22000 },
-    meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 18000 },
+    bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 26000 },
+    meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 22000 },
     ketchup: {
         unlock: true,
         nb: 20,
@@ -41,7 +41,7 @@ var ingredientChart = {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 200,
+        price: 4,
         initPrice: 160,
         initSpeed: 6650
     },
@@ -146,54 +146,85 @@ var IngredientPanel = class IngredientPanel {
     //getPrice
     getNewPrice(oldPrice) {
         switch (currentChef) {
-            case '0':
+            case 0:
                 oldPrice += 7.5;
                 break;
-            case '1':
+            case 1:
                 oldPrice += 3.75;
                 break;
-            case '2':
+            case 2:
                 oldPrice += 2;
                 break;
-            case '3':
+            case 3:
                 oldPrice += 4.16;
                 break;
-            case '4':
+            case 4:
                 oldPrice += 10;
                 break;
-            case '5':
+            case 5:
                 oldPrice += 12;
                 break;
         }
-        return this.roundValue(oldPrice * 1.10);
+        return this.roundValue(oldPrice);
     }
 
     getNewSPeed(oldSpeed) {
-        switch (currentChef) {
-            case '0':
-                oldPrice += 890;
-                break;
-            case '1':
-                oldPrice += 480;
-                break;
-            case '2':
-                oldPrice += 280;
-                break;
-            case '3':
-                oldPrice += 175;
-                break;
-            case '4':
-                oldPrice += 117;
-                break;
-            case '5':
-                oldPrice += 80;
-                break;
+        // switch (currentChef) {
+        //     case 0:
+        //         oldSpeed -= 1090;
+        //         break;
+        //     case 1:
+        //         oldSpeed -= 480;
+        //         break;
+        //     case 2:
+        //         oldSpeed -= 280;
+        //         break;
+        //     case 3:
+        //         oldSpeed -= 175;
+        //         break;
+        //     case 4:
+        //         oldSpeed -= 117;
+        //         break;
+        //     case 5:
+        //         oldSpeed -= 80;
+        //         break;
+        // }
+        return this.roundValue(oldSpeed * 0.80);
+    }
+
+    //average speed of all unlocked reserve
+    averageSpeed() {
+        var speedAverage = 0;
+        var nbUnlockedReserve = 0;
+        for (var reserve of foodList) {
+            if (reserve.unlock) {
+                nbUnlockedReserve++;
+                speedAverage += reserve.speedOfDelivery;
+            }
         }
-        return this.roundValue(oldSpeed * 0.90);
+        return this.roundValue(speedAverage / nbUnlockedReserve);
+    }
+
+    //average price of all unlocked reserve
+    averagePrice() {
+        var priceAverage = 0;
+        var nbUnlockedReserve = 0;
+        for (var reserve of foodList) {
+            if (reserve.unlock) {
+                nbUnlockedReserve++;
+                priceAverage += reserve.priceUpgrade;
+            }
+        }
+        return this.roundValue(priceAverage / nbUnlockedReserve);
     }
 
     //unlocked the reserve
     unlockReserve() {
+        this.speedOfDelivery = this.averageSpeed();
+        ingredientChart[this.ingredient].initSpeed = this.speedOfDelivery;
+        this.priceUpgrade = this.averagePrice();
+        ingredientChart[this.ingredient].initPrice = this.priceUpgrade;
+
         this.document.style.backgroundColor = "rgb(238, 237, 237)";
         if (this.ingredient == "pickle") {
             this.document.style.backgroundColor = 'rgb(154, 212, 157)';
@@ -427,7 +458,6 @@ function startLoop() {
             await sleepM();
             postMessage(1)
             postMessage('add');
-            console.log('add')
         }
     }
 

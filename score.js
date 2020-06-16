@@ -1,4 +1,4 @@
-var money = 360000;
+var money = 25;
 
 var save = {
     money: 0,
@@ -9,7 +9,7 @@ var save = {
     offsetmax: null,
     command: null,
     pending: null,
-    priceIncrease: null,
+    priceBrugerMultiplicator: null,
     isThereKetchup: null,
     speed: null,
 }
@@ -28,7 +28,7 @@ function getItemLocalStorage() {
         offsetmax = save.offsetmax;
         command = save.command;
         pending = save.pending;
-        priceIncrease = save.priceIncrease;
+        priceBrugerMultiplicator = save.priceBrugerMultiplicator;
         isThereKetchup = save.isThereKetchup;
         speed = save.speed;
     }
@@ -46,7 +46,7 @@ function updateScore() {
     save.offsetmax = offsetmax;
     save.command = command;
     save.pending = pending;
-    save.priceIncrease = priceIncrease;
+    save.priceBrugerMultiplicator = priceBrugerMultiplicator;
     save.isThereKetchup = isThereKetchup;
     save.speed = speed;
     localStorage.setItem('saveObject', JSON.stringify(save));

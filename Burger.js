@@ -9,7 +9,7 @@ var priceBrugerMultiplicator = 1;
 
 var speed = 0;
 
-var speedList = [28, 26, 23, 19, 16, 12, 8, 6, 4, 3, 2, 1]
+var speedList = [40, 35, 25, 19, 16, 12, 8, 6, 4, 3, 2, 1]
 
 var Burger = class Burger {
     constructor() {
@@ -47,12 +47,12 @@ var Burger = class Burger {
 
         this.speed = speedList[speed];
 
-        this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
+        this.speedIngredientPourcent = Math.floor(-0.19 * this.speed + 10);
     }
 
     changeSpeed() {
         this.speed = speedList[speed];
-        this.speedIngredientPourcent = Math.floor(-0.24 * this.speed + 10);
+        this.speedIngredientPourcent = Math.floor(-0.19 * this.speed + 10);
     }
 
     sleep(ms) {
@@ -64,7 +64,6 @@ var Burger = class Burger {
     async addIngredient(document, margin, m, i, ingredient, listElement) {
 
         if (m > margin) {
-            console.log('addIngredient', m, margin)
             m -= this.speedIngredientPourcent;
             this.moveIngredient(m, document, this.speed);
             this.objAddIngredient = { 'document': document, 'margin': margin, 'm': m, 'i': i, 'ingredient': ingredient, 'listElement': listElement }
@@ -72,7 +71,6 @@ var Burger = class Burger {
                 //this.addIngredient(document, margin, m, i, ingredient, listElement);
             return;
         }
-        console.log('done')
         await this.moveIngredient(margin, document, this.speed);
         margin += this.positionInfo[ingredient].offset;
         this.preparePhaseDown(margin, listElement, i + 1);
@@ -89,12 +87,10 @@ var Burger = class Burger {
         if (pending == false) {
             displayOrder(listElement);
         }
-        console.log('%c word is :' + checkReserve(listElement), ' color: #DB00FF');
         if (!checkReserve(listElement)) {
             pending = true;
             return;
         }
-        console.log('%c check reserve :' + checkReserve(listElement) + 'pending :' + pending, ' color: #DB00FF');
 
         pending = false;
         //if a bruger is already being prepared, it's prevent from preparing one again
@@ -107,7 +103,6 @@ var Burger = class Burger {
     }
 
     preparePhaseDown(generalOffset, listElement, i) {
-        console.log('test length', ingredient, i, listElement)
         if (listElement.length <= i) {
             this.lastPhase(listElement);
             return;
@@ -152,8 +147,12 @@ var Burger = class Burger {
                 priceBurger += ingredientChart[element].price;
             }
         }
-
-        return priceBrugerMultiplicator != 1 && Math.random() > 0.8 ? priceBurger * priceBrugerMultiplicator : priceBurger;
+        console.log('priceBrugerMultiplicator', priceBrugerMultiplicator)
+        var multiply = priceBrugerMultiplicator != 1 && Math.random() > 0.9;
+        if (multiply) {
+            changeSpanColor()
+        }
+        return multiply ? priceBurger * priceBrugerMultiplicator : priceBurger;
     }
 
     //push the plate and everything to the side
