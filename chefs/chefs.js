@@ -7,7 +7,7 @@ var chefs = {
         unlocked: true,
         price: 0,
         ingredient: "",
-        upgrade1: 100,
+        upgrade1: 160,
         upgrade2: 120,
         upgrade1locked: true,
         upgrade2locked: true,
@@ -18,10 +18,10 @@ var chefs = {
         nbUnlocked: 6,
         speed: 23,
         unlocked: false,
-        price: 300,
+        price: 500,
         ingredient: "tomato",
-        upgrade1: 40,
-        upgrade2: 50,
+        upgrade1: 450,
+        upgrade2: 400,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -31,10 +31,10 @@ var chefs = {
         nbUnlocked: 7,
         speed: 16,
         unlocked: false,
-        price: 600,
+        price: 1200,
         ingredient: "pickle",
-        upgrade1: 70,
-        upgrade2: 80,
+        upgrade1: 2500,
+        upgrade2: 2000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -44,10 +44,10 @@ var chefs = {
         nbUnlocked: 8,
         speed: 8,
         unlocked: false,
-        price: 12000,
+        price: 5000,
         ingredient: "beacon",
-        upgrade1: 100,
-        upgrade2: 110,
+        upgrade1: 4600,
+        upgrade2: 4000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -57,10 +57,10 @@ var chefs = {
         nbUnlocked: 9,
         speed: 4,
         unlocked: false,
-        price: 24000,
+        price: 10000,
         ingredient: "egg",
-        upgrade1: 130,
-        upgrade2: 140,
+        upgrade1: 13000,
+        upgrade2: 10000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -70,10 +70,10 @@ var chefs = {
         nbUnlocked: 10,
         speed: 2,
         unlocked: false,
-        price: 48000,
+        price: 40000,
         ingredient: "bredTopBlack",
-        upgrade1: 160,
-        upgrade2: 170,
+        upgrade1: 60000,
+        upgrade2: 50000,
         upgrade1locked: true,
         upgrade2locked: true,
     }
@@ -176,6 +176,11 @@ var Chef = class Chef {
         }
     }
 
+    //round
+    roundValue(value, nb = 0) {
+        return Math.round(value * Math.pow(10, nb)) / Math.pow(10, nb);
+    }
+
     //color of button with out enough gold to buy
     checkMoneyButton() {
         if (!this.unlocked) {
@@ -249,7 +254,13 @@ var Chef = class Chef {
     }
 
     initUpgrade(upgrade) {
-        upgrade.children[0].textContent = chefs[this.id]["upgrade" + upgrade.id] + "$";
+        var price = chefs[this.id]["upgrade" + upgrade.id];
+        if (price > 3000) {
+            price = this.roundValue(price / 1000).toString() + "K$"
+        } else {
+            price = chefs[this.id]["upgrade" + upgrade.id].toString() + "$";
+        }
+        upgrade.children[0].textContent = price;
         upgrade.children[0].addEventListener("click", () => {
             this.upgradeChef(upgrade);
         });

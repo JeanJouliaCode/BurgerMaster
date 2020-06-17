@@ -4,12 +4,12 @@ var foodList = [];
 //every information about the food
 var ingredientChart = {
     bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 26000 },
-    meat: { unlock: true, nb: 20, nbElement: 10, price: 1, initPrice: 40, initSpeed: 22000 },
+    meat: { unlock: true, nb: 20, nbElement: 10, price: 2, initPrice: 40, initSpeed: 22000 },
     ketchup: {
         unlock: true,
         nb: 20,
         nbElement: 10,
-        price: 3,
+        price: 4,
         initPrice: 40,
         initSpeed: 28000
     },
@@ -17,7 +17,7 @@ var ingredientChart = {
         unlock: true,
         nb: 20,
         nbElement: 10,
-        price: 2,
+        price: 1,
         initPrice: 40,
         initSpeed: 25000
     },
@@ -33,7 +33,7 @@ var ingredientChart = {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 4,
+        price: 5,
         initPrice: 260,
         initSpeed: 3660
     },
@@ -57,7 +57,7 @@ var ingredientChart = {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 7,
+        price: 8,
         initPrice: 640,
         initSpeed: 405
     },
@@ -65,7 +65,7 @@ var ingredientChart = {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 8,
+        price: 7,
         initPrice: 400,
         initSpeed: 1120
     }
@@ -257,18 +257,19 @@ var IngredientPanel = class IngredientPanel {
         if (this.unlock) {
             if (money < this.priceUpgrade) {
                 this.button.style.backgroundColor = "#10222C";
-                this.button.style.pointerEvents = "none";
+                //this.button.style.pointerEvents = "none";
                 this.button.style.boxShadow = 'none';
             } else {
                 this.button.style.backgroundColor = "#007d96";
-                this.button.style.pointerEvents = "auto";
+                //this.button.style.pointerEvents = "auto";
                 this.button.style.boxShadow = '6px 6px 0px 1px #142d3a';
             }
         }
     }
 
     updateTootTip() {
-        this.toolTip.childNodes[1].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 0) + " secondes";
+        console.log('hey', this.toolTip.childNodes)
+        this.toolTip.childNodes[3].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 0) + " secondes";
         this.toolTip.childNodes[7].textContent = '1 every ' + this.roundValue(this.getNewSPeed(this.speedOfDelivery) / 1000, 0) + " secondes";
     }
 
@@ -335,7 +336,7 @@ var IngredientPanel = class IngredientPanel {
         } else {
             //grey everything out
             this.document.style.backgroundColor = "#10222C";
-            this.button.style.pointerEvents = "none";
+            //this.button.style.pointerEvents = "none";
             this.button.style.backgroundColor = "#10222C";
             this.button.style.boxShadow = 'none';
         }

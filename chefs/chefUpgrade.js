@@ -1,6 +1,6 @@
 function upgradeDoublePrice() {
     ingredientChart.bredTop.price = 5;
-    changeBread();
+    displayOrder(command);
 }
 
 function upgradeUpgradeLowest() {

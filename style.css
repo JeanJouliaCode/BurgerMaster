@@ -293,8 +293,9 @@ body {
     visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     color: rgb(0, 0, 0);
+    text-align: left;
 }
 
 .infoBubbleRight {
@@ -308,24 +309,22 @@ body {
     visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     color: rgb(0, 0, 0);
+    text-align: left;
 }
 
 .toopTipText {
     font-size: 1vw;
     z-index: 3;
     font-family: Sauce;
+    margin-left: 15%;
 }
 
 .tooltipSauce {
     height: 100%;
     width: 100%;
     position: absolute;
-}
-
-.currentSpeed {
-    margin-top: 10%;
 }
 
 

@@ -20,7 +20,7 @@ function generateCommand() {
         command.push("bredBottom");
     }
 
-    if (Math.floor(Math.random() * 10) >= 5 || isThereKetchup) {
+    if (Math.floor(Math.random() * 10) >= 7 || isThereKetchup) {
         command.push("ketchup");
     }
 
