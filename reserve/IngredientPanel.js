@@ -268,7 +268,6 @@ var IngredientPanel = class IngredientPanel {
     }
 
     updateTootTip() {
-        console.log('hey', this.toolTip.childNodes)
         this.toolTip.childNodes[3].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 0) + " secondes";
         this.toolTip.childNodes[7].textContent = '1 every ' + this.roundValue(this.getNewSPeed(this.speedOfDelivery) / 1000, 0) + " secondes";
     }
@@ -462,7 +461,7 @@ function startLoop() {
         }
     }
 
-    onmessage = function(e) {
+    onmessage = function (e) {
         speedOfDelivery = e.data;
 
         if (init) {

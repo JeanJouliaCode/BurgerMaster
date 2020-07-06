@@ -10,6 +10,8 @@ var isGameGoing = true;
 
 var rulesDisplayed = false;
 
+var resetDisplayed = false;
+
 function startGame() {
     //currentChef = 0;
     getItemLocalStorage();
@@ -26,6 +28,7 @@ function startGame() {
     initChef();
 
     initRules();
+    initReset();
 
     //get div order to maker burger when clicked for test purpose
     makeBurger();
@@ -80,7 +83,6 @@ function initRules() {
     cross = document.getElementById('cross');
 
     button.addEventListener('click', () => {
-        console.log('click')
         if (rulesDisplayed) {
             rules.style.display = 'none';
         }
@@ -93,5 +95,27 @@ function initRules() {
     cross.addEventListener('click', () => {
         rules.style.display = 'none';
         rulesDisplayed = false;
+    })
+}
+
+function initReset() {
+    button = document.getElementById('resetBtn');
+    resetDiv = document.getElementById('resetDiv');
+    cross = document.getElementById('cross');
+
+    button.addEventListener('click', () => {
+        console.log('priint')
+        if (resetDisplayed) {
+            resetDiv.style.display = 'none';
+        }
+        if (!resetDisplayed) {
+            resetDiv.style.display = 'block';
+        }
+        resetDisplayed = !resetDisplayed;
+    })
+
+    cross.addEventListener('click', () => {
+        resetDiv.style.display = 'none';
+        resetDisplayed = false;
     })
 }

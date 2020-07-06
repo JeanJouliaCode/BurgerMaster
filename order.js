@@ -39,6 +39,5 @@ function displayOrder(listIngredientOriginal) {
 }
 
 function changeSpanColor() {
-    console.log('better price')
     span.style.color = '#FF961B';
 }

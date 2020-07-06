@@ -248,7 +248,7 @@ var Chef = class Chef {
             chefImage.src = './ressources/chefs/' + this.id + '.png';
             speed++;
             burger.changeSpeed();
-
+            burger.displayChef();
             updateScore();
         }
     }
@@ -355,6 +355,8 @@ var Chef = class Chef {
         } else {
             this.document.removeChild(this.document.children[1]);
             if (parseInt(this.id.substring(4)) === currentChef) {
+                var chefImage = document.getElementById(this.id + "Img");
+                chefImage.src = './ressources/chefs/' + this.id + '.png';
                 this.document.children[0].style.backgroundColor = "white";
             } else {
                 var chefImage = document.getElementById(this.id + "Img");

@@ -9,12 +9,18 @@
         <div class="rules" id="rule">
             <span class="cross" id="cross">X</span>
         </div>
+        <div class="reset" id="resetDiv">
+            <div class="buttonReset"><span id="cross">ok</span></div>
+            <div class="buttonReset"><span id="cross">cancel</span></div>
+        </div>
         <div class="leftSide">
             <span class='rulesLink' id='ruleBtn'>Rules</span>
+            <span class='resetLink' id='resetBtn'>Reset</span>
             <div class="tableRegister">
                 <img src="./ressources/background/servingBackground.png" class="wall">
                 <img src="./ressources/background/table.png" class="table">
                 <img src="./ressources/background/register.png" class="register">
+                <img class="chefImage" id="chefImage">
                 <span id="scoreDigit" class="money"></span>
             </div>
             <div class="order" id="order"></div>
@@ -136,7 +142,8 @@
                     <div class="reservePanel">
                         <span class="speedDelivery" id="pickleSpeed">&#8192</span>
                         <div class="foodElementDiv">
-                            <div style="background-color: rgb(154, 212, 157);" class=" ingredientPile " id="pickle"></div>
+                            <div style="background-color: rgb(154, 212, 157);" class=" ingredientPile " id="pickle">
+                            </div>
                             <div class="loadDiv">
                                 <div class="load" id="pickleLoad"></div>
                             </div>
@@ -214,18 +221,21 @@
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <p class="toopTipText innerTextInfoBubble" style="text-align: center;"><strong>Level 1
-                  chef</strong><br />David is a promissing figure in the world of fast food<br />main hobby: Finger skating&nbsp;
+                                    chef</strong><br />David is a promissing figure in the world of fast food<br />main
+                                hobby: Finger skating&nbsp;
                             </p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef0InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade2"><strong>Golden bread</strong><br />The price of bread will go from 1 to 5$</p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade2"><strong>Golden
+                                    bread</strong><br />The price of bread will go from 1 to 5$</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef0upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-                        <img src="./ressources/chefs/chef0.png" class="chef" id="chef0Img" />
+                        <img class="chef" id="chef0Img" />
                     </div>
                     <button class="buyChef"></button>
                 </div>
@@ -234,13 +244,16 @@
                         <div class="infoBubbleChefLeft" id="chef1InfoBubble">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually
+                                nocturnal lizards. They are found on every continent except Australia.</p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef1InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade2"><strong>Ketchup gun</strong><br />Burger will always have ketchup</p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade2"><strong>Ketchup
+                                    gun</strong><br />Burger will always have ketchup</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef1upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
@@ -252,17 +265,20 @@
                     <div class="character ">
                         <div class="infoBubbleChefLeft" id="chef2InfoBubble">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually
+                                nocturnal lizards. They are found on every continent except Australia.</p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef2InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade2"><strong>Mega upgrade</strong><br />The first 2 lowest reserve will be upgraded 5 times.</p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade2"><strong>Mega
+                                    upgrade</strong><br />The first 2 lowest reserve will be upgraded 5 times.</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef2upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-                        <img src="./ressources/chefs/chef2.png" class="chef" id="chef2Img" />
+                        <img class="chef" id="chef2Img" />
                     </div>
                     <button class="buyChef"></button>
                 </div>
@@ -270,18 +286,21 @@
                     <div class="character ">
                         <div class="infoBubbleChefLeft" id="chef3InfoBubble">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually
+                                nocturnal lizards. They are found on every continent except Australia.</p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef3InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade2"><strong>Burger fertilizer</strong><br />burger are now more likely to be bigger.
+                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade2"><strong>Burger
+                                    fertilizer</strong><br />burger are now more likely to be bigger.
                             </p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef3upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-                        <img src="./ressources/chefs/chef3.png" class="chef" id="chef3Img" />
+                        <img class="chef" id="chef3Img" />
                     </div>
                     <button class="buyChef"></button>
                 </div>
@@ -289,17 +308,20 @@
                     <div class="character ">
                         <div class="infoBubbleChefLeft" id="chef4InfoBubble">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually
+                                nocturnal lizards. They are found on every continent except Australia.</p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef4InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade2"><strong>False advertising</strong><br /> Burgers have 20% chance to be 3 times more expensive.</p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade2"><strong>False
+                                    advertising</strong><br /> Burgers have 20% chance to be 3 times more expensive.</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef4upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-                        <img src="./ressources/chefs/chef4.png" class="chef" id="chef4Img" />
+                        <img class="chef" id="chef4Img" />
                     </div>
                     <button class="buyChef"></button>
                 </div>
@@ -307,17 +329,20 @@
                     <div class="character ">
                         <div class="infoBubbleChefRight" id="chef5InfoBubble">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually nocturnal lizards. They are found on every continent except Australia.</p>
+                            <p class="toopTipText innerTextInfoBubble">Geckos are a group of usually small, usually
+                                nocturnal lizards. They are found on every continent except Australia.</p>
                         </div>
                         <div class="infoBubbleUpgradeLeft" id="chef5InfoBubbleUpgrade">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
                             <img src="./ressources/tooltip.png" class="tooltipSauce">
-                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade2"><strong>Burger tower</strong><br />Burger will have 20% of chance of being 30 ingredients tall.</p>
-                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade1">With this new tool, the chef will be faster</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade2"><strong>Burger
+                                    tower</strong><br />Burger will have 20% of chance of being 30 ingredients tall.</p>
+                            <p class="toopTipText innerTextInfoBubble" id="chef5upgrade1">With this new tool, the chef
+                                will be faster</p>
                         </div>
                         <div class="upgrade1 button" id='1'><button class="btnBuyUpgrade"></button></div>
                         <div class="upgrade2 button" id='2'><button class="btnBuyUpgrade"></button></div>
-                        <img src="./ressources/chefs/chef5.png" class="chef" id="chef5Img" />
+                        <img class="chef" id="chef5Img" />
                     </div>
                     <button class="buyChef"></button>
                 </div>
