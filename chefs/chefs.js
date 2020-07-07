@@ -31,7 +31,7 @@ var chefs = {
         nbUnlocked: 7,
         speed: 16,
         unlocked: false,
-        price: 1200,
+        price: 1500,
         ingredient: "pickle",
         upgrade1: 2500,
         upgrade2: 2000,
@@ -44,7 +44,7 @@ var chefs = {
         nbUnlocked: 8,
         speed: 8,
         unlocked: false,
-        price: 5000,
+        price: 7000,
         ingredient: "beacon",
         upgrade1: 4600,
         upgrade2: 4000,
@@ -57,7 +57,7 @@ var chefs = {
         nbUnlocked: 9,
         speed: 4,
         unlocked: false,
-        price: 10000,
+        price: 25000,
         ingredient: "egg",
         upgrade1: 13000,
         upgrade2: 10000,
@@ -70,7 +70,7 @@ var chefs = {
         nbUnlocked: 10,
         speed: 2,
         unlocked: false,
-        price: 40000,
+        price: 90000,
         ingredient: "bredTopBlack",
         upgrade1: 60000,
         upgrade2: 50000,
@@ -232,7 +232,7 @@ var Chef = class Chef {
                 chefImage.src = './ressources/chefs/' + chef.id + "Dead" + '.png';
             }
 
-            this.document.children[0].style.backgroundColor = "white";
+            this.document.children[0].style.backgroundColor = "#EAEAEA";
             this.document.children[0].style.height = "100%";
             this.document.children[0].style.visibility = "visible";
             updateScore();
@@ -357,7 +357,7 @@ var Chef = class Chef {
             if (parseInt(this.id.substring(4)) === currentChef) {
                 var chefImage = document.getElementById(this.id + "Img");
                 chefImage.src = './ressources/chefs/' + this.id + '.png';
-                this.document.children[0].style.backgroundColor = "white";
+                this.document.children[0].style.backgroundColor = "#EAEAEA";
             } else {
                 var chefImage = document.getElementById(this.id + "Img");
                 this.document.children[0].style.backgroundColor = '#10222C';

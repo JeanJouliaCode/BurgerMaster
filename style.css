@@ -28,16 +28,16 @@ body {
 }
 
 .reset {
-    align-items: center;
+    justify-content: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: absolute;
-    width: 15%;
-    height: 15%;
+    width: 400;
+    height: 200;
     background-color: #10222C;
     z-index: 100;
-    left: 10%;
-    top: 10%;
+    left: 43%;
+    top: 37%;
     margin-left: auto;
     border-width: 5px;
     border-color: #FF961B;
@@ -48,8 +48,34 @@ body {
 
 .buttonReset {
     width: 30%;
-    background-color: #FF961B;
+    background-color: #007d96;
     margin: 10;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonResetText {
+    margin-top: 2%;
+    font-size: 28;
+    color: white;
+    font-family: Sauce;
+}
+
+.textReset {
+    text-align: center;
+    font-size: 26;
+    color: white;
+    font-family: Sauce;
+}
+
+.resetController {
+    margin-top: 7%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
 }
 
 .rulesLink {

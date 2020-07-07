@@ -101,7 +101,8 @@ function initRules() {
 function initReset() {
     button = document.getElementById('resetBtn');
     resetDiv = document.getElementById('resetDiv');
-    cross = document.getElementById('cross');
+    resetCancel = document.getElementById('resetCancel');
+    resetOk = document.getElementById('resetOk');
 
     button.addEventListener('click', () => {
         console.log('priint')
@@ -109,13 +110,19 @@ function initReset() {
             resetDiv.style.display = 'none';
         }
         if (!resetDisplayed) {
-            resetDiv.style.display = 'block';
+            resetDiv.style.display = 'flex';
         }
         resetDisplayed = !resetDisplayed;
     })
 
-    cross.addEventListener('click', () => {
+    resetCancel.addEventListener('click', () => {
         resetDiv.style.display = 'none';
         resetDisplayed = false;
+    })
+
+    resetOk.addEventListener('click', () => {
+        console.log('rested');
+        localStorage.setItem('saveObject', null);
+        window.location.reload();
     })
 }

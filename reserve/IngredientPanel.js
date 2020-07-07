@@ -5,13 +5,13 @@ var foodList = [];
 var ingredientChart = {
     bredTop: { unlock: true, nb: 20, nbElement: 2, price: 1, initPrice: 30, initSpeed: 26000 },
     meat: { unlock: true, nb: 20, nbElement: 10, price: 2, initPrice: 40, initSpeed: 22000 },
-    ketchup: {
+    cheese: {
         unlock: true,
-        nb: 20,
-        nbElement: 10,
-        price: 4,
+        nb: 30,
+        nbElement: 15,
+        price: 3,
         initPrice: 40,
-        initSpeed: 28000
+        initSpeed: 26000
     },
     salad: {
         unlock: true,
@@ -21,53 +21,53 @@ var ingredientChart = {
         initPrice: 40,
         initSpeed: 25000
     },
-    cheese: {
+    ketchup: {
         unlock: true,
-        nb: 30,
-        nbElement: 15,
-        price: 3,
-        initPrice: 40,
-        initSpeed: 26000
-    },
-    pickle: {
-        unlock: false,
         nb: 20,
-        nbElement: 20,
-        price: 5,
-        initPrice: 260,
-        initSpeed: 3660
+        nbElement: 10,
+        price: 4,
+        initPrice: 40,
+        initSpeed: 28000
     },
     tomato: {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 4,
+        price: 5,
         initPrice: 160,
         initSpeed: 6650
+    },
+    pickle: {
+        unlock: false,
+        nb: 20,
+        nbElement: 20,
+        price: 6,
+        initPrice: 260,
+        initSpeed: 3660
     },
     beacon: {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 6,
+        price: 8,
         initPrice: 300,
         initSpeed: 1960
-    },
-    bredTopBlack: {
-        unlock: false,
-        nb: 20,
-        nbElement: 20,
-        price: 8,
-        initPrice: 640,
-        initSpeed: 405
     },
     egg: {
         unlock: false,
         nb: 20,
         nbElement: 20,
-        price: 7,
+        price: 9,
         initPrice: 400,
         initSpeed: 1120
+    },
+    bredTopBlack: {
+        unlock: false,
+        nb: 20,
+        nbElement: 20,
+        price: 10,
+        initPrice: 640,
+        initSpeed: 405
     }
 };
 
@@ -150,19 +150,19 @@ var IngredientPanel = class IngredientPanel {
                 oldPrice += 7.5;
                 break;
             case 1:
-                oldPrice += 3.75;
+                oldPrice += 7;
                 break;
             case 2:
-                oldPrice += 2;
+                oldPrice += 8;
                 break;
             case 3:
-                oldPrice += 4.16;
-                break;
-            case 4:
                 oldPrice += 10;
                 break;
+            case 4:
+                oldPrice += 20;
+                break;
             case 5:
-                oldPrice += 12;
+                oldPrice += 30;
                 break;
         }
         return this.roundValue(oldPrice);
