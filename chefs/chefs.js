@@ -46,7 +46,7 @@ var chefs = {
         unlocked: false,
         price: 7000,
         ingredient: "beacon",
-        upgrade1: 4600,
+        upgrade1: 5000,
         upgrade2: 4000,
         upgrade1locked: true,
         upgrade2locked: true,
@@ -232,7 +232,7 @@ var Chef = class Chef {
                 chefImage.src = './ressources/chefs/' + chef.id + "Dead" + '.png';
             }
 
-            this.document.children[0].style.backgroundColor = "#EAEAEA";
+            this.document.children[0].style.backgroundColor = "#007d96";
             this.document.children[0].style.height = "100%";
             this.document.children[0].style.visibility = "visible";
             updateScore();
@@ -357,7 +357,7 @@ var Chef = class Chef {
             if (parseInt(this.id.substring(4)) === currentChef) {
                 var chefImage = document.getElementById(this.id + "Img");
                 chefImage.src = './ressources/chefs/' + this.id + '.png';
-                this.document.children[0].style.backgroundColor = "#EAEAEA";
+                this.document.children[0].style.backgroundColor = "#007d96";
             } else {
                 var chefImage = document.getElementById(this.id + "Img");
                 this.document.children[0].style.backgroundColor = '#10222C';

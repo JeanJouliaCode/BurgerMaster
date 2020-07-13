@@ -86,7 +86,7 @@ function initRules() {
         if (rulesDisplayed) {
             rules.style.display = 'none';
         }
-        if (!rulesDisplayed) {
+        if (!rulesDisplayed && !resetDisplayed) {
             rules.style.display = 'block';
         }
         rulesDisplayed = !rulesDisplayed;
@@ -109,7 +109,7 @@ function initReset() {
         if (resetDisplayed) {
             resetDiv.style.display = 'none';
         }
-        if (!resetDisplayed) {
+        if (!resetDisplayed && !rulesDisplayed) {
             resetDiv.style.display = 'flex';
         }
         resetDisplayed = !resetDisplayed;

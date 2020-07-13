@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     display: flex;
     background-color: #10222C;
+    overflow: hidden;
 }
 
 body {
@@ -14,7 +15,7 @@ body {
 .rules {
     position: absolute;
     width: 80%;
-    height: 80%;
+    padding-bottom: 2%;
     background-color: #10222C;
     z-index: 100;
     left: 10%;
@@ -25,6 +26,8 @@ body {
     border-style: solid;
     border-radius: 10px;
     display: none;
+    overflow: auto;
+    max-height: 80%;
 }
 
 .reset {
@@ -108,6 +111,54 @@ body {
     font-family: Sauce;
     color: #FF961B;
     cursor: pointer;
+}
+
+.divition {
+    background-color: red;
+}
+
+.divition2 {
+    background-color: blue;
+}
+
+.divition3 {
+    background-color: gray;
+}
+
+.row {
+    display: flex;
+    padding: 1% 0;
+}
+
+.division {
+    border-bottom: #528ecc;
+    border-width: 2;
+    border-bottom: solid;
+}
+
+.textRule {
+    font-size: 1.2vw;
+    font-family: Sauce;
+    color: white;
+    padding: 0 1%;
+}
+
+.ruleOder {
+    padding: 5% 0;
+}
+
+.paddingRules {
+    padding: 0 2%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ruleReserve {
+    padding-left: 18%;
+}
+
+.ruleRelative {
+    position: relative;
 }
 
 

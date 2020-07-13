@@ -156,13 +156,13 @@ var IngredientPanel = class IngredientPanel {
                 oldPrice += 8;
                 break;
             case 3:
-                oldPrice += 10;
-                break;
-            case 4:
                 oldPrice += 20;
                 break;
+            case 4:
+                oldPrice += 40;
+                break;
             case 5:
-                oldPrice += 30;
+                oldPrice += 60;
                 break;
         }
         return this.roundValue(oldPrice);
@@ -461,7 +461,7 @@ function startLoop() {
         }
     }
 
-    onmessage = function (e) {
+    onmessage = function(e) {
         speedOfDelivery = e.data;
 
         if (init) {
