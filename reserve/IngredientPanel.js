@@ -119,12 +119,13 @@ var IngredientPanel = class IngredientPanel {
                 "every " + this.roundValue(this.speedOfDelivery / 1000, 2).toString(10) + "s";
             this.button.textContent = this.priceUpgrade.toString(10) + "$";
 
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 2; i++) {
                 this.add();
             }
 
             updateScore();
             this.updateTootTip();
+            console.log(elapsedTime);
         }
 
     }

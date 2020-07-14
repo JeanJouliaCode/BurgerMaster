@@ -73,7 +73,7 @@ var Burger = class Burger {
             this.moveIngredient(m, document, this.speed);
             this.objAddIngredient = { 'document': document, 'margin': margin, 'm': m, 'i': i, 'ingredient': ingredient, 'listElement': listElement }
             this.worker.postMessage(this.speed.toString() + '-' + 'addIngredient')
-            //this.addIngredient(document, margin, m, i, ingredient, listElement);
+                //this.addIngredient(document, margin, m, i, ingredient, listElement);
             return;
         }
         await this.moveIngredient(margin, document, this.speed);
@@ -185,7 +185,7 @@ var Burger = class Burger {
             i++;
             this.objPushPlatePhase = { 'speed': speed, 'pixelArray': pixelArray, 'i': i };
             this.worker.postMessage(this.speed.toString() + '-' + 'pushPlatePhase')
-            //await this.pushPlatePhase(speed, pixelArray, i);
+                //await this.pushPlatePhase(speed, pixelArray, i);
             return;
         }
         for (var element of this.burgerElement) {
@@ -197,6 +197,8 @@ var Burger = class Burger {
 
         //update displayed score
         updateScore();
+
+        saveData();
 
         //make another burger
         makeBurger();
@@ -229,7 +231,7 @@ function workerTimer() {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    onmessage = function (e) {
+    onmessage = function(e) {
         var info = e.data.split('-');
         waitTheTime(parseInt(info[0]), info[1])
 

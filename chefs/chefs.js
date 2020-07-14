@@ -18,7 +18,7 @@ var chefs = {
         nbUnlocked: 6,
         speed: 23,
         unlocked: false,
-        price: 500,
+        price: 600,
         ingredient: "tomato",
         upgrade1: 450,
         upgrade2: 400,
@@ -31,7 +31,7 @@ var chefs = {
         nbUnlocked: 7,
         speed: 16,
         unlocked: false,
-        price: 1500,
+        price: 3000,
         ingredient: "pickle",
         upgrade1: 2500,
         upgrade2: 2000,
@@ -44,7 +44,7 @@ var chefs = {
         nbUnlocked: 8,
         speed: 8,
         unlocked: false,
-        price: 7000,
+        price: 9000,
         ingredient: "beacon",
         upgrade1: 5000,
         upgrade2: 4000,
@@ -57,10 +57,10 @@ var chefs = {
         nbUnlocked: 9,
         speed: 4,
         unlocked: false,
-        price: 25000,
+        price: 35000,
         ingredient: "egg",
         upgrade1: 13000,
-        upgrade2: 10000,
+        upgrade2: 11000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -70,10 +70,10 @@ var chefs = {
         nbUnlocked: 10,
         speed: 2,
         unlocked: false,
-        price: 90000,
+        price: 100000,
         ingredient: "bredTopBlack",
-        upgrade1: 60000,
-        upgrade2: 50000,
+        upgrade1: 70000,
+        upgrade2: 60000,
         upgrade1locked: true,
         upgrade2locked: true,
     }
@@ -235,7 +235,6 @@ var Chef = class Chef {
             this.document.children[0].style.backgroundColor = "#007d96";
             this.document.children[0].style.height = "100%";
             this.document.children[0].style.visibility = "visible";
-            updateScore();
             currentChef = parseInt(this.id.substring(4));
             chefs[this.id].unlocked = true;
             this.document.removeChild(this.document.children[1]);

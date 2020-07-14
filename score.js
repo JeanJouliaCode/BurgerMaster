@@ -1,4 +1,4 @@
-var money = 2500;
+var money = 250000;
 
 var save = {
     money: 0,
@@ -12,6 +12,7 @@ var save = {
     priceBrugerMultiplicator: null,
     isThereKetchup: null,
     speed: null,
+    elapsedTime: null,
 }
 
 function getItemLocalStorage() {
@@ -31,6 +32,7 @@ function getItemLocalStorage() {
         priceBrugerMultiplicator = save.priceBrugerMultiplicator;
         isThereKetchup = save.isThereKetchup;
         speed = save.speed;
+        elapsedTime = save.elapsedTime;
     }
 }
 
@@ -38,6 +40,25 @@ function getItemLocalStorage() {
 
 
 function updateScore() {
+
+    var score = document.getElementById("scoreDigit");
+    if (money < 1000000) {
+        score.textContent = (Math.round(money)).toString(10);
+    } else {
+        score.textContent = "error";
+    }
+
+    for (var ingredientButton of foodList) {
+        ingredientButton.checkMoneyButton();
+    }
+
+    for (var chef of chefList) {
+        chef.checkMoneyButton();
+    }
+
+}
+
+function saveData() {
     save.ingredientChart = ingredientChart;
     save.money = money;
     save.chefs = chefs;
@@ -49,16 +70,6 @@ function updateScore() {
     save.priceBrugerMultiplicator = priceBrugerMultiplicator;
     save.isThereKetchup = isThereKetchup;
     save.speed = speed;
+    save.elapsedTime = elapsedTime;
     localStorage.setItem('saveObject', JSON.stringify(save));
-    var score = document.getElementById("scoreDigit");
-    score.textContent = (Math.round(money * 10) / 10).toString(10);
-
-    for (var ingredientButton of foodList) {
-        ingredientButton.checkMoneyButton();
-    }
-
-    for (var chef of chefList) {
-        chef.checkMoneyButton();
-    }
-
 }

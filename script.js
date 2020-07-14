@@ -12,15 +12,17 @@ var rulesDisplayed = false;
 
 var resetDisplayed = false;
 
+let startDate = new Date();
+let elapsedTime = 0;
+
+
 function startGame() {
     //currentChef = 0;
     getItemLocalStorage();
     //initialise the burger
     burger = new Burger();
 
-    document.getElementById('meat').addEventListener('click', () => {
-        localStorage.setItem('saveObject', null);
-    })
+    initTime();
 
     //fill up the food reserve
     initFoodReserve();
@@ -105,7 +107,6 @@ function initReset() {
     resetOk = document.getElementById('resetOk');
 
     button.addEventListener('click', () => {
-        console.log('priint')
         if (resetDisplayed) {
             resetDiv.style.display = 'none';
         }
@@ -121,8 +122,34 @@ function initReset() {
     })
 
     resetOk.addEventListener('click', () => {
-        console.log('rested');
         localStorage.setItem('saveObject', null);
         window.location.reload();
     })
+}
+
+function initTime() {
+
+    const focus = function() {
+        startDate = new Date();
+    };
+
+    const blur = function() {
+        const endDate = new Date();
+        const spentTime = endDate.getTime() - startDate.getTime();
+        elapsedTime += spentTime;
+    };
+
+    const beforeunload = function() {
+        const endDate = new Date();
+        const spentTime = endDate.getTime() - startDate.getTime();
+        elapsedTime += spentTime;
+
+        saveData();
+
+        // elapsedTime contains the time spent on page in milliseconds
+    };
+
+    window.addEventListener('focus', focus);
+    window.addEventListener('blur', blur);
+    window.addEventListener('beforeunload', beforeunload);
 }
