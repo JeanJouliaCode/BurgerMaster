@@ -15,6 +15,8 @@ var resetDisplayed = false;
 let startDate = new Date();
 let elapsedTime = 0;
 
+var reseting = false;
+
 
 function startGame() {
     //currentChef = 0;
@@ -122,6 +124,7 @@ function initReset() {
     })
 
     resetOk.addEventListener('click', () => {
+        reseting = true;
         localStorage.setItem('saveObject', null);
         window.location.reload();
     })
@@ -144,7 +147,11 @@ function initTime() {
         const spentTime = endDate.getTime() - startDate.getTime();
         elapsedTime += spentTime;
 
-        saveData();
+        if (!reseting) {
+            saveData();
+        }
+
+
 
         // elapsedTime contains the time spent on page in milliseconds
     };
