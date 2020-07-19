@@ -160,3 +160,10 @@ function initTime() {
     window.addEventListener('blur', blur);
     window.addEventListener('beforeunload', beforeunload);
 }
+
+function getTimeElapsed() {
+    const endDate = new Date();
+    const spentTime = endDate.getTime() - startDate.getTime();
+    elapsedTime += spentTime;
+    return elapsedTime;
+}

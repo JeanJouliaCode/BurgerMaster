@@ -11,6 +11,8 @@ var speed = 0;
 
 var speedList = [40, 35, 25, 19, 16, 12, 8, 6, 4, 3, 2, 1]
 
+var nbBurger = 0;
+
 var Burger = class Burger {
     constructor() {
         // get div of the burger
@@ -202,6 +204,8 @@ var Burger = class Burger {
 
         //make another burger
         makeBurger();
+
+        nbBurger++;
 
     }
 

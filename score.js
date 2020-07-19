@@ -1,4 +1,4 @@
-var money = 250000;
+var money = 900000;
 
 var save = {
     money: 0,
@@ -13,6 +13,7 @@ var save = {
     isThereKetchup: null,
     speed: null,
     elapsedTime: null,
+    nbBurger: null,
 }
 
 function getItemLocalStorage() {
@@ -33,6 +34,7 @@ function getItemLocalStorage() {
         isThereKetchup = save.isThereKetchup;
         speed = save.speed;
         elapsedTime = save.elapsedTime;
+        nbBurger = save.nbBurger;
     }
 }
 
@@ -71,5 +73,6 @@ function saveData() {
     save.isThereKetchup = isThereKetchup;
     save.speed = speed;
     save.elapsedTime = elapsedTime;
+    save.nbBurger = nbBurger;
     localStorage.setItem('saveObject', JSON.stringify(save));
 }

@@ -33,8 +33,8 @@ var chefs = {
         unlocked: false,
         price: 3000,
         ingredient: "pickle",
-        upgrade1: 2500,
-        upgrade2: 2000,
+        upgrade1: 3000,
+        upgrade2: 4000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -46,8 +46,8 @@ var chefs = {
         unlocked: false,
         price: 9000,
         ingredient: "beacon",
-        upgrade1: 5000,
-        upgrade2: 4000,
+        upgrade1: 6000,
+        upgrade2: 7000,
         upgrade1locked: true,
         upgrade2locked: true,
     },
@@ -170,6 +170,21 @@ var Chef = class Chef {
                     break;
             }
 
+            if (currentChef == 5) {
+                var finished = true;
+                for (var chef of chefList) {
+                    finished = !finished ? finished : !chef.upgrade1;
+                    console.log(chef)
+                    finished = !finished ? finished : !chef.upgrade2;
+                    console.log(chef.upgrade1locked)
+                }
+                if (finished) {
+                    document.getElementById('time').textContent = this.roundValue(getTimeElapsed() / 3600000, 5).toString();
+                    document.getElementById('nbBurger').textContent = this.roundValue(nbBurger).toString();
+                    document.getElementById('finishMessage').style.display = 'flex';
+                }
+            }
+
             doc.style.justifyContent = "center"; // make the image go to teh center of the upgrade
             doc.removeChild(doc.children[0]); // remove the button
             updateScore(); //update the score to save the changes
@@ -222,8 +237,10 @@ var Chef = class Chef {
     }
 
     buy() {
-        // if you have enough money and that the chef is the one after to current one 
+        console.log('hey', !this.unlocked, money >= this.price, parseInt(this.id.substring(4)) == currentChef + 1, this.id)
+            // if you have enough money and that the chef is the one after to current one 
         if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef + 1) {
+            console.log('hey2')
             money -= this.price;
             this.unlocked = true;
             for (var chef of chefList) { //kill current chef

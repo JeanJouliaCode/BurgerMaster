@@ -81,6 +81,25 @@ body {
     bottom: 0;
 }
 
+.finishMessage {
+    justify-content: center;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 30%;
+    height: 25%;
+    background-color: #10222C;
+    z-index: 100;
+    left: 37%;
+    top: 37%;
+    margin-left: auto;
+    border-width: 5px;
+    border-color: #FF961B;
+    border-style: solid;
+    border-radius: 10px;
+    align-items: center;
+}
+
 .rulesLink {
     position: absolute;
     font-size: 1vw;

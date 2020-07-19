@@ -154,16 +154,16 @@ var IngredientPanel = class IngredientPanel {
                 oldPrice += 7;
                 break;
             case 2:
-                oldPrice += 8;
+                oldPrice += 14;
                 break;
             case 3:
-                oldPrice += 20;
-                break;
-            case 4:
                 oldPrice += 40;
                 break;
+            case 4:
+                oldPrice += 80;
+                break;
             case 5:
-                oldPrice += 60;
+                oldPrice += 120;
                 break;
         }
         return this.roundValue(oldPrice);
@@ -190,6 +190,15 @@ var IngredientPanel = class IngredientPanel {
         //         oldSpeed -= 80;
         //         break;
         // }
+        if (currentChef > 2) {
+            return this.roundValue(oldSpeed * 0.89);
+        }
+        if (currentChef == 2) {
+            return this.roundValue(oldSpeed * 0.87);
+        }
+        if (currentChef == 1) {
+            return this.roundValue(oldSpeed * 0.84);
+        }
         return this.roundValue(oldSpeed * 0.80);
     }
 
