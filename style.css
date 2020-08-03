@@ -509,8 +509,7 @@ body {
 .btnBuyUpgrade {
     width: 40%;
     height: 60%;
-    margin-right: 2%;
-    margin-left: 10%;
+    margin-right: 8%;
     box-shadow: 6px 6px 0px 1px #142d3a;
     background-color: #007d96;
     display: inline-block;

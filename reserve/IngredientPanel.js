@@ -125,7 +125,6 @@ var IngredientPanel = class IngredientPanel {
 
             updateScore();
             this.updateTootTip();
-            console.log(elapsedTime);
         }
 
     }

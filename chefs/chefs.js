@@ -174,12 +174,10 @@ var Chef = class Chef {
                 var finished = true;
                 for (var chef of chefList) {
                     finished = !finished ? finished : !chef.upgrade1;
-                    console.log(chef)
                     finished = !finished ? finished : !chef.upgrade2;
-                    console.log(chef.upgrade1locked)
                 }
                 if (finished) {
-                    document.getElementById('time').textContent = this.roundValue(getTimeElapsed() / 3600000, 5).toString();
+                    document.getElementById('time').textContent = this.roundValue(getTimeElapsed() / 3600000, 4).toString();
                     document.getElementById('nbBurger').textContent = this.roundValue(nbBurger).toString();
                     document.getElementById('finishMessage').style.display = 'flex';
                 }
@@ -237,10 +235,8 @@ var Chef = class Chef {
     }
 
     buy() {
-        console.log('hey', !this.unlocked, money >= this.price, parseInt(this.id.substring(4)) == currentChef + 1, this.id)
-            // if you have enough money and that the chef is the one after to current one 
+        // if you have enough money and that the chef is the one after to current one 
         if (!this.unlocked && money >= this.price && parseInt(this.id.substring(4)) == currentChef + 1) {
-            console.log('hey2')
             money -= this.price;
             this.unlocked = true;
             for (var chef of chefList) { //kill current chef

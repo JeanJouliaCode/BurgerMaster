@@ -34,6 +34,8 @@ function startGame() {
     initRules();
     initReset();
 
+    iniEnding();
+
     //get div order to maker burger when clicked for test purpose
     makeBurger();
 }
@@ -159,6 +161,17 @@ function initTime() {
     window.addEventListener('focus', focus);
     window.addEventListener('blur', blur);
     window.addEventListener('beforeunload', beforeunload);
+}
+
+function iniEnding() {
+    var endingBtn = document.getElementById('finishOk');
+
+    endingBtn.addEventListener('click', () => {
+        console.log('hey')
+        document.getElementById('finishMessage').style.display = 'none';
+    });
+
+
 }
 
 function getTimeElapsed() {
