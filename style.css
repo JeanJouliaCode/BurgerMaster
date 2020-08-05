@@ -618,7 +618,7 @@ body {
     visibility: hidden;
     position: relative;
     z-index: 2;
-    top: -73%;
+    top: -80%;
     left: -0%;
     border-radius: 5px;
     display: flex;
@@ -631,7 +631,7 @@ body {
     visibility: hidden;
     position: relative;
     z-index: 2;
-    top: -150%;
+    top: -170%;
     left: 0%;
     border-radius: 5px;
     display: flex;
@@ -644,7 +644,7 @@ body {
     visibility: hidden;
     position: relative;
     z-index: 2;
-    top: -150%;
+    top: -170%;
     left: -0%;
     border-radius: 5px;
     display: flex;
