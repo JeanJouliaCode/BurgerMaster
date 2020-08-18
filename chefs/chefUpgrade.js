@@ -50,5 +50,5 @@ function alwaysKetchup() {
 }
 
 function randomMoreExpensiveBurger() {
-    priceBrugerMultiplicator = 3;
+    priceBrugerMultiplicator = 2;
 }

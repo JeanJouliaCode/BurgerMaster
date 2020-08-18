@@ -43,8 +43,13 @@ function generateCommand() {
             regularIngredient[Math.floor(Math.random() * regularIngredient.length)];
 
         if (ingredientChart[ingredient].unlock) {
-            i++;
-            command.push(ingredient);
+            var tmpCommand = [...command];
+            tmpCommand.push(ingredient);
+            if (currentChef > 1 || maxElementDUplicate(tmpCommand) < 3) {
+                i++;
+                command.push(ingredient);
+            }
+
         }
     }
 
@@ -54,6 +59,29 @@ function generateCommand() {
         command.push("bredTop");
     }
     return command;
+}
+
+function countElement(array, variable) {
+    var count = 0;
+    for (var element of array) {
+        console.log(variable, element);
+        if (variable === element) {
+            count++;
+        }
+    }
+    return count;
+}
+
+function maxElementDUplicate(array) {
+    var maxNum = 0;
+    for (var element of array) {
+        var tmpNum = countElement(array, element);
+        if (tmpNum > maxNum) {
+            maxNum = tmpNum;
+        }
+    }
+    console.log(maxNum);
+    return maxNum;
 }
 
 function checkReserve(listIngredient) {

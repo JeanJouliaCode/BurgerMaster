@@ -189,7 +189,10 @@ var IngredientPanel = class IngredientPanel {
         //         oldSpeed -= 80;
         //         break;
         // }
-        if (currentChef > 2) {
+        if (currentChef > 4) {
+            return this.roundValue(oldSpeed * 0.91);
+        }
+        if (currentChef == 3) {
             return this.roundValue(oldSpeed * 0.89);
         }
         if (currentChef == 2) {
@@ -277,8 +280,8 @@ var IngredientPanel = class IngredientPanel {
     }
 
     updateTootTip() {
-        this.toolTip.childNodes[3].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 0) + " secondes";
-        this.toolTip.childNodes[7].textContent = '1 every ' + this.roundValue(this.getNewSPeed(this.speedOfDelivery) / 1000, 0) + " secondes";
+        this.toolTip.childNodes[3].textContent = '1 every ' + this.roundValue(this.speedOfDelivery / 1000, 2) + " secondes";
+        this.toolTip.childNodes[7].textContent = '1 every ' + this.roundValue(this.getNewSPeed(this.speedOfDelivery) / 1000, 2) + " secondes";
     }
 
     //initialize the reserve
@@ -470,7 +473,7 @@ function startLoop() {
         }
     }
 
-    onmessage = function(e) {
+    onmessage = function (e) {
         speedOfDelivery = e.data;
 
         if (init) {
