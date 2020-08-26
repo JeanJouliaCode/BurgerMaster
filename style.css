@@ -167,11 +167,24 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 84%;
+}
+
+.sectionContact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .linkContact:hover {
+    cursor: pointer;
     font-size: 1.4vw;
-    color: rgb(246, 248, 101);
+    color: #FF961B;
+}
+
+#clipboard{
+    display: none;
 }
 
 .divition {

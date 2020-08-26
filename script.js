@@ -146,6 +146,17 @@ function initReset() {
     })
 }
 
+function clipboard() {
+    var copyText = document.getElementById("clipboard");
+
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+
+    document.execCommand("copy");
+
+    alert("Copied the text: " + copyText.value);
+}
+
 function initContact() {
     button = document.getElementById('contactBtn');
     contact = document.getElementById('contact');
@@ -163,7 +174,7 @@ function initContact() {
     })
 
     melLink.addEventListener('click', () => {
-        window.location.replace("https://www.behance.net/melissaledoux");
+        window.location.replace("https://www.melissaledoux.fr/");
     })
 
     cross.addEventListener('click', () => {
