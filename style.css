@@ -30,6 +30,25 @@ body {
     max-height: 80%;
 }
 
+.contacts {
+    position: absolute;
+    width: 50%;
+    height: 30%;
+    padding-bottom: 2%;
+    background-color: #10222C;
+    z-index: 100;
+    left: 25%;
+    top: 10%;
+    margin-left: auto;
+    border-width: 5px;
+    border-color: #FF961B;
+    border-style: solid;
+    border-radius: 10px;
+    display: none;
+    overflow: auto;
+    max-height: 80%;
+}
+
 .reset {
     justify-content: center;
     display: flex;
@@ -122,6 +141,17 @@ body {
     cursor: pointer;
 }
 
+.contactLink {
+    position: absolute;
+    font-size: 1vw;
+    bottom: 1%;
+    left: 9%;
+    z-index: 100;
+    font-family: Sauce;
+    color: #FF961B;
+    cursor: pointer;
+}
+
 .cross {
     position: relative;
     top: 2%;
@@ -130,6 +160,18 @@ body {
     font-family: Sauce;
     color: #FF961B;
     cursor: pointer;
+}
+
+.columnContact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.linkContact:hover {
+    font-size: 1.4vw;
+    color: rgb(246, 248, 101);
 }
 
 .divition {

@@ -12,6 +12,8 @@ var rulesDisplayed = false;
 
 var resetDisplayed = false;
 
+var contactDisplayed = false;
+
 let startDate = new Date();
 let elapsedTime = 0;
 
@@ -33,8 +35,10 @@ function startGame() {
 
     initRules();
     initReset();
+    initContact();
 
     iniEnding();
+    initIcon();
 
     //get div order to maker burger when clicked for test purpose
     makeBurger();
@@ -47,6 +51,16 @@ async function makeBurger() {
         displayOrder(command);
     }
     updateScore();
+}
+
+function initIcon() {
+    (function () {
+        var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+        link.type = 'image/x-icon';
+        link.rel = 'shortcut icon';
+        link.href = './ressources/icon.ico';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    })();
 }
 
 function initFoodReserve() {
@@ -132,19 +146,45 @@ function initReset() {
     })
 }
 
+function initContact() {
+    button = document.getElementById('contactBtn');
+    contact = document.getElementById('contact');
+    cross = document.getElementById('crossContact');
+    melLink = document.getElementById('melLink');
+
+    button.addEventListener('click', () => {
+        if (contactDisplayed) {
+            contact.style.display = 'none';
+        }
+        if (!rulesDisplayed && !resetDisplayed && !contactDisplayed) {
+            contact.style.display = 'block';
+        }
+        contactDisplayed = !contactDisplayed;
+    })
+
+    melLink.addEventListener('click', () => {
+        window.location.replace("https://www.behance.net/melissaledoux");
+    })
+
+    cross.addEventListener('click', () => {
+        contact.style.display = 'none';
+        contactDisplayed = false;
+    })
+}
+
 function initTime() {
 
-    const focus = function() {
+    const focus = function () {
         startDate = new Date();
     };
 
-    const blur = function() {
+    const blur = function () {
         const endDate = new Date();
         const spentTime = endDate.getTime() - startDate.getTime();
         elapsedTime += spentTime;
     };
 
-    const beforeunload = function() {
+    const beforeunload = function () {
         const endDate = new Date();
         const spentTime = endDate.getTime() - startDate.getTime();
         elapsedTime += spentTime;
