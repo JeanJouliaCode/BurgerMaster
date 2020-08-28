@@ -54,7 +54,7 @@ async function makeBurger() {
 }
 
 function initIcon() {
-    (function () {
+    (function() {
         var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
@@ -123,6 +123,13 @@ function initReset() {
     resetDiv = document.getElementById('resetDiv');
     resetCancel = document.getElementById('resetCancel');
     resetOk = document.getElementById('resetOk');
+    table = document.getElementById('table');
+
+    table.addEventListener('click', () => {
+        console.log(getTimeElapsed() / 1000);
+    });
+
+
 
     button.addEventListener('click', () => {
         if (resetDisplayed) {
@@ -183,19 +190,27 @@ function initContact() {
     })
 }
 
+function getTIme() {
+
+}
+
 function initTime() {
 
-    const focus = function () {
-        startDate = new Date();
-    };
-
-    const blur = function () {
+    const focus = function() {
         const endDate = new Date();
         const spentTime = endDate.getTime() - startDate.getTime();
+        console.log(elapsedTime / 1000, spentTime / 1000, "focused");
         elapsedTime += spentTime;
     };
 
-    const beforeunload = function () {
+    const blur = function() {
+        const endDate = new Date();
+        const spentTime = endDate.getTime() - startDate.getTime();
+        elapsedTime += spentTime;
+        startDate = new Date();
+    };
+
+    const beforeunload = function() {
         const endDate = new Date();
         const spentTime = endDate.getTime() - startDate.getTime();
         elapsedTime += spentTime;
@@ -203,15 +218,19 @@ function initTime() {
         if (!reseting) {
             saveData();
         }
-
-
-
         // elapsedTime contains the time spent on page in milliseconds
     };
 
     window.addEventListener('focus', focus);
     window.addEventListener('blur', blur);
     window.addEventListener('beforeunload', beforeunload);
+}
+
+function getTimeElapsed() {
+    const endDate = new Date();
+    const spentTime = endDate.getTime() - startDate.getTime();
+    console.log(elapsedTime / 1000, spentTime / 1000, "get");
+    return elapsedTime + spentTime;
 }
 
 function iniEnding() {
@@ -223,11 +242,4 @@ function iniEnding() {
     });
 
 
-}
-
-function getTimeElapsed() {
-    const endDate = new Date();
-    const spentTime = endDate.getTime() - startDate.getTime();
-    elapsedTime += spentTime;
-    return elapsedTime;
 }

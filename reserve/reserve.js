@@ -64,7 +64,6 @@ function generateCommand() {
 function countElement(array, variable) {
     var count = 0;
     for (var element of array) {
-        console.log(variable, element);
         if (variable === element) {
             count++;
         }
@@ -80,7 +79,6 @@ function maxElementDUplicate(array) {
             maxNum = tmpNum;
         }
     }
-    console.log(maxNum);
     return maxNum;
 }
 
