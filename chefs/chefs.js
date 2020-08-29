@@ -177,7 +177,12 @@ var Chef = class Chef {
                     finished = !finished ? finished : !chef.upgrade2;
                 }
                 if (finished) {
-                    document.getElementById('time').textContent = this.roundValue(getTimeElapsed() / 3600000, 4).toString();
+
+                    var time = this.msToTime(getTimeElapsed());
+                    var timeStr = (time[0] != 0) ? ((time[0] + " hour") + ((time[0] > 1) ? "s" : "")) : "";
+                    timeStr += (time[1] != 0) ? ((" " + time[1] + " minute") + ((time[1] > 1) ? "s" : "")) : "";
+                    timeStr += (time[2] != 0) ? ((" " + time[2] + " seconde") + ((time[2] > 1) ? "s" : "")) : "";
+                    document.getElementById('time').textContent = timeStr;
                     document.getElementById('nbBurger').textContent = this.roundValue(nbBurger).toString();
                     document.getElementById('finishMessage').style.display = 'flex';
                 }
@@ -188,6 +193,20 @@ var Chef = class Chef {
             updateScore(); //update the score to save the changes
         }
     }
+
+    msToTime(duration) {
+        var milliseconds = parseInt((duration % 1000) / 100),
+            seconds = Math.floor((duration / 1000) % 60),
+            minutes = Math.floor((duration / (1000 * 60)) % 60),
+            hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+        hours = (hours < 10) ? 0 + hours : hours;
+        minutes = (minutes < 10) ? 0 + minutes : minutes;
+        seconds = (seconds < 10) ? 0 + seconds : seconds;
+
+        return [hours, minutes, seconds];
+    }
+
 
     //round
     roundValue(value, nb = 0) {
