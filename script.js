@@ -54,7 +54,7 @@ async function makeBurger() {
 }
 
 function initIcon() {
-    (function () {
+    (function() {
         var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
         link.type = 'image/x-icon';
         link.rel = 'shortcut icon';
@@ -189,7 +189,7 @@ function getTIme() {
 
 function initTime() {
 
-    const beforeunload = function () {
+    const beforeunload = function() {
         const endDate = new Date();
         const spentTime = endDate.getTime() - startDate.getTime();
         elapsedTime += spentTime;
@@ -206,7 +206,6 @@ function initTime() {
 function getTimeElapsed() {
     const endDate = new Date();
     const spentTime = endDate.getTime() - startDate.getTime();
-    //console.log(elapsedTime / 1000, spentTime / 1000, "get");
     return elapsedTime + spentTime;
 }
 
