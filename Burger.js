@@ -9,7 +9,7 @@ var priceBrugerMultiplicator = 1;
 
 var speed = 0;
 
-var speedList = [40, 35, 25, 19, 16, 12, 8, 6, 4, 3, 2, 1]
+var speedList = [40, 35, 25, 19, 14, 11, 8, 6, 4, 3, 2, 1]
 
 var nbBurger = 0;
 

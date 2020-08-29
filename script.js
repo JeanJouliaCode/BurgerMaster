@@ -214,7 +214,6 @@ function iniEnding() {
     var endingBtn = document.getElementById('finishOk');
 
     endingBtn.addEventListener('click', () => {
-        console.log('hey')
         document.getElementById('finishMessage').style.display = 'none';
     });
 
