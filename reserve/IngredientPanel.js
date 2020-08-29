@@ -150,10 +150,10 @@ var IngredientPanel = class IngredientPanel {
                 oldPrice += 7.5;
                 break;
             case 1:
-                oldPrice += 7;
+                oldPrice += 10;
                 break;
             case 2:
-                oldPrice += 14;
+                oldPrice += 22;
                 break;
             case 3:
                 oldPrice += 40;
@@ -193,13 +193,13 @@ var IngredientPanel = class IngredientPanel {
             return this.roundValue(oldSpeed * 0.91);
         }
         if (currentChef == 3) {
-            return this.roundValue(oldSpeed * 0.89);
+            return this.roundValue(oldSpeed * 0.90);
         }
         if (currentChef == 2) {
-            return this.roundValue(oldSpeed * 0.87);
+            return this.roundValue(oldSpeed * 0.88);
         }
         if (currentChef == 1) {
-            return this.roundValue(oldSpeed * 0.84);
+            return this.roundValue(oldSpeed * 0.85);
         }
         return this.roundValue(oldSpeed * 0.80);
     }
@@ -473,7 +473,7 @@ function startLoop() {
         }
     }
 
-    onmessage = function (e) {
+    onmessage = function(e) {
         speedOfDelivery = e.data;
 
         if (init) {

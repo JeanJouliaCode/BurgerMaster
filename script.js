@@ -125,11 +125,6 @@ function initReset() {
     resetOk = document.getElementById('resetOk');
     table = document.getElementById('table');
 
-    table.addEventListener('click', () => {
-        console.log(getTimeElapsed() / 1000);
-    });
-
-
 
     button.addEventListener('click', () => {
         if (resetDisplayed) {
@@ -237,7 +232,6 @@ function iniEnding() {
     var endingBtn = document.getElementById('finishOk');
 
     endingBtn.addEventListener('click', () => {
-        console.log('hey')
         document.getElementById('finishMessage').style.display = 'none';
     });
 
