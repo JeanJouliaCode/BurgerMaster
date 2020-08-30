@@ -117,32 +117,7 @@ var Chef = class Chef {
             switch (doc.id) { //Which upgrade of the chef has been upgraded
                 case "1":
                     this.upgrade1 = false; // Upgrade 1 is not locked anymore
-                    switch (this.id) {
-                        case "chef0":
-                            speed++;
-                            //upgradeSpeedChef(26); // Increase price of burger 
-                            break;
-                        case "chef1":
-                            speed++;
-                            //upgradeSpeedChef(19); // There is always ketchup in the burger 
-                            break;
-                        case "chef2":
-                            speed++;
-                            //upgradeSpeedChef(12); // Tow lowest reserve get upgraded 3 times for 3      
-                            break;
-                        case "chef3":
-                            speed++;
-                            //upgradeSpeedChef(6); // Burger are generally bigger
-                            break;
-                        case 'chef4':
-                            speed++;
-                            //upgradeSpeedChef(3); // burger price is increased
-                            break;
-                        case "chef5":
-                            speed++;
-                            //upgradeSpeedChef(1); // there is a chance for burger to be very tall 
-                            break;
-                    }
+                    speed++;
                     burger.changeSpeed();
                     break
                 case "2":

@@ -5,9 +5,24 @@ function upgradeDoublePrice() {
 
 function upgradeUpgradeLowest() {
     var ingredient = [
-
-        { name: "bredTop", nb: 0 }, { name: "meat", nb: ingredientChart.meat.nbElement }, { name: "cheese", nb: ingredientChart.cheese.nbElement }, { name: "salad", nb: ingredientChart.salad.nbElement }, { name: "ketchup", nb: ingredientChart.ketchup.nbElement }, { name: "tomato", nb: ingredientChart.tomato.nbElement }, { name: "pickle", nb: ingredientChart.pickle.nbElement }, { name: "beacon", nb: ingredientChart.beacon.nbElement }, { name: "egg", nb: ingredientChart.egg.nbElement }, { name: "bredTopBlack", nb: ingredientChart.bredTopBlack.nbElement }
+        { name: "bredTop", nb: 0 },
+        { name: "meat", nb: 0 },
+        { name: "cheese", nb: 0 },
+        { name: "salad", nb: 0 },
+        { name: "ketchup", nb: 0 },
+        { name: "tomato", nb: 0 },
+        { name: "pickle", nb: 0 },
+        { name: "beacon", nb: 0 },
+        { name: "egg", nb: 0 },
+        { name: "bredTopBlack", nb: 0 }
     ]
+
+    var index = 0;
+    for (var element of foodList) {
+        ingredient[index].nb = element.unlock ? element.nbElement : 100;
+        index++;
+    }
+
 
     for (i = 0; i < ingredient.length; i++) {
         for (j = 0; j < (ingredient.length - i - 1); j++) {
