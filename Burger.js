@@ -30,7 +30,7 @@ var Burger = class Burger {
             beacon: { width: "45%", left: "25%", offset: 5 },
             cheese: { width: "45%", left: "24%", offset: 2 },
             egg: { width: "45%", left: "24%", offset: 2 },
-            ketchup: { width: "44%", left: "25%", offset: 2 },
+            ketchup: { width: "44%", left: "25%", offset: 1 },
             meat: { width: "45%", left: "24.5%", offset: 6 },
             pickle: { width: "40%", left: "26%", offset: 2 },
             tomato: { width: "43%", left: "26%", offset: 2 },
@@ -75,7 +75,7 @@ var Burger = class Burger {
             this.moveIngredient(m, document, this.speed);
             this.objAddIngredient = { 'document': document, 'margin': margin, 'm': m, 'i': i, 'ingredient': ingredient, 'listElement': listElement }
             this.worker.postMessage(this.speed.toString() + '-' + 'addIngredient')
-                //this.addIngredient(document, margin, m, i, ingredient, listElement);
+            //this.addIngredient(document, margin, m, i, ingredient, listElement);
             return;
         }
         await this.moveIngredient(margin, document, this.speed);
@@ -130,7 +130,8 @@ var Burger = class Burger {
         imageIngredient.style.visibility = "visible";
         imageIngredient.style.paddingBottom = "150%";
         imageIngredient.style.zIndex = "10";
-        imageIngredient.src = "./ressources/ingredients/" + ingredient + ".png";
+        imageIngredient.src = "./ressources/ingredients/" + ingredient + (isThereKetchup && ingredient == "ketchup" ? "_bis" : "") + ".png";
+        console.log(imageIngredient.src);
 
         this.burgerElement.push(imageIngredient);
 
@@ -187,7 +188,7 @@ var Burger = class Burger {
             i++;
             this.objPushPlatePhase = { 'speed': speed, 'pixelArray': pixelArray, 'i': i };
             this.worker.postMessage(this.speed.toString() + '-' + 'pushPlatePhase')
-                //await this.pushPlatePhase(speed, pixelArray, i);
+            //await this.pushPlatePhase(speed, pixelArray, i);
             return;
         }
         for (var element of this.burgerElement) {
@@ -235,7 +236,7 @@ function workerTimer() {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    onmessage = function(e) {
+    onmessage = function (e) {
         var info = e.data.split('-');
         waitTheTime(parseInt(info[0]), info[1])
 
