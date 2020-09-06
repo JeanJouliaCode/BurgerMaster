@@ -5,4 +5,5 @@ plugins:
   - jekyll-assets
   - another-jekyll-plugin
 
-gems: - jekyll-sitemap
+gems: 
+  - jekyll-sitemap
