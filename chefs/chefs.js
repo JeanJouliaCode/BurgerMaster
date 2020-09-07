@@ -70,7 +70,7 @@ var chefs = {
         nbUnlocked: 10,
         speed: 2,
         unlocked: false,
-        price: 800000,
+        price: 80000,
         ingredient: "bredTopBlack",
         upgrade1: 70000,
         upgrade2: 60000,
