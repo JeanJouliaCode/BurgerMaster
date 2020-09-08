@@ -95,7 +95,12 @@ var Chef = class Chef {
         this.upgrade2 = upgrade2;
 
         this.imageSrc = imageSrc;
-        this.price = price;
+        if (price > 80000) {
+            this.price = 80000;
+        }
+        else {
+            this.price = price;
+        }
         this.unlocked = unlocked;
         this.document = document;
         this.buttonPrice = null;
